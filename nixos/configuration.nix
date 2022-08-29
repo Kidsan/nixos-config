@@ -18,6 +18,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  boot.kernelPackages = pkgs.linuxPackages_5_19;
+
   # Setup keyfile
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
@@ -117,9 +119,17 @@
     weechat
     thunderbird
     ntfs3g
-    exfat
-    
+    exfat 
+    libsForQt5.kwallet
+    libsForQt5.kwalletmanager
+    kwallet-pam
   ];
+
+  # enable flakes
+  nix.package = pkgs.nixUnstable;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -133,6 +143,11 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  security.pam.services.kwallet = {
+    name = "kwallet";
+    enableKwallet = true;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
