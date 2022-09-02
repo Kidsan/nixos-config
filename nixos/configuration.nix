@@ -13,6 +13,16 @@
       ./personal.nix
     ];
 
+  nixpkgs.overlays = [ (self: super: {
+  weechat = super.weechat.override {
+    configure = { availablePlugins, ... }: {
+      scripts = with super.weechatScripts; [
+        weechat-matrix
+      ];
+    };
+  };
+} ) ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -68,6 +78,7 @@
   services.xserver = {
     layout = "gb";
     xkbVariant = "";
+    xkbOptions = "caps:escape";
   };
 
   # Configure console keymap
