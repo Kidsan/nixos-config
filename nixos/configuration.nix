@@ -18,6 +18,7 @@
     configure = { availablePlugins, ... }: {
       scripts = with super.weechatScripts; [
         weechat-matrix
+	weechat-notify-send
       ];
     };
   };
