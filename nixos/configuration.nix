@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./firefox-nightly.nix
       ./development-tools.nix
+	./vscodium-extensions.nix
       ./personal.nix
     ];
 
