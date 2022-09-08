@@ -80,7 +80,7 @@
   services.xserver = {
     layout = "gb";
     xkbVariant = "";
-    xkbOptions = "caps:escape";
+    xkbOptions = "caps:escape compose:ralt";
   };
 
   # Configure console keymap
@@ -141,6 +141,7 @@
   # enable flakes
   nix.package = pkgs.nixUnstable;
   nix.extraOptions = ''
+    bash-prompt = "\[nix-develop\]$ ";
     experimental-features = nix-command flakes
   '';
 
@@ -177,4 +178,5 @@
   system.stateVersion = "22.05"; # Did you read the comment?
 
   virtualisation.docker.enable = true;
+  
 }
