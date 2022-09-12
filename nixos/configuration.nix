@@ -12,6 +12,8 @@
       ./development-tools.nix
 	./vscodium-extensions.nix
       ./personal.nix
+      ./neovim-nightly.nix
+      ./cachix.nix
     ];
 
   nixpkgs.overlays = [ (self: super: {
