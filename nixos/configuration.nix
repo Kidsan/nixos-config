@@ -138,6 +138,7 @@
     libsForQt5.kwallet
     libsForQt5.kwalletmanager
     kwallet-pam
+    cachix
   ];
 
   # enable flakes

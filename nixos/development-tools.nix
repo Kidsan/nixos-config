@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [ 
     git
-    neovim
+    neovim-nightly
     direnv
   ];
 }
