@@ -6,26 +6,29 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./firefox-nightly.nix
       ./development-tools.nix
-	./vscodium-extensions.nix
+      ./vscodium-extensions.nix
       ./personal.nix
       ./neovim-nightly.nix
       ./cachix.nix
     ];
 
-  nixpkgs.overlays = [ (self: super: {
-  weechat = super.weechat.override {
-    configure = { availablePlugins, ... }: {
-      scripts = with super.weechatScripts; [
-	weechat-notify-send
-	weechat-autosort
-      ];
-    };
-  };
-} ) ];
+  nixpkgs.overlays = [
+    (self: super: {
+      weechat = super.weechat.override {
+        configure = { availablePlugins, ... }: {
+          scripts = with super.weechatScripts; [
+            weechat-notify-send
+            weechat-autosort
+          ];
+        };
+      };
+    })
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -134,7 +137,7 @@
     weechat
     thunderbird
     ntfs3g
-    exfat 
+    exfat
     libsForQt5.kwallet
     libsForQt5.kwalletmanager
     kwallet-pam
@@ -181,5 +184,5 @@
   system.stateVersion = "22.05"; # Did you read the comment?
 
   virtualisation.docker.enable = true;
-  
+
 }

@@ -1,9 +1,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ 
-   spotify
-   discord
-   element-desktop
- ];
+  environment.systemPackages = with pkgs; [
+    spotify
+    discord
+    element-desktop
+  ];
 }
