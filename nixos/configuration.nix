@@ -46,7 +46,7 @@
   boot.initrd.luks.devices."luks-c797edd5-61ec-43fa-9df2-59a91f5aeb9a".device = "/dev/disk/by-uuid/c797edd5-61ec-43fa-9df2-59a91f5aeb9a";
   boot.initrd.luks.devices."luks-c797edd5-61ec-43fa-9df2-59a91f5aeb9a".keyFile = "/crypto_keyfile.bin";
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "thinkpad"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
