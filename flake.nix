@@ -7,26 +7,27 @@
     # home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, ... }: 
+  outputs = { nixpkgs, ... }:
     let
       system = "x86_64-linux";
 
       pkgs = import nixpkgs {
         inherit system;
-	config = { allowUnfree = true; };
+        config = { allowUnfree = true; };
       };
 
       lib = nixpkgs.lib;
-    in {
+    in
+    {
 
       nixosConfigurations = {
-	thinkpad = lib.nixosSystem {
-	  inherit system;
+        thinkpad = lib.nixosSystem {
+          inherit system;
 
-	  modules = [
+          modules = [
             ./nixos/configuration.nix
-	  ];
-	};
+          ];
+        };
       };
     };
 
