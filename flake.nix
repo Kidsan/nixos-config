@@ -28,6 +28,14 @@
             ./nixos/configuration.nix
           ];
         };
+
+        desktop = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./desktop/configuration.nix
+          ];
+        };
+
       };
     };
 
