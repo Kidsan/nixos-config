@@ -6,10 +6,12 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
-	./neovim-nightly.nix
-	./cachix.nix
+      ../overlays/neovim-nightly.nix
+      ../overlays/firefox-nightly.nix
+      ./cachix.nix
     ];
 
   # Bootloader.
@@ -102,39 +104,28 @@
     packages = with pkgs; [
       latest.firefox-nightly-bin
       kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-nixpkgs.overlays =  let
-    # Change this to a rev sha to pin
-    moz-rev = "master";
-    moz-url = builtins.fetchTarball { url = "https://github.com/mozilla/nixpkgs-mozilla/archive/${moz-rev}.tar.gz";};
-    nightlyOverlay = (import "${moz-url}/firefox-overlay.nix");
-  in [
-    nightlyOverlay
-  ];
-
-
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   vim 
-   curl
-   latest.firefox-nightly-bin
-   discord
-   git
-   vscodium
-   neovim
-   go_1_19
-   slack-dark
-   weechat
-   steam
-   cachix
+    vim
+    curl
+    discord
+    git
+    vscodium
+    neovim
+    go_1_19
+    slack-dark
+    weechat
+    steam
+    cachix
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -174,13 +165,13 @@ nixpkgs.overlays =  let
   system.stateVersion = "22.05"; # Did you read the comment?
 
 
-    # enable flakes
+  # enable flakes
   nix.package = pkgs.nixUnstable;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
 
-virtualisation.docker.enable = true;
+  virtualisation.docker.enable = true;
 
 }
 

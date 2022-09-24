@@ -9,11 +9,11 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./firefox-nightly.nix
+      ../overlays/firefox-nightly.nix
       ./development-tools.nix
       ./vscodium-extensions.nix
       ./personal.nix
-      ./neovim-nightly.nix
+      ../overlays/neovim-nightly.nix
       ./cachix.nix
     ];
 
