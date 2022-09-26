@@ -122,7 +122,7 @@
     vscodium
     neovim
     go_1_19
-    slack-dark
+    slack
     weechat
     steam
     cachix
