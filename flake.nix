@@ -17,6 +17,7 @@
       };
 
       lib = nixpkgs.lib;
+      mkSystem = import ./lib/mk_system.nix;
     in
     {
 
@@ -36,6 +37,15 @@
           ];
         };
 
+        desktop2 = mkSystem "desktop" nixpkgs;
+
+      };
+
+      devShell.x86_64-linux = pkgs.mkShell {
+        nativeBuildInputs = [ pkgs.bashInteractive ];
+        buildInputs = [
+          pkgs.nixpkgs-fmt
+        ];
       };
     };
 
