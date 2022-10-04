@@ -27,6 +27,7 @@
   # Enable swap on luks
   boot.initrd.luks.devices."luks-c1db48bc-8179-4529-945d-540de98b1a11".device = "/dev/disk/by-uuid/c1db48bc-8179-4529-945d-540de98b1a11";
   boot.initrd.luks.devices."luks-c1db48bc-8179-4529-945d-540de98b1a11".keyFile = "/crypto_keyfile.bin";
+  boot.kernelPackages = pkgs.linuxPackages_6_0;
 
   networking.hostName = "desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
