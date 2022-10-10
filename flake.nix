@@ -22,22 +22,8 @@
     {
 
       nixosConfigurations = {
-        # thinkpad = lib.nixosSystem {
-        #   inherit system;
 
-        #   modules = [
-        #     ./nixos/configuration.nix
-        #   ];
-        # };
-
-        desktop = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./desktop/configuration.nix
-          ];
-        };
-
-        desktop2 = mkSystem inputs "desktop" nixpkgs;
+        desktop = mkSystem inputs "desktop" nixpkgs;
 
         thinkpad = mkSystem inputs "thinkpad" nixpkgs;
 
