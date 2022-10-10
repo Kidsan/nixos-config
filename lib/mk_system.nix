@@ -14,8 +14,8 @@ nixpkgs.lib.nixosSystem (
       [
         entryPoint
         hardware
-      ]
-      ++ attrValues self.nixosModules
-      ++ attrValues self.mixedModules;
+      ];
+      # ++ attrValues self.nixosModules
+      # ++ attrValues self.mixedModules;
   }
 )

@@ -7,7 +7,7 @@
     # home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, ... }:
+  outputs = { nixpkgs, ... } @ inputs:
     let
       system = "x86_64-linux";
 
@@ -22,13 +22,13 @@
     {
 
       nixosConfigurations = {
-        thinkpad = lib.nixosSystem {
-          inherit system;
+        # thinkpad = lib.nixosSystem {
+        #   inherit system;
 
-          modules = [
-            ./nixos/configuration.nix
-          ];
-        };
+        #   modules = [
+        #     ./nixos/configuration.nix
+        #   ];
+        # };
 
         desktop = lib.nixosSystem {
           inherit system;
@@ -37,7 +37,9 @@
           ];
         };
 
-        desktop2 = mkSystem "desktop" nixpkgs;
+        desktop2 = mkSystem inputs "desktop" nixpkgs;
+
+        thinkpad = mkSystem inputs "thinkpad" nixpkgs;
 
       };
 
