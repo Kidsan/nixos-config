@@ -189,7 +189,7 @@ in
   users.users.kidsan = {
     isNormalUser = true;
     description = "kidsan";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
     packages = with pkgs; [
       kate
       chromium
