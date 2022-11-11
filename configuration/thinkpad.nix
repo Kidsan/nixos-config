@@ -54,6 +54,7 @@ in
       ../nixos/development-tools.nix
       ../nixos/vscodium-extensions.nix
       ../nixos/personal.nix
+      ../nixos/kanshi.nix
 
       ../overlays/firefox-nightly.nix
       ../overlays/neovim-nightly.nix
