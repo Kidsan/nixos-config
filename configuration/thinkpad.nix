@@ -119,22 +119,6 @@ in
     LC_TIME = "de_DE.utf8";
   };
 
-  # KDE
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver = {
-  #   layout = "gb";
-  #   xkbVariant = "";
-  #   xkbOptions = "caps:escape compose:ralt";
-  # };
-  # /KDE
-
   # SWAY
   # xdg-desktop-portal works by exposing a series of D-Bus interfaces
   # known as portals under a well-known name
@@ -215,7 +199,7 @@ in
     cachix
 
     # SWAY
-     alacritty # gpu accelerated terminal
+    alacritty # gpu accelerated terminal
     sway
     dbus-sway-environment
     configure-gtk
