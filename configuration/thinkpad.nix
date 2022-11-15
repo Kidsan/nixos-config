@@ -136,10 +136,10 @@ in
   };
 
   # enable sway window manager
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
+  # programs.sway = {
+  #   enable = true;
+  #   wrapperFeatures.gtk = true;
+  # };
   # /SWAY
 
 
@@ -153,6 +153,7 @@ in
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  security.polkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -183,6 +184,8 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+    programs.dconf.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -199,22 +202,22 @@ in
     cachix
 
     # SWAY
-    alacritty # gpu accelerated terminal
-    sway
+    # alacritty # gpu accelerated terminal
+    # sway
     dbus-sway-environment
     configure-gtk
-    wayland
-    glib # gsettings
-    dracula-theme # gtk theme
-    gnome3.adwaita-icon-theme  # default gnome cursors
-    swaylock
-    swayidle
-    grim # screenshot functionality
-    slurp # screenshot functionality
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    bemenu # wayland clone of dmenu
-    mako # notification system developed by swaywm maintainer
-    pulseaudio
+    # wayland
+    # glib # gsettings
+    # dracula-theme # gtk theme
+    # gnome3.adwaita-icon-theme  # default gnome cursors
+    # swaylock
+    # swayidle
+    # grim # screenshot functionality
+    # slurp # screenshot functionality
+    # wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    # bemenu # wayland clone of dmenu
+    # mako # notification system developed by swaywm maintainer
+    # pulseaudio
     # /SWAY
   ];
 
