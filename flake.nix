@@ -3,11 +3,11 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
-    # home-manager.url = "githin:nix-community/home-manager/master"
-    # home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, ... } @ inputs:
     let
       system = "x86_64-linux";
 
@@ -20,6 +20,15 @@
       mkSystem = import ./lib/mk_system.nix;
     in
     {
+
+      homeConfigurations = {
+        kidsan = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+            modules = [
+              ./home/kidsan/home.nix
+            ];
+        };
+      };
 
       nixosConfigurations = {
 
