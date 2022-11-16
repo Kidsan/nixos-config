@@ -38,7 +38,7 @@
     settings = { };
   };
 
-  programs.neovim  = {
+  programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
     vimAlias = true;
@@ -62,6 +62,13 @@
       pkgs.vscode-extensions.humao.rest-client
       pkgs.vscode-extensions.jnoortheen.nix-ide
     ];
+    enableUpdateCheck = false;
+
+    userSettings = {
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "rnix-lsp";
+      "editor.formatOnSave" = true;
+    };
   };
 
   programs.direnv = {
@@ -129,5 +136,25 @@
         }
       ];
     };
+  };
+
+  services.kanshi = {
+    enable = true;
+    profiles = {
+      undocked = {
+        outputs = [
+          { criteria = "eDP-1"; status = "enable"; }
+        ];
+      };
+
+      docked = {
+        outputs = [
+          { criteria = "eDP-1"; status = "disable"; }
+          { criteria = "HDMI-A-1"; status = "enable"; }
+        ];
+      };
+
+    };
+
   };
 }

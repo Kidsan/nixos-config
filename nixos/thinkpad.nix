@@ -7,7 +7,6 @@
 {
   imports =
     [
-      ../nixos/kanshi.nix
       ../overlays/firefox-nightly.nix
       ../lib/cachix.nix
     ];

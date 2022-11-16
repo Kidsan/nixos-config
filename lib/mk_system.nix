@@ -3,7 +3,7 @@ nixpkgs.lib.nixosSystem (
   let
     inherit (builtins) attrValues;
 
-    configFolder = "${self}/configuration";
+    configFolder = "${self}/nixos";
     entryPoint = import "${configFolder}/${name}.nix";
     hardware = "${configFolder}/hardware/${name}.nix";
   in
@@ -15,7 +15,7 @@ nixpkgs.lib.nixosSystem (
         entryPoint
         hardware
       ];
-      # ++ attrValues self.nixosModules
-      # ++ attrValues self.mixedModules;
+    # ++ attrValues self.nixosModules
+    # ++ attrValues self.mixedModules;
   }
 )

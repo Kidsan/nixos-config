@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "Kidsan's NixOS Configuration";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
@@ -33,10 +33,9 @@
         kidsan = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
-
-            modules = [
-              ./home/kidsan/home.nix
-            ];
+          modules = [
+            ./home/kidsan/home.nix
+          ];
         };
       };
 
@@ -51,7 +50,7 @@
       devShell.x86_64-linux = pkgs.mkShell {
         nativeBuildInputs = [ pkgs.bashInteractive ];
         buildInputs = [
-          pkgs.nixpkgs-fmt
+          pkgs.rnix-lsp
         ];
       };
     };
