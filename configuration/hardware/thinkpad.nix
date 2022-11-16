@@ -41,4 +41,7 @@
   # networking.interfaces.wwan0.useDHCP = lib.mkDefault true;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  hardware.opengl.enable = true;
+  hardware.opengl.driSupport = true;
 }

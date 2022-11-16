@@ -125,7 +125,7 @@ in
   # (org.freedesktop.portal.Desktop) and object path
   # (/org/freedesktop/portal/desktop).
   # The portal interfaces include APIs for file access, opening URIs,
-  # printing and others.
+  # printing and others. TODO: remove this
   services.dbus.enable = true;
   xdg.portal = {
     enable = true;
@@ -204,8 +204,8 @@ in
     # SWAY
     # alacritty # gpu accelerated terminal
     # sway
-    dbus-sway-environment
-    configure-gtk
+    dbus-sway-environment ## TODO: remove
+    configure-gtk ## TODO: remove
     # wayland
     # glib # gsettings
     # dracula-theme # gtk theme
