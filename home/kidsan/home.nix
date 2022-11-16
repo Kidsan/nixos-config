@@ -19,6 +19,10 @@
     bemenu # wayland clone of dmenu
     mako # notification system developed by swaywm maintainer
     pulseaudio
+    spotify
+    discord
+    element-desktop
+    chromium
   ];
 
   programs.git = {
@@ -46,6 +50,23 @@
       :map <Right> <Nop>
       :map <Down> <Nop>
     '';
+  };
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+    extensions = [
+      pkgs.vscode-extensions.bbenoist.nix
+      pkgs.vscode-extensions.rust-lang.rust-analyzer
+      pkgs.vscode-extensions.golang.go
+      pkgs.vscode-extensions.humao.rest-client
+      pkgs.vscode-extensions.jnoortheen.nix-ide
+    ];
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
   };
 
   gtk = {

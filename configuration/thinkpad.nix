@@ -7,14 +7,8 @@
 {
   imports =
     [
-      # Include the results of the hardware scan.
-      ../nixos/development-tools.nix
-      ../nixos/vscodium-extensions.nix
-      ../nixos/personal.nix
       ../nixos/kanshi.nix
-
       ../overlays/firefox-nightly.nix
-      
       ../lib/cachix.nix
     ];
 
@@ -107,10 +101,6 @@
     isNormalUser = true;
     description = "kidsan";
     extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
-    packages = with pkgs; [
-      kate
-      chromium
-    ];
   };
 
   # Allow unfree packages
@@ -176,4 +166,6 @@
 
   virtualisation.docker.enable = true;
 
+  hardware.opengl.enable = true;
+  hardware.opengl.driSupport = true;
 }
