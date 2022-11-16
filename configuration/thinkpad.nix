@@ -14,7 +14,6 @@
       ../nixos/kanshi.nix
 
       ../overlays/firefox-nightly.nix
-      ../overlays/neovim-nightly.nix
       
       ../lib/cachix.nix
     ];
