@@ -22,6 +22,7 @@
     discord
     element-desktop
     chromium
+    xdg-utils
   ];
 
   programs.mako = {
