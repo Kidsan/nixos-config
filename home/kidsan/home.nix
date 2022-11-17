@@ -17,13 +17,18 @@
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     bemenu # wayland clone of dmenu
-    mako # notification system developed by swaywm maintainer
     pulseaudio
     spotify
     discord
     element-desktop
     chromium
   ];
+
+  programs.mako = {
+    enable = true;
+    defaultTimeout = 5;
+    ignoreTimeout = true;
+  };
 
   programs.git = {
     enable = true;
@@ -106,6 +111,20 @@
       name = "DejaVu Sans";
       size = 10;
     };
+  };
+
+  services.swayidle = {
+    enable = true;
+    events = [
+      {
+        event = "before-sleep";
+        command = "swaylock -f -c 000000";
+      }
+    ];
+    timeouts = [
+      { timeout = 300; command = "swaylock -f -c 000000"; }
+      { timeout = 600; command = ''swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"''; }
+    ];
   };
 
   wayland.windowManager.sway = {
