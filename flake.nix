@@ -50,7 +50,8 @@
       devShell.x86_64-linux = pkgs.mkShell {
         nativeBuildInputs = [ pkgs.bashInteractive ];
         buildInputs = [
-          pkgs.rnix-lsp
+          pkgs.nil
+          pkgs.nixpkgs-fmt
         ];
       };
     };
