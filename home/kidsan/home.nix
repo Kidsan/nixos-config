@@ -17,7 +17,7 @@
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     bemenu # wayland clone of dmenu
-    pulseaudio
+    pulseaudio # we only use pactl - investigate switching this to pipewire-pulse
     spotify
     discord
     element-desktop
@@ -66,6 +66,7 @@
       pkgs.vscode-extensions.golang.go
       pkgs.vscode-extensions.humao.rest-client
       pkgs.vscode-extensions.jnoortheen.nix-ide
+      pkgs.vscode-extensions.eamodio.gitlens
     ];
     enableUpdateCheck = false;
 
