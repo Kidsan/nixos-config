@@ -56,6 +56,10 @@
       :map <Right> <Nop>
       :map <Down> <Nop>
     '';
+    plugins = with pkgs.vimPlugins; [
+      vim-nix
+      yankring
+    ];
   };
 
   programs.vscode = {
