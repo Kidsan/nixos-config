@@ -117,9 +117,6 @@
     thunderbird
     ntfs3g
     exfat
-    libsForQt5.kwallet
-    libsForQt5.kwalletmanager
-    kwallet-pam
     cachix
   ];
 
@@ -144,12 +141,7 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  security.pam.services.kwallet = {
-    name = "kwallet";
-    enableKwallet = true;
-  };
-
-  security.pam.services.swaylock = { }; # enable swaylock check if password is correct
+  security.pam.services.swaylock = { }; # allows swaylock check if password is correct
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
