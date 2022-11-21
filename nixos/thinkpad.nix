@@ -149,6 +149,8 @@
     enableKwallet = true;
   };
 
+  security.pam.services.swaylock = { }; # enable swaylock check if password is correct
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
