@@ -8,8 +8,9 @@ This configures nixos for the following hosts
 
 + _desktop_: my main machine for development, gaming, etc
 + _thinkpad_: my laptop, primarily for development
++ _monster_: raspberry pi 4
 
-I have some other machines (raspberry-pis and an m1 macbook) that I will add to this repository in future.
+I have some other machines (m1 macbook) that I will add to this repository in future.
 
 ## apply-system.sh
 
