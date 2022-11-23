@@ -38,6 +38,14 @@
             ./home/kidsan/home.nix
           ];
         };
+
+        lobster = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            ./home/lobster/home.nix
+          ];
+        };
       };
 
       nixosConfigurations = {
