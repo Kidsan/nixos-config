@@ -11,15 +11,18 @@
 
   outputs = { nixpkgs, home-manager, ... } @ inputs:
     let
-      system = "x86_64-linux";
-
-
       overlays = [
         inputs.neovim-nightly-overlay.overlay
       ];
 
-      pkgs = import nixpkgs {
-        inherit system;
+      x86Pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config = { allowUnfree = true; };
+        overlays = overlays;
+      };
+
+      armPkgs = import nixpkgs {
+        system = "aarch64-linux";
         config = { allowUnfree = true; };
         overlays = overlays;
       };
@@ -32,7 +35,7 @@
 
       homeConfigurations = {
         kidsan = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = x86Pkgs;
 
           modules = [
             ./home/kidsan/home.nix
@@ -40,7 +43,7 @@
         };
 
         lobster = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = armPkgs;
 
           modules = [
             ./home/lobster/home.nix
@@ -58,11 +61,11 @@
 
       };
 
-      devShell.x86_64-linux = pkgs.mkShell {
-        nativeBuildInputs = [ pkgs.bashInteractive ];
+      devShell.x86_64-linux = x86Pkgs.mkShell {
+        nativeBuildInputs = [ x86Pkgs.bashInteractive ];
         buildInputs = [
-          pkgs.nil
-          pkgs.nixpkgs-fmt
+          x86Pkgs.nil
+          x86Pkgs.nixpkgs-fmt
         ];
       };
     };
