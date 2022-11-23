@@ -26,6 +26,7 @@
 
       lib = nixpkgs.lib;
       mkSystem = import ./lib/mk_system.nix;
+      mkAarch64System = import ./lib/mk_aarch_system.nix;
     in
     {
 
@@ -44,6 +45,8 @@
         desktop = mkSystem inputs "desktop" nixpkgs;
 
         thinkpad = mkSystem inputs "thinkpad" nixpkgs;
+
+        monster = mkAarch64System inputs "monster" nixpkgs;
 
       };
 
