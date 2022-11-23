@@ -8,7 +8,7 @@ This configures nixos for the following hosts
 
 + _desktop_: my main machine for development, gaming, etc
 + _thinkpad_: my laptop, primarily for development
-+ _monster_: raspberry pi 4
++ _monster_: raspberry pi 4 (image built with https://github.com/Robertof/nixos-docker-sd-image-builder)
 
 I have some other machines (m1 macbook) that I will add to this repository in future.
 
