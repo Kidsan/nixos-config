@@ -9,9 +9,7 @@
 
   home.stateVersion = "22.11";
 
-  home.sessionVariables = {
-    
-  };
+  home.sessionVariables = { };
 
   home.packages = with pkgs; [
     glib # gsettings
@@ -33,17 +31,19 @@
   programs.bash.bashrcExtra = ''
     export SSH_AGENT_PID="";
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh";
-    '';
+  '';
 
-    # programs.bash.sessionVariables = {
-    # SSH_AGENT_PID="";
-    # SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh";
-    # };
+  # programs.bash.sessionVariables = {
+  # SSH_AGENT_PID="";
+  # SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh";
+  # };
 
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
     enableBashIntegration = true;
+    defaultCacheTtlSsh = 36000;
+    maxCacheTtlSsh = 36000;
   };
 
   programs.gpg.enable = true;
