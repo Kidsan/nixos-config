@@ -120,6 +120,8 @@
     cachix
   ];
 
+  environment.pathsToLink = [ "/share/bash-completion" ];
+
   # enable flakes
   nix.package = pkgs.nixUnstable;
   nix.extraOptions = ''

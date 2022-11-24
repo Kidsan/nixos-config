@@ -9,6 +9,10 @@
 
   home.stateVersion = "22.11";
 
+  home.sessionVariables = {
+    
+  };
+
   home.packages = with pkgs; [
     glib # gsettings
     swaylock
@@ -24,6 +28,25 @@
     chromium
     xdg-utils
   ];
+
+  programs.bash.enable = true;
+  programs.bash.bashrcExtra = ''
+    export SSH_AGENT_PID="";
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh";
+    '';
+
+    # programs.bash.sessionVariables = {
+    # SSH_AGENT_PID="";
+    # SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh";
+    # };
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    enableBashIntegration = true;
+  };
+
+  programs.gpg.enable = true;
 
   programs.mako = {
     enable = true;
