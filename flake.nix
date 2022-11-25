@@ -38,7 +38,7 @@
           pkgs = x86Pkgs;
 
           modules = [
-            ./home/kidsan/home.nix
+            ./home/users/kidsan/home.nix
           ];
         };
 
@@ -46,7 +46,7 @@
           pkgs = armPkgs;
 
           modules = [
-            ./home/lobster/home.nix
+            ./home/users/lobster/home.nix
           ];
         };
       };

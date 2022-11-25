@@ -14,7 +14,7 @@
   ];
 
   imports = [
-    ../programs/direnv.nix
-    ../programs/git.nix
+    ../../programs/direnv.nix
+    ../../programs/git.nix
   ];
 }
