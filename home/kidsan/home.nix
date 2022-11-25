@@ -162,6 +162,10 @@
       gtk = true;
     };
 
+    extraConfig = ''
+      output "*" bg /home/kidsan/Pictures/wallpaper.png fill
+    '';
+
     config = rec {
       modifier = "Mod1";
       terminal = "alacritty";
