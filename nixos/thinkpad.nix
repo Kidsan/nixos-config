@@ -163,4 +163,8 @@
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
+
+  fonts.fonts = with pkgs; [
+    font-awesome
+  ];
 }

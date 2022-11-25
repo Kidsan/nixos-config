@@ -25,6 +25,7 @@
     element-desktop
     chromium
     xdg-utils
+    waybar
   ];
 
   programs.bash.enable = true;
@@ -198,8 +199,7 @@
             inactiveWorkspace = { background = "#32323200"; border = "#32323200"; text = "#5c5c5c"; };
           };
           position = "top";
-          statusCommand = "while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done";
-          fonts = { };
+          command = "waybar";
         }
       ];
     };
