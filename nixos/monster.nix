@@ -72,4 +72,6 @@
     '';
   };
 
+  services.tailscale.enable = true;
+
 }
