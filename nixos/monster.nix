@@ -49,7 +49,10 @@
     isNormalUser = true;
     home = "/home/lobster";
     extraGroups = [ "wheel" "networkmanager" ];
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDzGxz8p3VvP+WSSQEpsh8akVnqwrfJr6Se9BtRFIyqG kidsan@thinkpad" ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDzGxz8p3VvP+WSSQEpsh8akVnqwrfJr6Se9BtRFIyqG kidsan@thinkpad"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPkgNbqSgAdMEx/IaXFsGW6HlobqrsSnl7lanbdfMYaZ JuiceSSH"
+    ];
   };
 
   # Required for the Wireless firmware
