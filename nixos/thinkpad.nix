@@ -167,4 +167,7 @@
   fonts.fonts = with pkgs; [
     font-awesome
   ];
+
+  services.tailscale.enable = true;
+
 }
