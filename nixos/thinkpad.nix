@@ -171,4 +171,12 @@
   services.tailscale.enable = true;
   networking.firewall.checkReversePath = "loose";
 
+  services.openssh = {
+    enable = true;
+    permitRootLogin = "yes";
+    passwordAuthentication = false;
+  };
+
+  systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
+
 }
