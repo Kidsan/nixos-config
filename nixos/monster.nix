@@ -78,4 +78,30 @@
   services.tailscale.enable = true;
   networking.firewall.checkReversePath = "loose";
 
+  services.znc = {
+    enable = true;
+    mutable = false;
+    useLegacyConfig = false;
+    openFirewall = true;
+
+    config = {
+      LoadModule = [ "adminlog" ]; # Write access logs to ~znc/moddata/adminlog/znc.log. 
+      User.bob = {
+        Admin = true;
+        Pass.password = {
+          Method = "sha256";
+          Hash = "...";
+          Salt = "...";
+        };
+        # Network.freenode = {
+        #   Server = "chat.freenode.net +6697 yourpassword"; #    The nickserv module will pick up your password here.
+        #   Chan = { "#nixos" = { }; "#nixos-wiki" = { }; };
+        #   Nick = "bob";
+        #   LoadModule = [ "nickserv" ];
+        #   JoinDelay = 2; # Avoid joining channels before authenticating.
+        # };
+      };
+    };
+  };
+
 }
