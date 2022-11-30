@@ -86,7 +86,7 @@
     openFirewall = true;
     confOptions.useSSL = false;
 
-    configFile = config.age.secrets.znc.path;
+    # configFile = config.age.secrets.znc.path;
   };
 
 }
