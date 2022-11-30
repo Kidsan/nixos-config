@@ -6,7 +6,7 @@ nixpkgs.lib.nixosSystem (
     configFolder = "${self}/nixos";
     entryPoint = import "${configFolder}/${name}.nix";
     hardware = "${configFolder}/hardware/${name}.nix";
-    secrets = import "${self}/secrets/secrets.nix";
+    secrets = import "${self}/secrets";
   in
   {
     system = "x86_64-linux";

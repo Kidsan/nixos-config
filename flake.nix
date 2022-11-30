@@ -69,7 +69,7 @@
         buildInputs = with x86Pkgs; [
           nil
           nixpkgs-fmt
-          age
+          agenix.defaultPackage.x86_64-linux
         ];
       };
     };
