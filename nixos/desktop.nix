@@ -172,6 +172,14 @@
 
   virtualisation.docker.enable = true;
 
+  services.openssh = {
+    enable = true;
+    permitRootLogin = "yes";
+    passwordAuthentication = false;
+  };
+
+  systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
+
 }
 
 

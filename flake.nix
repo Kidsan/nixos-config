@@ -7,9 +7,12 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, agenix, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -63,9 +66,10 @@
 
       devShell.x86_64-linux = x86Pkgs.mkShell {
         nativeBuildInputs = [ x86Pkgs.bashInteractive ];
-        buildInputs = [
-          x86Pkgs.nil
-          x86Pkgs.nixpkgs-fmt
+        buildInputs = with x86Pkgs; [
+          nil
+          nixpkgs-fmt
+          age
         ];
       };
     };

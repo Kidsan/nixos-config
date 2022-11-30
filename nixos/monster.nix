@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    weechat
     vim
     git
   ];
@@ -80,28 +81,12 @@
 
   services.znc = {
     enable = true;
-    mutable = false;
+    mutable = true;
     useLegacyConfig = false;
     openFirewall = true;
+    confOptions.useSSL = false;
 
-    config = {
-      LoadModule = [ "adminlog" ]; # Write access logs to ~znc/moddata/adminlog/znc.log. 
-      User.bob = {
-        Admin = true;
-        Pass.password = {
-          Method = "sha256";
-          Hash = "...";
-          Salt = "...";
-        };
-        # Network.freenode = {
-        #   Server = "chat.freenode.net +6697 yourpassword"; #    The nickserv module will pick up your password here.
-        #   Chan = { "#nixos" = { }; "#nixos-wiki" = { }; };
-        #   Nick = "bob";
-        #   LoadModule = [ "nickserv" ];
-        #   JoinDelay = 2; # Avoid joining channels before authenticating.
-        # };
-      };
-    };
+    configFile = config.age.secrets.znc.path;
   };
 
 }
