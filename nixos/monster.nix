@@ -8,15 +8,10 @@
   ];
 
   system.stateVersion = "20.03";
-  # imports =
-  #   [
-  #     ./hardware-configuration.nix
-  #   ];
+  imports = [ ../secrets/monster.nix ];
 
   boot = {
     loader.grub.enable = false;
-    # loader.raspberryPi.enable = true;
-    # loader.raspberryPi.version = 4;
     loader.generic-extlinux-compatible.enable = true;
     kernelPackages = pkgs.linuxPackages_rpi4;
     initrd.availableKernelModules = [ "usbhid" "usb_storage" ];
@@ -26,9 +21,6 @@
     font = "Lat2-Terminus16";
     keyMap = "uk";
   };
-
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # time.timeZone = "America/Los_Angeles";
 
   networking = {
     hostName = "monster";
