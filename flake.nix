@@ -10,9 +10,14 @@
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
+    homeage = {
+      url = "github:jordanisaacs/homeage";
+      # Optional
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, agenix, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, homeage, agenix, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -42,6 +47,7 @@
 
           modules = [
             ./home/users/kidsan/home.nix
+            homeage.homeManagerModules.homeage
           ];
         };
 

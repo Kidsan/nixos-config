@@ -17,4 +17,7 @@
     ../../programs/direnv.nix
     ../../programs/git.nix
   ];
+
+  # restart homeage decrypt services on home-manager change
+  systemd.user.startServices = "sd-switch";
 }
