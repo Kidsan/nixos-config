@@ -1,13 +1,43 @@
-let
-  kidsanThinkpad = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKas9qjJOceFVG6IS3LgH1RL0EBNZ66LFeLrsOqT31IL";
-  lobsterMonster = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFIIjC0jPPm97QPnB5vJi3k4l1B9SVl13u/CV2KoYqrD";
-  users = [ kidsanThinkpad lobsterMonster ];
+# All this file does is import the secrets in the config file and format them 
+# in the way that the agenix cli reads secrets.nix
+with builtins; let
+  config = import ./config.nix;
 
-  thinkpad = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdwwNmNX3e4ZNAUyuPWJcHkYCS03dPA1DexNJtKPgP4";
-  monster = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIFtqmq5ozAZcaMj5k1Jc64abBLC4h/czURw8sEYlWYD";
-  systems = [ thinkpad monster ];
+  nameValuePair = name: value: { inherit name value; };
+
+  filterAttrs = pred: set:
+    listToAttrs (concatMap
+      (name:
+        let
+          v = set.${name};
+        in
+        if pred name v
+        then [ (nameValuePair name v) ]
+        else [ ])
+      (attrNames set));
+
+  collect = pred: attrs:
+    if pred attrs
+    then [ attrs ]
+    else if builtins.isAttrs attrs
+    then builtins.concatMap (collect pred) (builtins.attrValues attrs)
+    else [ ];
+
+  relPath = path: replaceStrings [ (toString ./.) ] [ "." ] (toString path);
+
+  secretToOutput = attr:
+    nameValuePair
+      (relPath attr.secret.file)
+      {
+        publicKeys = attr.secret.publicKeys;
+      };
+
+  collectSecrets =
+    builtins.listToAttrs
+      (builtins.map
+        secretToOutput
+        (collect
+          (x: x ? "secret")
+          config));
 in
-{
-  "./znc/znc.conf.age".publicKeys = users ++ systems;
-  "./foo/foo.age".publicKeys = users ++ systems;
-}
+collectSecrets
