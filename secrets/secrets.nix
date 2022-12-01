@@ -9,4 +9,5 @@ let
 in
 {
   "./znc/znc.conf.age".publicKeys = users ++ systems;
+  "./foo/foo.age".publicKeys = users ++ systems;
 }
