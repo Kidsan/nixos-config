@@ -197,10 +197,10 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1669899736,
-        "narHash": "sha256-tg8NlyVcVjdDcThWoMHKmyaTFY9rsw1bno3nObOycrE=",
+        "lastModified": 1669899874,
+        "narHash": "sha256-HVlWyCButWlh2WByPV2p31M4Ll9Dl71M+flS3tZFrGg=",
         "ref": "main",
-        "rev": "cb6f38352a80a6934ed7a57c500aea63d728bd54",
+        "rev": "cc6c49e0f86bcebd8884d19e1fa1ef6c5e0274d9",
         "revCount": 7,
         "type": "git",
         "url": "ssh://git@github.com/kidsan/secrets.git"
