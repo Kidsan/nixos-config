@@ -168,47 +168,13 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1669535121,
-        "narHash": "sha256-koZLM7oWVGrjyHnYDo7/w5qlmUn9UZUKSFNfmIjueE8=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "b45ec953794bb07922f0468152ad1ebaf8a084b3",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
         "home-manager": "home-manager",
         "homeage": "homeage",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": "nixpkgs_2",
-        "secrets": "secrets"
-      }
-    },
-    "secrets": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "lastModified": 1669900041,
-        "narHash": "sha256-UMv4T0cxUVFmtSK5Nu3P0xmcSv6GG9me/phOXhDD82k=",
-        "ref": "main",
-        "rev": "df8bc293563e6a54e9cd9f996edc95e2fb296b80",
-        "revCount": 7,
-        "type": "git",
-        "url": "ssh://git@github.com/kidsan/secrets.git"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "ssh://git@github.com/kidsan/secrets.git"
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "utils": {
