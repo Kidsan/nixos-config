@@ -43,16 +43,31 @@ jobs:
     - name: Clone repository
       uses: actions/checkout@v3
       with:
+        fetch-depth: 2
         token: '${{ secrets.GITHUB_TOKEN }}'
     - name: Restore flake.lock
       uses: actions/download-artifact@v3
       with:
         name: flake_lock
+    - id: check_file_changed
+      shell: pwsh
+      run: |
+        # Diff HEAD with the previous commit
+        $diff = git diff --name-only HEAD^ HEAD
+
+        # Check if a file under docs/ or with the .md extension has changed (added, modified, deleted)
+        $SourceDiff = $diff | Where-Object { $_ -match '.lock$' }
+        $HasDiff = $SourceDiff.Length -gt 0
+
+        # Set the output named "lockfile_changed"
+        Write-Host "::set-output name=lockfile_changed::$HasDiff"
     - name: Set up git
+      if: steps.check_file_changed.outputs.lockfile_changed == 'True'
       run: |
         git config user.email bots@kidsan.dev
         git config user.name "Git Bot"
     - name: Create and merge PR
+      if: steps.check_file_changed.outputs.lockfile_changed == 'True'
       run: |
         git switch -c updates-${{ github.run_id }}
         git commit -am "flake.lock: Update"
