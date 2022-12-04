@@ -37,12 +37,12 @@
     events = [
       {
         event = "before-sleep";
-        command = "swaylock -f -c 000000";
+        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
       }
     ];
     timeouts = [
-      { timeout = 300; command = "swaylock -f -c 000000"; }
-      { timeout = 600; command = ''swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"''; }
+      { timeout = 300; command = "${pkgs.swaylock}/bin/swaylock -f -c 000000"; }
+      { timeout = 600; command = ''${pkgs.sway}/bin/swaymsg "output * dpms off"' resume '${pkgs.sway}/bin/swaymsg "output * dpms on"''; }
     ];
   };
 
