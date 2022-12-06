@@ -41,8 +41,8 @@
       }
     ];
     timeouts = [
-      { timeout = 30 * 60; command = "${pkgs.swaylock}/bin/swaylock -f -c 000000"; }
-      { timeout = 30 * 60; command = ''${pkgs.sway}/bin/swaymsg "output * dpms off"' resume '${pkgs.sway}/bin/swaymsg "output * dpms on"''; }
+      { timeout = 1800; command = "${pkgs.swaylock}/bin/swaylock -f -c 000000"; }
+      { timeout = 1800; command = ''${pkgs.sway}/bin/swaymsg "output * dpms off"' resume '${pkgs.sway}/bin/swaymsg "output * dpms on"''; }
     ];
   };
 
