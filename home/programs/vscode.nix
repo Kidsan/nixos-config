@@ -4,19 +4,21 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    extensions = [
-      pkgs.vscode-extensions.rust-lang.rust-analyzer
-      pkgs.vscode-extensions.golang.go
-      pkgs.vscode-extensions.humao.rest-client
-      pkgs.vscode-extensions.jnoortheen.nix-ide
-      pkgs.vscode-extensions.eamodio.gitlens
+    extensions = with pkgs.vscode-extensions; [
+      rust-lang.rust-analyzer
+      golang.go
+      humao.rest-client
+      jnoortheen.nix-ide
+      eamodio.gitlens
+      vadimcn.vscode-lldb
     ];
-    enableUpdateCheck = false;
+    enableUpdateCheck = true;
 
     userSettings = {
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
       "editor.formatOnSave" = true;
+      "debug.allowBreakpointsEverywhere" = true;
       "nix.serverSettings" = {
         "nil" = {
           "diagnostics" = {
