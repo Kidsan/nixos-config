@@ -9,6 +9,7 @@
     [
       ../overlays/firefox-nightly.nix
       ../lib/cachix.nix
+      ../secrets/thinkpad.nix
     ];
 
   nixpkgs.overlays = [

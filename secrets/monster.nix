@@ -11,5 +11,12 @@
       group = "znc";
       mode = "0750";
     };
+
+    unbound = {
+      name = "unbound.conf";
+      path = "/home/lobster/unbound/unbound.conf";
+      file = ./unbound/unbound.conf.age;
+      symlink = false; # copy to destination path so that docker can mount it
+    };
   };
 }

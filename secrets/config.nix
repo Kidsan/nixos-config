@@ -22,4 +22,11 @@ in
     };
   };
 
+  unbound = {
+    secret = {
+      file = ./unbound/unbound.conf.age;
+      publicKeys = [ thinkpad monster ];
+    };
+  };
+
 }
