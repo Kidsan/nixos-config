@@ -131,26 +131,8 @@
     auto-optimise-store = true
   '';
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
   security.pam.services.swaylock = { }; # allows swaylock check if password is correct
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -166,7 +148,7 @@
   hardware.opengl.driSupport = true;
 
   fonts.fonts = with pkgs; [
-    font-awesome
+    font-awesome # installed for waybar icons
   ];
 
   services.tailscale.enable = true;
