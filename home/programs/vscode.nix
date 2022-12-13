@@ -11,30 +11,38 @@
       jnoortheen.nix-ide
       eamodio.gitlens
       vadimcn.vscode-lldb
+      vscodevim.vim
     ];
     enableUpdateCheck = true;
 
     userSettings = {
-      "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nil";
-      "editor.formatOnSave" = true;
-      "debug.allowBreakpointsEverywhere" = true;
-      "nix.serverSettings" = {
-        "nil" = {
-          "diagnostics" = {
-            "ignored" = [
-              "unused_binding"
-              "unused_with"
-              "unused_rec"
-            ];
-          };
-          "formatting" = {
-            "command" = [
-              "nixpkgs-fmt"
-            ];
+      editor = {
+        formatOnSave = true;
+      };
+      debug = {
+        allowBreakpointsEverywhere = true;
+      };
+      nix = {
+        enableLanguageServer = true;
+        serverPath = "nil";
+        serverSettings = {
+          nil = {
+            diagnostics = {
+              ignored = [ "unused_binding" "unused_with" "unused_rec" ];
+            };
+            formatting = {
+              command = [ "nixpkgs-fmt" ];
+            };
           };
         };
+      };
+      keyboard = {
+        dispatch = "keyCode";
+      };
+      vim = {
+        useSystemClipboard = true;
       };
     };
   };
 }
+
