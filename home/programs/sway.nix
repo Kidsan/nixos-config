@@ -117,7 +117,7 @@
 
   programs.mako = {
     enable = true;
-    defaultTimeout = 5;
+    defaultTimeout = 5000;
     ignoreTimeout = true;
   };
 
