@@ -13,3 +13,7 @@ This configures nixos for the following hosts
 ## apply-system.sh
 
 This is a script that lazily performs garbage collection for the nix store, does a git pull to update the flake, and then applies both the system and user configuration in nix. Based on Wil T's guides and the scripts he suggests (but much lazier).
+
+## piImage
+
+Build a base raspberry pi image with `nix build .#piImage`

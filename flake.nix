@@ -15,9 +15,13 @@
       # Optional
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, homeage, agenix, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, homeage, agenix, nixos-generators, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -40,6 +44,15 @@
       mkAarch64System = import ./lib/mk_aarch_system.nix;
     in
     {
+      packages.x86_64-linux = {
+        piImage = nixos-generators.nixosGenerate {
+          system = "aarch64-linux";
+          modules = [
+            ./nixos/base_pi.nix
+          ];
+          format = "iso";
+        };
+      };
 
       homeConfigurations = {
         kidsan = home-manager.lib.homeManagerConfiguration {
