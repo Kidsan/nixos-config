@@ -2,4 +2,6 @@
 # and triggers decryption of that secret on that host
 
 { config, ... }:
-{ }
+{
+  config.age.secrets = { };
+}

@@ -22,10 +22,10 @@ in
     };
   };
 
-  unbound = {
+  adguard = {
     secret = {
-      file = ./unbound/unbound.conf.age;
-      publicKeys = [ thinkpad monster ];
+      file = ./adguard/AdGuardHome.yml.age;
+      publicKeys = [ thinkpad monster kidsanThinkpad ];
     };
   };
 

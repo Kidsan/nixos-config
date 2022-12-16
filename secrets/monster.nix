@@ -12,11 +12,14 @@
       mode = "0750";
     };
 
-    unbound = {
-      name = "unbound.conf";
-      path = "/home/lobster/unbound/unbound.conf";
-      file = ./unbound/unbound.conf.age;
-      symlink = false; # copy to destination path so that docker can mount it
+    adguard = {
+      name = "AdGuardHome.yml";
+      path = "/var/lib/AdGuardHome/AdGuardHome.yaml";
+      file = ./adguard/AdGuardHome.yml.age;
+      mode = "600";
+      owner = "adguardhome";
+      group = "adguardhome";
     };
+
   };
 }

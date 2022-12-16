@@ -8,7 +8,11 @@
   ];
 
   system.stateVersion = "20.03";
-  imports = [ ../secrets/monster.nix ./services/home-assistant.nix ];
+  imports = [
+    ../secrets/monster.nix
+    ./services/home-assistant.nix
+    ./services/dns.nix
+  ];
 
   boot = {
     loader.grub.enable = false;
@@ -81,46 +85,6 @@
     confOptions.useSSL = false;
 
     configFile = config.age.secrets.znc.path;
-  };
-
-  virtualisation.oci-containers = {
-    backend = "docker";
-    containers = {
-      # pihole = {
-      #   ports = [ "53:53/tcp" "53:53/udp" "67:67/udp" "80:80/tcp" ];
-      #   image = "pihole/pihole:2022.11.2";
-      #   extraOptions = [
-      #     # "--restart=always"
-      #     "--cap-add=NET_ADMIN"
-      #   ];
-      #   environmentFiles = [
-      #     # /path/to/some/file
-      #   ];
-      #   environment = {
-      #     TZ = "Europe/Berlin";
-      #     WEBPASSWORD = "FOO";
-      #     DNSMASQ_LISTENING = "ALL";
-      #     # PIHOLE_DNS = "unbound";
-      #     DHCP_ACTIVE = "true";
-      #     DHCP_START = "192.168.2.100";
-      #     DHCP_END = "192.168.2.200";
-
-      #   };
-      #   # dependsOn = [ "unbound" ];
-      #   autoStart = true;
-      # };
-
-      # unbound = {
-      #   # maybe switch to nixos packaged unbound?
-      #   image = "mvance/unbound:1.16.0";
-      #   ports = [ "5350:53/tcp" "5350:53/udp" ];
-      #   autoStart = true;
-      #   volumes = [ "/home/lobster/unbound:/opt/unbound/etc/unbound/" ];
-      #   extraOptions = [
-      #     # "--restart=always"
-      #   ];
-      # };
-    };
   };
 
 }
