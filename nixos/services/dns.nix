@@ -2,20 +2,20 @@
 {
 
   services.unbound = {
-    enable = true;
+    enable = false;
     settings = {
       port = "5335";
     };
   };
 
   services.adguardhome = {
-    enable = true;
+    enable = false;
     openFirewall = true;
 
     mutableSettings = true;
 
     settings = {
-      bind_port = 3000;
+      bind_port = 3001;
       dns = {
         bind_hosts = [ "0.0.0.0" ];
         port = 53;

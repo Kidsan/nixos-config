@@ -17,8 +17,8 @@
       path = "/var/lib/AdGuardHome/AdGuardHome.yaml";
       file = ./adguard/AdGuardHome.yml.age;
       mode = "600";
-      owner = "adguardhome";
-      group = "adguardhome";
+      owner = "62939";
+      group = "62939";
     };
 
   };
