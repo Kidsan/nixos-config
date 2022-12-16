@@ -2,14 +2,14 @@
 {
 
   services.unbound = {
-    enable = false;
+    enable = true;
     settings = {
       port = "5335";
     };
   };
 
   services.adguardhome = {
-    enable = false;
+    enable = true;
     openFirewall = true;
 
     mutableSettings = true;
