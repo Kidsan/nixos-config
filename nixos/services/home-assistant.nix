@@ -9,6 +9,7 @@
       "onboarding"
       "frontend"
       "cloud"
+      "samsungtv"
     ];
     config = {
       default_config = { };
