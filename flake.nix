@@ -43,17 +43,7 @@
       mkSystem = import ./lib/mk_system.nix;
       mkAarch64System = import ./lib/mk_aarch_system.nix;
     in
-    {
-      packages.x86_64-linux = {
-        piImage = nixos-generators.nixosGenerate {
-          system = "aarch64-linux";
-          modules = [
-            ./nixos/base_pi.nix
-          ];
-          format = "iso";
-        };
-      };
-
+    rec {
       homeConfigurations = {
         kidsan = home-manager.lib.homeManagerConfiguration {
           pkgs = x86Pkgs;
@@ -81,7 +71,20 @@
 
         monster = mkAarch64System inputs "monster" nixpkgs;
 
+        basePi = nixpkgs.lib.nixosSystem {
+          system = "armv7l-linux";
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
+            {
+              nixpkgs.config.allowUnsupportedSystem = true;
+              nixpkgs.crossSystem.system = "armv7l-linux";
+            }
+            ./nixos/base_pi.nix
+          ];
+        };
       };
+
+      images.basePi = nixosConfigurations.basePi.config.system.build.sdImage;
 
       devShell.x86_64-linux = x86Pkgs.mkShell {
         nativeBuildInputs = [ x86Pkgs.bashInteractive ];
