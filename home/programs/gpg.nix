@@ -3,7 +3,7 @@
 {
 
   services.gpg-agent = {
-    enable = true;
+    enable = false;
     enableSshSupport = true;
     enableBashIntegration = true;
     defaultCacheTtlSsh = 36000;
