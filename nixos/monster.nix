@@ -10,8 +10,8 @@
   system.stateVersion = "20.03";
   imports = [
     ../secrets/monster.nix
-    ./services/home-assistant.nix
-    ./services/dns.nix
+    #./services/home-assistant.nix
+    #./services/dns.nix
   ];
 
   boot = {
@@ -29,10 +29,21 @@
   networking = {
     hostName = "monster";
     useDHCP = false;
-    interfaces.eth0.useDHCP = true;
+    #    interfaces.eth0.useDHCP = true;
+    wireless = {
+      enable = true;
+    };
+
+    defaultGateway = "192.168.2.1";
+    nameservers = [ "192.168.2.100" ];
+
+    interfaces = {
+      wlan0.ipv4.addresses = [{ address = "192.168.2.156"; prefixLength = 24; }];
+      eth0.ipv4.addresses = [{ address = "192.168.2.155"; prefixLength = 24; }];
+    };
   };
 
-  networking.networkmanager.enable = true;
+  #networking.networkmanager.enable = true;
 
   services.openssh = {
     enable = true;
