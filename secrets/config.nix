@@ -4,7 +4,7 @@ let
   users = [ kidsanThinkpad lobsterMonster ];
 
   thinkpad = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdwwNmNX3e4ZNAUyuPWJcHkYCS03dPA1DexNJtKPgP4";
-  monster = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOcC1fi7RJkUsbF5tnonzCL0ki8VkGLrDq+BNli6tURo";
+  monster = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILP795O0lhtd8WX+7Nnw0i4hpykl9bPFsENwuzGVZ6Js";
   systems = [ thinkpad monster ];
 in
 {
