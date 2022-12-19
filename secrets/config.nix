@@ -29,4 +29,10 @@ in
     };
   };
 
+  wpa_supplicant = {
+    secret = {
+      file = ./wpa_supplicant/wpa_supplicant.conf.age;
+      publicKeys = [ thinkpad monster kidsanThinkpad ];
+    };
+  };
 }

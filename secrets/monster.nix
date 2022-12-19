@@ -21,5 +21,10 @@
       group = "62939";
     };
 
+    wpa_supplicant = {
+      file = ./wpa_supplicant/wpa_supplicant.conf.age;
+      path = "/etc/wpa_supplicant.conf";
+    };
+
   };
 }
