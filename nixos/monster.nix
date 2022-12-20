@@ -10,8 +10,8 @@
   system.stateVersion = "20.03";
   imports = [
     ../secrets/monster.nix
-    #./services/home-assistant.nix
-    #./services/dns.nix
+    ./services/home-assistant.nix
+    ./services/dns.nix
   ];
 
   boot = {
