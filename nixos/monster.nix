@@ -49,7 +49,8 @@
     passwordAuthentication = false;
   };
 
-  systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
+  systemd.services.sshd.wantedBy = pkgs.lib.mkForce
+    [ "multi-user.target" ];
 
   users.users.lobster = {
     isNormalUser = true;
