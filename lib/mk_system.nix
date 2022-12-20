@@ -1,4 +1,4 @@
-{ self, agenix, ... } @ inputs: name: nixpkgs:
+{ self, secrets, agenix, ... } @ inputs: name: nixpkgs:
 nixpkgs.lib.nixosSystem (
   let
     inherit (builtins) attrValues;
@@ -6,6 +6,9 @@ nixpkgs.lib.nixosSystem (
     configFolder = "${self}/nixos";
     entryPoint = import "${configFolder}/${name}.nix";
     hardware = "${configFolder}/hardware/${name}.nix";
+
+    secretsModule = secrets.nixosModules.${name} or { };
+
   in
   {
     system = "x86_64-linux";
@@ -15,6 +18,8 @@ nixpkgs.lib.nixosSystem (
         entryPoint
         hardware
         agenix.nixosModule
+        secretsModule
+
       ];
     # ++ attrValues self.nixosModules
     # ++ attrValues self.mixedModules;

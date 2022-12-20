@@ -1,4 +1,4 @@
-{ config, libs, pkgs, ... }:
+{ config, libs, pkgs, secrets, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -9,7 +9,6 @@
 
   system.stateVersion = "20.03";
   imports = [
-    ../secrets/monster.nix
     ./services/home-assistant.nix
     # ./services/dns.nix
   ];

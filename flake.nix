@@ -19,9 +19,12 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    secrets.url = "git+ssh://git@github.com/kidsan/secrets.git?ref=main";
+    secrets.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, homeage, agenix, nixos-generators, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, homeage, secrets, agenix, nixos-generators, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
