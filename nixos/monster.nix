@@ -11,7 +11,7 @@
   imports = [
     ../secrets/monster.nix
     ./services/home-assistant.nix
-    ./services/dns.nix
+    # ./services/dns.nix
   ];
 
   boot = {
