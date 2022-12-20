@@ -94,7 +94,6 @@
         buildInputs = with x86Pkgs; [
           nil
           nixpkgs-fmt
-          agenix.defaultPackage.x86_64-linux
         ];
       };
     };
