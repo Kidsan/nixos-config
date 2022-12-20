@@ -7,6 +7,7 @@ on:
 
 jobs:   
   update_flake:
+    environment: GH
     runs-on: ubuntu-20.04
     steps:
     - name: Clone repository
@@ -28,6 +29,8 @@ jobs:
         git config user.email bots@kidsan.dev
         git config user.name "Git Bot"
     - name: Update the flake
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       run: nix flake update
     - name: Store flake.lock
       uses: actions/upload-artifact@v3
