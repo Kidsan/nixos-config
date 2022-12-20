@@ -35,4 +35,19 @@ in
       publicKeys = [ thinkpad monster kidsanThinkpad ];
     };
   };
+
+  zwavejs_ui_settings = {
+    secret = {
+      file = ./zwavejs_ui/zwavejs_ui_settings.json.age;
+      publicKeys = [ kidsanThinkpad monster ];
+    };
+  };
+
+  zwavejs_ui_nodes = {
+    secret =
+      {
+        file = ./zwavejs_ui/zwavejs_ui_nodes.json.age;
+        publicKeys = [ kidsanThinkpad monster ];
+      };
+  };
 }

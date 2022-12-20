@@ -26,5 +26,15 @@
       path = "/etc/wpa_supplicant.conf";
     };
 
+    zwavejs_settings = {
+      file = ./zwavejs_ui/zwavejs_ui_settings.json.age;
+      path = "/var/lib/zwavejs/store/settings.json";
+    };
+
+    zwavejs_nodes = {
+      file = ./zwavejs_ui/zwavejs_ui_nodes.json.age;
+      path = "/var/lib/zwavejs/store/nodes.json";
+    };
+
   };
 }
