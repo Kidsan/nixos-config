@@ -19,6 +19,28 @@
       backup = { };
       zwave_js = { };
       automation = "!include automations.yaml";
+      intent_script = {
+        TurnOnTree = {
+          speech.text = "Turned on the Tree";
+          action = {
+            service = "switch.turn_on";
+            target.device_id = "f6e0a0e09447e0f32cdc0b27b25338dc";
+          };
+        };
+        TurnOffTree = {
+          speech.text = "Turned off the Tree";
+          action = {
+            service = "switch.turn_off";
+            target.device_id = "f6e0a0e09447e0f32cdc0b27b25338dc";
+          };
+        };
+      };
+      conversation = {
+        intents = {
+          TurnOnTree = [ "Turn on the tree" ];
+          TurnOffTree = [ "Turn off the tree" ];
+        };
+      };
     };
     configWritable = true;
     openFirewall = true;
