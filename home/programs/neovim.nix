@@ -6,6 +6,30 @@
     package = pkgs.neovim-nightly;
     vimAlias = true;
     coc.enable = true;
+    coc.settings = {
+      coc.preferences = {
+        formatOnSaveFiletypes = [
+          "nix"
+        ];
+      };
+      languageserver = {
+        go = {
+          command = "gopls";
+          rootPatterns = [ "go.mod" ];
+          filetypes = [ "go" ];
+        };
+        nix = {
+          command = "nil";
+          filetypes = [ "nix" ];
+          rootPatterns = [ "flake.nix" ];
+          settings = {
+            nil.formatting = {
+              command = [ "nixpkgs-fmt" ];
+            };
+          };
+        };
+      };
+    };
     extraConfig = ''
       let mapleader=','
       set number
@@ -14,7 +38,7 @@
       set hlsearch
       set autowrite
       syntax on
-      set colorcolumn=80
+      set colorcolumn=120
 
       :map <Up> <Nop>
       :map <Left> <Nop>
