@@ -7,7 +7,6 @@ on:
 
 jobs:   
   update_flake:
-    environment: GH
     runs-on: ubuntu-20.04
     steps:
     - name: Clone repository
@@ -31,7 +30,7 @@ jobs:
     - name: Update the flake
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: nix flake update
+      run: nix flake lock --update-input home-manager --update-input nixpkgs --update-input agenix --update-input neovim-nightly-overlay --update-input homeage  
     - name: Store flake.lock
       uses: actions/upload-artifact@v3
       with:

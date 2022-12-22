@@ -15,16 +15,12 @@
       # Optional
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     secrets.url = "git+ssh://git@github.com/kidsan/secrets.git?ref=main";
     secrets.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, homeage, secrets, agenix, nixos-generators, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, homeage, secrets, agenix, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -73,21 +69,8 @@
         thinkpad = mkSystem inputs "thinkpad" nixpkgs;
 
         monster = mkAarch64System inputs "monster" nixpkgs;
-
-        basePi = nixpkgs.lib.nixosSystem {
-          system = "armv7l-linux";
-          modules = [
-            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
-            {
-              nixpkgs.config.allowUnsupportedSystem = true;
-              nixpkgs.crossSystem.system = "armv7l-linux";
-            }
-            ./nixos/base_pi.nix
-          ];
-        };
       };
 
-      images.basePi = nixosConfigurations.basePi.config.system.build.sdImage;
 
       devShell.x86_64-linux = x86Pkgs.mkShell {
         nativeBuildInputs = [ x86Pkgs.bashInteractive ];
