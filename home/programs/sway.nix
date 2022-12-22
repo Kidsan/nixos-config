@@ -198,7 +198,7 @@
           "disable-scroll" = true;
           format = "{icon} {name}";
           "format-icons" = {
-            "1" = "龜"; #/ FF logo
+            "1" = ""; #/ FF logo
             "2" = "";
             "3" = "";
             "4" = "";
