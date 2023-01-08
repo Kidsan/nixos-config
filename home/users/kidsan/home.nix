@@ -25,7 +25,7 @@
     ../../programs/bash.nix
     ../../programs/direnv.nix
     ../../programs/git.nix
-    ../../programs/gpg.nix
+    #    ../../programs/gpg.nix
     ../../programs/neovim.nix
     ../../programs/sway.nix
     ../../programs/vscode.nix
