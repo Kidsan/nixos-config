@@ -11,4 +11,6 @@
       pkgs.vimPlugins.nvim-treesitter.withAllGrammars
     ];
   };
+
+  home.file."./.config/nvim/" = { source = ./nvim; recursive = true; };
 }
