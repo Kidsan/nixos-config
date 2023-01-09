@@ -5,7 +5,7 @@
     enable = true;
     extraComponents = [
       "person"
-      "image"
+#      "image"
       "onboarding"
       "frontend"
       "cloud"
