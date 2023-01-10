@@ -3,7 +3,8 @@ lsp.preset('recommended')
 
 lsp.ensure_installed({
 'sumneko_lua',
-'rust_analyzer'
+'rust_analyzer',
+'gopls'
 })
 
 local cmp = require('cmp')
@@ -16,12 +17,12 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 lsp.set_preferences({
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
+--    sign_icons = {
+ --       error = 'E',
+--        warn = 'W',
+--        hint = 'H',
+--        info = 'I'
+--    }
 })
 
 lsp.setup_nvim_cmp({
