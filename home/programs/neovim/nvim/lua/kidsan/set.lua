@@ -34,4 +34,6 @@ vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "
 
 vim.opt.autowrite = true
+vim.opt.autowriteall = true
 vim.opt.autoindent = true
+

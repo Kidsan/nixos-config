@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    ripgrep
+  ];
+
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
