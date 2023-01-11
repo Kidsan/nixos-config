@@ -1,6 +1,11 @@
 local rt = require("rust-tools")
 
+
+
 rt.setup({
+  hover_actions = {
+    auto_focus = true,
+  },
   server = {
     on_attach = function(_, bufnr)
       -- Hover actions

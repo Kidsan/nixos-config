@@ -7,6 +7,10 @@ lsp.ensure_installed({
 'gopls'
 })
 
+-- don't initialize this language server
+-- we will use rust-tools to setup rust_analyzer
+lsp.skip_server_setup({'rust_analyzer'})
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -44,6 +48,7 @@ lsp.on_attach(function(clinet, bufnr)
  vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
  vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
  vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+
  end)
 
 
