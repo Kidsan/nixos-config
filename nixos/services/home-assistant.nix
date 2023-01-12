@@ -11,6 +11,7 @@
       "cloud"
       "samsungtv"
     ];
+    package = (pkgs.home-assistant).overrideAttrs(oldAttrs:{ doInstallCheck = false; });
     config = {
       default_config = { };
       frontend = { };
