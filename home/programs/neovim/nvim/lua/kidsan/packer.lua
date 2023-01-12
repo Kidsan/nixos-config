@@ -45,10 +45,12 @@ return require('packer').startup(function(use)
     {'L3MON4D3/LuaSnip'},
     -- Snippet Collection (Optional)
     {'rafamadriz/friendly-snippets'},
+
   }
 }
 
- use 'simrat39/rust-tools.nvim'
- use 'ray-x/go.nvim'
+    use 'simrat39/rust-tools.nvim'
+    use 'ray-x/go.nvim'
+    use { 'windwp/nvim-autopairs' }
 
 end)
