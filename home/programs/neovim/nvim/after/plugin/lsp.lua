@@ -4,12 +4,15 @@ lsp.preset('recommended')
 lsp.ensure_installed({
 'sumneko_lua',
 'rust_analyzer',
-'gopls'
+'gopls',
+'nil_ls'
 })
 
 -- don't initialize this language server
 -- we will use rust-tools to setup rust_analyzer
 lsp.skip_server_setup({'rust_analyzer'})
+
+-- lsp.configure('nil_ls', { settings = { nil = { formatting = { command = "nixpkgs-fmt" } } } })
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -31,10 +34,10 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = false})]]
 lsp.on_attach(function(client, bufnr)
+
  local opts = {buffer = bufnr, remap = false}
-
-
 
  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
