@@ -31,8 +31,10 @@
 
   services.openssh = {
     enable = true;
-    permitRootLogin = "yes";
-    passwordAuthentication = false;
+    settings = {
+      permitRootLogin = "yes";
+      passwordAuthentication = false;
+   };
   };
 
   systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
