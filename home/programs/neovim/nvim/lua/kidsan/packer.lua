@@ -52,6 +52,12 @@ return require('packer').startup(function(use)
     use 'simrat39/rust-tools.nvim'
     use 'ray-x/go.nvim'
     use { 'windwp/nvim-autopairs' }
-    use 'airblade/vim-gitgutter'
+    use 'lewis6991/gitsigns.nvim'
+    use({
+        "luukvbaal/statuscol.nvim",
+        config = function() require("statuscol").setup({
+            setopt = true,
+        }) end
+    })
 
 end)
