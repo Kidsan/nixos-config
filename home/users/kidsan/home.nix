@@ -18,6 +18,7 @@
     discord
     element-desktop
     chromium
+    nixpkgs-fmt
   ];
 
   imports = [
