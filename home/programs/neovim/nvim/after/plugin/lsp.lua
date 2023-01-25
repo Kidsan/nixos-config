@@ -12,8 +12,6 @@ lsp.ensure_installed({
 -- we will use rust-tools to setup rust_analyzer
 lsp.skip_server_setup({'rust_analyzer'})
 
--- lsp.configure('nil_ls', { settings = { nil = { formatting = { command = "nixpkgs-fmt" } } } })
-
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -34,7 +32,16 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
-vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = false})]]
+
+local format_sync_grp = vim.api.nvim_create_augroup("Format", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    vim.lsp.buf.format({ timeout_ms = 200 })
+  end,
+  group = format_sync_grp,
+})
+
 lsp.on_attach(function(client, bufnr)
 
  local opts = {buffer = bufnr, remap = false}
@@ -52,8 +59,15 @@ lsp.on_attach(function(client, bufnr)
  
  end)
 
+lsp.configure('nil_ls', {
+    settings = {
+        ['nil'] = {
+            formatting = { command = { "nixpkgs-fmt" } }
+        }
+    }
+})
 
-
+lsp.nvim_workspace()
 lsp.setup()
 
 vim.diagnostic.config({
