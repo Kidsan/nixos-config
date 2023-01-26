@@ -5,6 +5,18 @@ dap.set_log_level('INFO')
 
 ui.setup({
   icons = { expanded = "▾", collapsed = "▸" },
+  controls = {
+    icons = {
+      pause = "",
+      play = "",
+      run_last = "",
+      step_back = "",
+      step_into = "",
+      step_out = "",
+      step_over = "",
+      terminate = "",
+    },
+  },
   mappings = {
     open = "o",
     remove = "d",
