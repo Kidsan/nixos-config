@@ -59,5 +59,8 @@ return require('packer').startup(function(use)
             setopt = true,
         }) end
     })
+    use 'mfussenegger/nvim-dap'
+    use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
+    use 'rcarriga/nvim-notify'
 
 end)
