@@ -26,10 +26,8 @@
     ../../programs/bash.nix
     ../../programs/direnv.nix
     ../../programs/git.nix
-    #    ../../programs/gpg.nix
     ../../programs/neovim
     ../../programs/sway.nix
-    ../../programs/vscode.nix
   ];
 
   homeage = {
