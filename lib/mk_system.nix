@@ -17,7 +17,7 @@ nixpkgs.lib.nixosSystem (
       [
         entryPoint
         hardware
-        agenix.nixosModule
+        agenix.nixosModules.default
         secretsModule
 
       ];
