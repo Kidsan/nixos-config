@@ -133,6 +133,8 @@
     bash-prompt = "\[nix-develop\]$ ";
     experimental-features = nix-command flakes
     auto-optimise-store = true
+    min-free = ${toString (100 * 1024 * 1024)}
+    max-free = ${toString (1024 * 1024 * 1024)}
   '';
 
   security.pam.services.swaylock = { }; # allows swaylock check if password is correct
@@ -171,4 +173,11 @@
 
   systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
 
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 10d";
+    };
+  };
 }
