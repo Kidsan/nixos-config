@@ -14,6 +14,7 @@
       "!nixos-config/**/flake.lock"
       ".vscode/"
       ".direnv/"
+      ".go/"
     ];
     extraConfig = {
       init = { defaultBranch = "main"; };
