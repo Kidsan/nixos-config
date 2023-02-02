@@ -6,6 +6,9 @@
   programs.bash.bashrcExtra = ''
     export PATH=$PATH:~/go/bin:~/.cargo/bin
   '';
+  programs.bash.shellAliases = {
+    k = "kubectl";
+  };
 
   # programs.bash.sessionVariables = {
   # SSH_AGENT_PID="";
