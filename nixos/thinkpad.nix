@@ -153,6 +153,7 @@
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
 
+  fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
     font-awesome # installed for waybar icons
   ];
