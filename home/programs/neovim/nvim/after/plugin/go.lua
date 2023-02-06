@@ -11,4 +11,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 
 
-require('go').setup()
+require('go').setup({
+    luasnip = true,
+})
