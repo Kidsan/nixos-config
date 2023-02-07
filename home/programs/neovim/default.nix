@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     ripgrep
+    fd
   ];
 
   programs.neovim = {
@@ -12,7 +13,7 @@
     coc.enable = false;
 
     plugins = with pkgs.vimPlugins; [
-      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+      nvim-treesitter.withAllGrammars
     ];
   };
 
