@@ -1,7 +1,9 @@
 require("telescope").setup {
     extensions = {
         file_browser = {
+          respect_gitignore = false,
           hijack_netrw = true,
+          hidden = true,
         }
     }
 }
