@@ -65,7 +65,7 @@
       menu = "bemenu-run -H 30 --tb '#6272a4' --tf '#f8f8f2' --fb '#282a36' --ff '#f8f8f2' --nb '#282a36' --nf '#6272a4' --hb '#44475a' --hf '#50fa7b' --sb '#44475a' --sf '#50fa7b' --scb '#282a36' --scf '#ff79c6'";
 
       input = {
-        "12815:20550:USB_HID_GMMK_Pro" = { xkb_layout = "gb"; xkb_options = "caps:escape,compose:ralt"; };
+        "12815:20550:USB_HID_GMMK_Pro" = { xkb_layout = "gb"; xkb_variant = ",dvp"; xkb_options = "caps:escape,compose:ralt,grp:ctrls_toggle"; };
         "1133:49305:Logitech_G502_X" = { accel_profile = "flat"; pointer_accel = "-0.8"; };
       };
 
