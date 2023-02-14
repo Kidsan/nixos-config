@@ -147,11 +147,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1676276157,
-        "narHash": "sha256-dTd/syo7/4mxDk0cpGNRJc7C5lwN+Jd0r7T6yWpAvzA=",
+        "lastModified": 1676338264,
+        "narHash": "sha256-3pxSMJ2ARzTbx1bkeM50uyGVgn0W3R6mJ8nTqeBNRE0=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "e1a1f43a07c542c8cf7ef6e50d09df97bd5fd608",
+        "rev": "c6ae99c924d9c99aa4e06f3ef28c8eac0017fc40",
         "type": "github"
       },
       "original": {
@@ -178,11 +178,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1676060830,
-        "narHash": "sha256-OZJKL08qbLW2xMPNPTgidbC25MrkllUonoFs/JOX4y8=",
+        "lastModified": 1676150441,
+        "narHash": "sha256-Nfeua9Ua/dGHOQpzOjLtkyMyW/ysQCvZJ9Dd74QQSNk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9943fcc75d4e43c3116b408b0f93e682927ffbb4",
+        "rev": "6d87734c880d704f6ee13e5c0fe835b98918c34e",
         "type": "github"
       },
       "original": {
