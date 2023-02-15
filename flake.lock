@@ -126,11 +126,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1676361142,
-        "narHash": "sha256-+nyWJcNRTOPCVqYC7tql7gLzPsNvZFa/wB20X9W9vTg=",
+        "lastModified": 1676447500,
+        "narHash": "sha256-ZwNSq45LcUMfGToWXqwHYsgPeAcqUtmFoQb+vHzr0kQ=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "53968082675cd3b8d1809e53a47c0311b7347ef9",
+        "rev": "8307ed3a194d0c0420feb0b3e5c2f6919095415f",
         "type": "github"
       },
       "original": {
@@ -147,11 +147,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1676362549,
-        "narHash": "sha256-FZJb4ty3bdzfsd5dUaW3wR9FN2t1vNJ1IRJJhxErYYA=",
+        "lastModified": 1676448935,
+        "narHash": "sha256-S3vVH9R6B5d6ypy/nH+QLmSmbixRsiiQCOgQo+sWAWo=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "447052579b7154c5cc61faf9ed6f3f484b9d053f",
+        "rev": "cc3a0896253491f47a11db5d959206c541b1b443",
         "type": "github"
       },
       "original": {
@@ -208,11 +208,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1674573691,
-        "narHash": "sha256-GKqTXBDhkcRFiPUrQ24xERVPaOeX11h2ddqM/9vLrCM=",
+        "lastModified": 1676461858,
+        "narHash": "sha256-0nghF6W7Gbj+qvK7lNiU7UOcI6CU1GlSZC0O+/flBAI=",
         "ref": "main",
-        "rev": "1016cd186996c1e248e5d4cbb5a554956b3ca050",
-        "revCount": 12,
+        "rev": "276e9e52202b9a51548686bdefb9d5956f9737bb",
+        "revCount": 13,
         "type": "git",
         "url": "ssh://git@github.com/kidsan/secrets.git"
       },
