@@ -5,6 +5,10 @@
   programs.bash.enable = true;
   programs.bash.bashrcExtra = ''
     export PATH=$PATH:~/go/bin:~/.cargo/bin
+
+    if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+      exec sway
+    fi
   '';
   programs.bash.shellAliases = {
     k = "kubectl";
