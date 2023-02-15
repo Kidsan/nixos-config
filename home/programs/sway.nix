@@ -129,7 +129,7 @@
         height = 30;
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "bluetooth" "network" "memory" "cpu" "temperature" "custom/keyboard-layout" "battery" "pulseaudio" "tray" "clock#date" "clock#time" ];
+        modules-right = [ "bluetooth" "network" "memory" "cpu" "temperature" "sway/language" "battery" "pulseaudio" "tray" "clock#date" "clock#time" ];
 
         battery = {
           "interval" = 10;
@@ -168,7 +168,17 @@
             critical = 90;
           };
         };
-        #"custom/keyboard-layout" = { };
+        #"custom/keyboard-layout" = {
+        #  exec = "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4";
+        #  interval = 30;
+        #  format = "  {}";
+        #  signal = 1;
+        #  tooltip = false;
+        #};
+        "sway/language" = {
+          "format" = "{variant}";
+          "on-click" = "swaymsg input type:keyboard xkb_switch_layout next";
+        };
         memory = {
           interval = 5;
           format = "  {}%";
