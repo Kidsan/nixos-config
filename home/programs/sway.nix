@@ -40,8 +40,15 @@
       }
     ];
     timeouts = [
-      { timeout = 1800; command = "${pkgs.swaylock}/bin/swaylock -f -c 000000"; }
-      { timeout = 1800; command = ''${pkgs.sway}/bin/swaymsg "output * power off" ''; resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * power on"''; }
+      {
+        timeout = 1800;
+        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
+      }
+      {
+        timeout = 1800;
+        command = ''${pkgs.sway}/bin/swaymsg "output * power off" '';
+        resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * power on"'';
+      }
     ];
   };
 
@@ -65,8 +72,15 @@
       menu = "bemenu-run -H 30 --tb '#6272a4' --tf '#f8f8f2' --fb '#282a36' --ff '#f8f8f2' --nb '#282a36' --nf '#6272a4' --hb '#44475a' --hf '#50fa7b' --sb '#44475a' --sf '#50fa7b' --scb '#282a36' --scf '#ff79c6'";
 
       input = {
-        "12815:20550:USB_HID_GMMK_Pro" = { xkb_layout = "gb,us"; xkb_variant = ",dvp"; xkb_options = "caps:escape,compose:ralt,grp:ctrls_toggle"; };
-        "1133:49305:Logitech_G502_X" = { accel_profile = "flat"; pointer_accel = "-0.8"; };
+        "12815:20550:USB_HID_GMMK_Pro" = {
+          xkb_layout = "gb,us";
+          xkb_variant = ",dvp";
+          xkb_options = "caps:escape,compose:ralt,grp:ctrls_toggle";
+        };
+        "1133:49305:Logitech_G502_X" = {
+          accel_profile = "flat";
+          pointer_accel = "-0.8";
+        };
       };
 
       keybindings =
@@ -129,7 +143,19 @@
         height = 30;
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "bluetooth" "network" "memory" "cpu" "temperature" "sway/language" "battery" "pulseaudio" "tray" "clock#date" "clock#time" ];
+        modules-right = [
+          "bluetooth"
+          "network"
+          "memory"
+          "cpu"
+          "temperature"
+          "sway/language"
+          "battery"
+          "pulseaudio"
+          "tray"
+          "clock#date"
+          "clock#time"
+        ];
 
         battery = {
           "interval" = 10;
@@ -158,7 +184,8 @@
         "clock#date" = {
           interval = 10;
           format = "  {:%e %b %Y}";
-          "tooltip-format" = "{:%e %B %Y}";
+          # "tooltip-format" = "{:%e %B %Y}";
+          "tooltip-format" = "<tt><small>{calendar}</small></tt>";
         };
         "cpu" = {
           interval = 5;
