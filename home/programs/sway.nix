@@ -128,8 +128,11 @@
 
   };
 
-  home.file = {
-    "./.config/mako/config".text = ''
+  programs.mako = {
+    enable = true;
+    defaultTimeout = 5000;
+    ignoreTimeout = true;
+    extraConfig = ''
       background-color=#282a36
       text-color=#bd93f9
       border-color=#282a36
@@ -143,11 +146,6 @@
       [urgency=high]
       border-color=#ff5555
     '';
-  };
-  programs.mako = {
-    enable = true;
-    defaultTimeout = 5000;
-    ignoreTimeout = true;
   };
 
   programs.waybar = {
