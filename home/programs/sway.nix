@@ -134,7 +134,7 @@
     ignoreTimeout = true;
     extraConfig = ''
       background-color=#282a36
-      text-color=#bd93f9
+      text-color=#ffffff
       border-color=#282a36
 
       [urgency=low]
