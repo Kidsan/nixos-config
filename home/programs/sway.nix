@@ -131,7 +131,7 @@
   home.file = {
     "./.config/mako/config".text = ''
       background-color=#282a36
-      text-color=#44475a
+      text-color=#bd93f9
       border-color=#282a36
 
       [urgency=low]
