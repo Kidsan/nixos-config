@@ -8,7 +8,6 @@
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836"; # teporary workaround to avoid NixOS/nixpkgs#208103
     };
 
     agenix.url = "github:ryantm/agenix";
