@@ -126,11 +126,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1676961797,
-        "narHash": "sha256-2iFgeZt4U6BGFFVI6T8NOUZoL5WBObuq5HORD75Sbc0=",
+        "lastModified": 1677014495,
+        "narHash": "sha256-sRI5Dz0QbmccCg7gQ5k+K0K9tr/gKt3DhDebFNbL53Q=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "f0ee548137263a67e3d163b674f48e6e004210fb",
+        "rev": "649742821a640c47c3934e7366676efc03153a28",
         "type": "github"
       },
       "original": {
@@ -144,14 +144,16 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "neovim-flake": "neovim-flake",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1676967323,
-        "narHash": "sha256-O1MYNghLLIsQAEw5zCTzigIpjliM8mQzetge4nIeY3U=",
+        "lastModified": 1677053732,
+        "narHash": "sha256-5AMf15LqJFy5qfGt1MRyhyb54eapvjGAEntZhXKuiBQ=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "16013225fd352a7046a4e24e94b3e68331ea815c",
+        "rev": "c865f7d431b5e9bfe986ead53de3c89bf8dbead6",
         "type": "github"
       },
       "original": {
@@ -162,27 +164,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1676928847,
-        "narHash": "sha256-FIqk+DHRICsWozlOdRxOXO/g9hCqjPYpmr8wQGrpUCA=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "5ab8b5ae26e6a4b781bdebdfd131c054f0b96e70",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1677021523,
-        "narHash": "sha256-0EhZjJ3rq8ZTTJ6Trrf/9hYtnIry0OsyY2NKoQoOS5Q=",
+        "lastModified": 1677050843,
+        "narHash": "sha256-3fcFxn58eCtrXrVPeW/nAg6NR5wUERVEf8zOtjPDzuM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5a5adc2ad7009851d7d0fc26311e42a93b171d2e",
+        "rev": "9e0eed654c705c7cafe192a8eba1610217f70544",
         "type": "github"
       },
       "original": {
@@ -197,7 +183,7 @@
         "home-manager": "home-manager",
         "homeage": "homeage",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "secrets": "secrets"
       }
     },
