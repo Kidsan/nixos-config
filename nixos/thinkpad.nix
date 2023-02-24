@@ -181,4 +181,5 @@
       options = "--delete-older-than 10d";
     };
   };
+  documentation.nixos.enable = false;
 }

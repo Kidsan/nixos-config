@@ -177,11 +177,12 @@
     settings = {
       permitRootLogin = "yes";
       passwordAuthentication = false;
-   };
+    };
   };
 
   systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
 
+  documentation.nixos.enable = false;
 }
 
 

@@ -99,4 +99,5 @@
     configFile = config.age.secrets.znc.path;
   };
 
+  documentation.nixos.enable = false;
 }
