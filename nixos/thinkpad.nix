@@ -123,6 +123,8 @@
     ntfs3g
     exfat
     cachix
+    xfce.thunar
+    xfce.thunar-volman
   ];
 
   environment.pathsToLink = [ "/share/bash-completion" ];
@@ -182,4 +184,13 @@
     };
   };
   documentation.nixos.enable = false;
+
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-volman
+  ];
+
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
+
 }
