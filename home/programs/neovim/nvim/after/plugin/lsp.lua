@@ -2,10 +2,11 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
 lsp.ensure_installed({
-'sumneko_lua',
 'rust_analyzer',
 'gopls',
-'nil_ls'
+'nil_ls',
+'lua_ls',
+'terraform_ls'
 })
 
 -- don't initialize this language server
