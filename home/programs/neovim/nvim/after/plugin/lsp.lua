@@ -5,8 +5,7 @@ lsp.ensure_installed({
 'rust_analyzer',
 'gopls',
 'nil_ls',
-'lua_ls',
-'terraform_ls'
+'lua_ls'
 })
 
 -- don't initialize this language server
