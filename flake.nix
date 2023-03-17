@@ -47,11 +47,11 @@
     in
     rec {
       homeConfigurations = {
-        kidsan = home-manager.lib.homeManagerConfiguration {
+        "kidsan@thinkpad" = home-manager.lib.homeManagerConfiguration {
           pkgs = x86Pkgs;
 
           modules = [
-            ./home/users/kidsan/home.nix
+            ./home/users/kidsan/kidsan_thinkpad.nix
             homeage.homeManagerModules.homeage
           ];
         };
@@ -61,6 +61,15 @@
 
           modules = [
             ./home/users/lobster/home.nix
+          ];
+        };
+
+        "kidsan@desktop" = home-manager.lib.homeManagerConfiguration {
+          pkgs = x86Pkgs;
+
+          modules = [
+            ./home/users/kidsan/kidsan_desktop.nix
+            homeage.homeManagerModules.homeage
           ];
         };
       };

@@ -7,8 +7,6 @@
   home.username = "kidsan";
   home.homeDirectory = "/home/kidsan";
 
-  home.stateVersion = "22.11";
-
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -28,7 +26,6 @@
     ../../programs/fonts.nix
     ../../programs/git.nix
     ../../programs/neovim
-    ../../programs/sway.nix
   ];
 
   homeage = {

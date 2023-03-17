@@ -8,7 +8,6 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ../overlays/neovim-nightly.nix
       ../overlays/firefox-nightly.nix
       ../lib/cachix.nix
     ];
