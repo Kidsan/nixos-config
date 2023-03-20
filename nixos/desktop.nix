@@ -56,17 +56,15 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver = {
+  layout = "gb,us";
+  xkbVariant = ",dvp";
+          xkbOptions = "caps:escape,compose:ralt,grp:ctrls_toggle";
+};
 
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "gb";
-    xkbVariant = "";
-    xkbOptions = "caps:escape compose:ralt";
-  };
 
   # Configure console keymap
   console.keyMap = "uk";
@@ -182,6 +180,7 @@
   systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
 
   documentation.nixos.enable = false;
+  programs.noisetorch.enable = true;
 }
 
 
