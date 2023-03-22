@@ -2,6 +2,7 @@
 
 {
 
+  programs.fzf.enable = true;
   programs.bash.enable = true;
   programs.bash.bashrcExtra = ''
     export PATH=$PATH:~/go/bin:~/.cargo/bin
