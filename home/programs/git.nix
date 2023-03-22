@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    tig
+  ];
+
   programs.git = {
     enable = true;
     userName = "kidsan";
