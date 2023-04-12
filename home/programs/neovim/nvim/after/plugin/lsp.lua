@@ -4,8 +4,7 @@ lsp.preset('recommended')
 lsp.ensure_installed({
 'rust_analyzer',
 'gopls',
-'nil_ls',
-'lua_ls'
+'nil_ls'
 })
 
 -- don't initialize this language server
