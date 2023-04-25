@@ -7,8 +7,6 @@
 {
   imports =
     [
-      # Include the results of the hardware scan.
-      ../overlays/firefox-nightly.nix
       ../lib/cachix.nix
     ];
 
@@ -58,10 +56,10 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver = {
-  layout = "gb,us";
-  xkbVariant = ",dvp";
-          xkbOptions = "caps:escape,compose:ralt,grp:ctrls_toggle";
-};
+    layout = "gb,us";
+    xkbVariant = ",dvp";
+    xkbOptions = "caps:escape,compose:ralt,grp:ctrls_toggle";
+  };
 
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
@@ -99,7 +97,6 @@
     description = "kidsan";
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     packages = with pkgs; [
-      latest.firefox-nightly-bin
       kate
       #  thunderbird
     ];

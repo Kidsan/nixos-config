@@ -23,6 +23,7 @@
     ../../programs/alacritty.nix
     ../../programs/bash.nix
     ../../programs/direnv.nix
+    ../../programs/firefox.nix
     ../../programs/fonts.nix
     ../../programs/git.nix
     ../../programs/neovim

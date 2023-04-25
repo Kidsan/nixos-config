@@ -7,7 +7,6 @@
 {
   imports =
     [
-      ../overlays/firefox-nightly.nix
       ../lib/cachix.nix
     ];
 
@@ -125,6 +124,7 @@
     cachix
     xfce.thunar
     xfce.thunar-volman
+    #    firefox
   ];
 
   environment.pathsToLink = [ "/share/bash-completion" ];
