@@ -29,7 +29,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv7l-linux" ];
 
-  boot.kernelPackages = pkgs.linuxPackages_6_2;
+  boot.kernelPackages = pkgs.linuxPackages_6_3;
 
   # Setup keyfile
   boot.initrd.secrets = {
