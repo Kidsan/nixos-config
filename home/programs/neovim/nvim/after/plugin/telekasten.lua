@@ -1,5 +1,8 @@
 require('telekasten').setup({
     home = vim.fn.expand("~/zettelkasten"),
+    template_new_note = '~/zettelkasten/templates/new_note.md',
+    template_new_daily = '~/zettelkasten/templates/new_daily.md',
+    template_new_weekly = '~/zettelkasten/templates/new_weekly.md',
 })
 
 -- Launch panel if nothing is typed after <leader>z
