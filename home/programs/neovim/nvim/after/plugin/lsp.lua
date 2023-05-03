@@ -66,6 +66,10 @@ lsp.configure('nil_ls', {
     }
 })
 
+lsp.configure('volar', {
+    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+})
+
 lsp.nvim_workspace()
 lsp.setup()
 
