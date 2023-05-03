@@ -36,9 +36,35 @@ local format_sync_grp = vim.api.nvim_create_augroup("Format", {})
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   callback = function()
-    vim.lsp.buf.format({ timeout_ms = 200 })
+    if vim.b.noAutoFormat == 1 then
+        return
+    else
+        vim.lsp.buf.format({ timeout_ms = 200 })
+    end
   end,
   group = format_sync_grp,
+})
+
+vim.api.nvim_create_autocmd("Filetype", {
+    pattern = "typescript",
+    callback = function() 
+        vim.b.noAutoFormat = 1
+    end,
+    group = format_sync_grp,
+})
+vim.api.nvim_create_autocmd("Filetype", {
+    pattern = "javascript",
+    callback = function() 
+        vim.b.noAutoFormat = 1
+    end,
+    group = format_sync_grp,
+})
+vim.api.nvim_create_autocmd("Filetype", {
+    pattern = "vue",
+    callback = function() 
+        vim.b.noAutoFormat = 1
+    end,
+    group = format_sync_grp,
 })
 
 lsp.on_attach(function(client, bufnr)
