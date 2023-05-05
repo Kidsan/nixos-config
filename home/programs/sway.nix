@@ -377,7 +377,7 @@
           background: @theme_base_color;
           /* color: white; */
           color: @theme_text_color;
-          font-family: Cantarell, Noto Sans, sans-serif;
+          font-family: JetBrains Mono Nerd Font, Cantarell, Noto Sans, sans-serif;
           font-size: 13px;
       }
 
