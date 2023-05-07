@@ -82,4 +82,6 @@ return require('packer').startup(function(use)
         requires = { 'nvim/telescope/telescope.nvim', 'renerocksai/calendar-vim' }
     }
 
+    use 'numToStr/Comment.nvim'
+
 end)
