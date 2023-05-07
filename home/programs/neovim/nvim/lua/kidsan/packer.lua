@@ -83,5 +83,8 @@ return require('packer').startup(function(use)
     }
 
     use 'numToStr/Comment.nvim'
+    use 'norcalli/nvim-colorizer.lua'
+    use { 'folke/trouble.nvim', requires = 'nvim-tree/nvim-web-devicons' }
+    use 'windwp/nvim-ts-autotag'
 
 end)
