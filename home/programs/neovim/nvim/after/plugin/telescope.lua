@@ -1,5 +1,10 @@
 require("telescope").setup {
     extensions = {
+        ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+
+            }
+        },
         file_browser = {
           respect_gitignore = false,
           hijack_netrw = true,
@@ -16,3 +21,4 @@ vim.keymap.set('n', '<leader>ps', function()
 end)
 
 require("telescope").load_extension "file_browser"
+require("telescope").load_extension("ui-select")

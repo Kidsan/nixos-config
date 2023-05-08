@@ -86,5 +86,6 @@ return require('packer').startup(function(use)
     use 'norcalli/nvim-colorizer.lua'
     use { 'folke/trouble.nvim', requires = 'nvim-tree/nvim-web-devicons' }
     use 'windwp/nvim-ts-autotag'
+    use { 'nvim-telescope/telescope-ui-select.nvim' }
 
 end)
