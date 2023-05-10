@@ -2,13 +2,15 @@
   description = "Kidsan's NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    nixos.url = "nixpkgs/nixos-unstable";
+
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixos"; # should change to nixpkgs but have some error
     };
 
     agenix.url = "github:ryantm/agenix";
@@ -23,7 +25,7 @@
     secrets.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, homeage, secrets, agenix, ... } @ inputs:
+  outputs = { nixpkgs, nixos, home-manager, homeage, secrets, agenix, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -76,11 +78,11 @@
 
       nixosConfigurations = {
 
-        desktop = mkSystem inputs "desktop" nixpkgs;
+        desktop = mkSystem inputs "desktop" nixos;
 
-        thinkpad = mkSystem inputs "thinkpad" nixpkgs;
+        thinkpad = mkSystem inputs "thinkpad" nixos;
 
-        monster = mkAarch64System inputs "monster" nixpkgs;
+        monster = mkAarch64System inputs "monster" nixos;
       };
 
 
