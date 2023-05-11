@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     ripgrep
     fd
+    lua-language-server
   ];
 
   programs.neovim = {
