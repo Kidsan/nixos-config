@@ -9,6 +9,7 @@
   '';
 
   home.packages = with pkgs; [
+    playerctl
     glib # gsettings
     swaylock
     swayidle
@@ -68,7 +69,7 @@
       output "*" bg /home/kidsan/Pictures/wallpaper.png fill
     '';
 
-    config = rec {
+    config = {
       modifier = "Mod1";
       terminal = "alacritty";
       startup = [
@@ -101,6 +102,8 @@
           "XF86AudioLowerVolume" = "exec 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- -l 1.0'";
           "XF86AudioMute" = "exec 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'";
           "Print" = "exec 'FILENAME=\"screenshot-`date +%F-%T`\"; grim -g \"$(slurp)\" ~/Downloads/$FILENAME.png '";
+          "${modifier}+period" = "playerctl -p spotify next";
+          "${modifier}+comma" = "playerctl -p spotify previous";
         };
 
       bars = [
@@ -173,9 +176,9 @@
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
         modules-right = [
+          "custom/media"
           "bluetooth"
-          "network"
-          "memory"
+          #"network"
           "cpu"
           "temperature"
           "sway/language"
@@ -218,7 +221,7 @@
         };
         "cpu" = {
           interval = 5;
-          format = "  {usage}% ({load})";
+          format = "  {usage}%";
           states = {
             warning = 70;
             critical = 90;
@@ -319,6 +322,22 @@
           "tooltip-format-enumerate-connected-battery" = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
           "on-click-right" = "rfkill toggle bluetooth";
         };
+
+        "custom/media" = {
+          "exec-if" = "pgrep spotify";
+          "format" = "{icon} {}";
+          "return-type" = "json";
+          "smooth-scrolling-threshold" = 1;
+          "on-scroll-up" = "playerctl -p spotify next";
+          "on-scroll-down" = "playerctl -p spotify previous";
+          "format-icons" = {
+            "Playing" = "";
+            "Paused" = "";
+          };
+          "max-length" = 30;
+          "exec" = "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}} - {{artist}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+          "on-click" = "playerctl play-pause";
+        };
       };
 
     };
@@ -387,6 +406,7 @@
       #cpu,
       #custom-keyboard-layout,
       #memory,
+      #custom-media
       #bluetooth,
       #mode,
       #network,
@@ -481,8 +501,10 @@
           /* No styles */
       }
 
-      #custom-spotify {
+      #custom-media {
           color: rgb(102, 220, 105);
+          padding-left: 20px;
+          padding-right: 20px;
       }
 
       #temperature {
