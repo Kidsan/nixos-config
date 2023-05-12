@@ -12,6 +12,7 @@
   };
 
   home.packages = with pkgs; [
+    unzip
     spotify
     discord
     element-desktop
