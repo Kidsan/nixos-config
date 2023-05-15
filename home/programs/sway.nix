@@ -336,7 +336,7 @@
           };
           "max-length" = 30;
           "exec" = "playerctl -p spotify -a metadata --format '{\"text\": \"{{markup_escape(title)}} - {{artist}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
-          "on-click" = "playerctl play-pause";
+          "on-click" = "playerctl -p spotify play-pause";
         };
       };
 
