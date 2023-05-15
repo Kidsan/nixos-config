@@ -20,6 +20,12 @@
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
   };
+  fonts.fontDir.enable = true;
+  fonts.fonts = with pkgs; [
+    font-awesome # installed for waybar icons
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+
+  ];
 
   # Enable swap on luks
   boot.initrd.luks.devices."luks-c1db48bc-8179-4529-945d-540de98b1a11".device = "/dev/disk/by-uuid/c1db48bc-8179-4529-945d-540de98b1a11";
