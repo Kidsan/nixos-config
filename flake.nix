@@ -11,6 +11,9 @@
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
+      # temporarily pin to this nvim version to avoid treesitter error
+      # https://github.com/nvim-treesitter/nvim-treesitter/issues/4805
+      inputs.neovim-flake.url = "github:neovim/neovim?dir=contrib&rev=88a202a01097de029beb01f60ad98aa0b5b44b50";
     };
 
     agenix.url = "github:ryantm/agenix";
