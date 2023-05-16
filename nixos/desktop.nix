@@ -8,6 +8,9 @@
   imports =
     [
       ../lib/cachix.nix
+      ./modules/fonts.nix
+      ./modules/steam.nix
+      ./modules/kde.nix
     ];
 
   # Bootloader.
@@ -20,33 +23,17 @@
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
   };
-  fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
-    font-awesome # installed for waybar icons
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-
-  ];
 
   # Enable swap on luks
   boot.initrd.luks.devices."luks-c1db48bc-8179-4529-945d-540de98b1a11".device = "/dev/disk/by-uuid/c1db48bc-8179-4529-945d-540de98b1a11";
   boot.initrd.luks.devices."luks-c1db48bc-8179-4529-945d-540de98b1a11".keyFile = "/crypto_keyfile.bin";
 
-  networking.hostName = "desktop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+  networking.hostName = "desktop";
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.utf8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.utf8";
     LC_IDENTIFICATION = "de_DE.utf8";
@@ -58,18 +45,6 @@
     LC_TELEPHONE = "de_DE.utf8";
     LC_TIME = "de_DE.utf8";
   };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver = {
-    layout = "gb,us";
-    xkbVariant = ",dvp";
-    xkbOptions = "caps:escape,compose:ralt,grp:ctrls_toggle";
-  };
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure console keymap
   console.keyMap = "uk";
@@ -128,19 +103,6 @@
     cachix
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
 
   # List services that you want to enable:
 
