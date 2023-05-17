@@ -5,20 +5,13 @@
     [
       ../lib/cachix.nix
       ./modules/fonts.nix
+      ./modules/xdg.nix
+      ./modules/thunar.nix
+      ./modules/weechat.nix
+      ./modules/tailscale.nix
+      ./modules/nix-options.nix
+      ./modules/ssh.nix
     ];
-
-  nixpkgs.overlays = [
-    (self: super: {
-      weechat = super.weechat.override {
-        configure = { availablePlugins, ... }: {
-          scripts = with super.weechatScripts; [
-            weechat-notify-send
-            weechat-autosort
-          ];
-        };
-      };
-    })
-  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -38,13 +31,6 @@
   boot.initrd.luks.devices."luks-c797edd5-61ec-43fa-9df2-59a91f5aeb9a".keyFile = "/crypto_keyfile.bin";
 
   networking.hostName = "thinkpad"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -83,16 +69,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kidsan = {
@@ -104,8 +81,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Wayland stuff
   programs.dconf.enable = true;
-
+  security.pam.services.swaylock = { }; # allows swaylock check if password is correct
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # List packages installed in system profile. To search, run:
@@ -114,32 +92,16 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     slack
-    weechat
     thunderbird
     ntfs3g
     exfat
     cachix
     xfce.thunar
     xfce.thunar-volman
-    #    firefox
+    weechat
   ];
 
   environment.pathsToLink = [ "/share/bash-completion" ];
-
-  # enable flakes
-  nix.package = pkgs.nixUnstable;
-  nix.extraOptions = ''
-    bash-prompt = "\[nix-develop\]$ ";
-    experimental-features = nix-command flakes
-    auto-optimise-store = true
-    min-free = ${toString (100 * 1024 * 1024)}
-    max-free = ${toString (1024 * 1024 * 1024)}
-    keep-outputs = true
-    keep-derivations = true
-  '';
-
-  security.pam.services.swaylock = { }; # allows swaylock check if password is correct
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -153,48 +115,4 @@
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
-
-  services.tailscale.enable = true;
-  networking.firewall.checkReversePath = "loose";
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      permitRootLogin = "yes";
-      passwordAuthentication = false;
-    };
-  };
-  programs.ssh.extraConfig = ''
-    IPQoS none
-  '';
-
-  systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
-
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 10d";
-    };
-  };
-  documentation.nixos.enable = false;
-
-  programs.thunar.plugins = with pkgs.xfce; [
-    thunar-archive-plugin
-    thunar-volman
-  ];
-
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
-
-  xdg = {
-    portal = {
-      enable = true;
-      wlr.enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
-      ];
-    };
-  };
 }
