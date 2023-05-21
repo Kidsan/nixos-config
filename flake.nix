@@ -22,11 +22,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     secrets.url = "git+ssh://git@github.com/kidsan/secrets.git?ref=main";
     secrets.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos, home-manager, homeage, secrets, agenix, ... } @ inputs:
+  outputs = { nixpkgs, nixos, home-manager, homeage, secrets, agenix, darwin, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -40,6 +43,12 @@
 
       armPkgs = import nixpkgs {
         system = "aarch64-linux";
+        config = { allowUnfree = true; };
+        overlays = overlays;
+      };
+
+      darwinPkgs = import nixpkgs {
+        system = "aarch64-darwin";
         config = { allowUnfree = true; };
         overlays = overlays;
       };
@@ -86,6 +95,16 @@
         monster = mkAarch64System inputs "monster" nixos;
       };
 
+      darwinConfigurations = {
+        "Kierans-Air" = darwin.lib.darwinSystem {
+           system = "aarch64-darwin";
+           inputs = { inherit darwin nixpkgs; };
+           pkgs = darwinPkgs;
+           modules = [
+             ./darwin/macbook.nix
+           ];
+        };
+      };
 
       devShell.x86_64-linux = x86Pkgs.mkShell {
         nativeBuildInputs = [ x86Pkgs.bashInteractive ];
