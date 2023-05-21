@@ -1,5 +1,5 @@
 {
-  description = "Kidsan's NixOS Configuration";
+  description = "Kidsan's NixOS Configuration"; 
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
@@ -81,6 +81,15 @@
 
           modules = [
             ./home/users/kidsan/kidsan_desktop.nix
+            homeage.homeManagerModules.homeage
+          ];
+        };
+
+        "kieranosullivan@Kierans-Air" = home-manager.lib.homeManagerConfiguration {
+          pkgs = darwinPkgs;
+
+          modules = [
+            ./home/users/kieranosullivan/home.nix
             homeage.homeManagerModules.homeage
           ];
         };
