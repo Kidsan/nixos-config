@@ -1,5 +1,5 @@
 {
-  description = "Kidsan's NixOS Configuration"; 
+  description = "Kidsan's NixOS Configuration";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
@@ -50,7 +50,6 @@
       darwinPkgs = import nixpkgs {
         system = "aarch64-darwin";
         config = { allowUnfree = true; };
-        overlays = overlays;
       };
 
       lib = nixpkgs.lib;
@@ -106,12 +105,12 @@
 
       darwinConfigurations = {
         "Kierans-Air" = darwin.lib.darwinSystem {
-           system = "aarch64-darwin";
-           inputs = { inherit darwin nixpkgs; };
-           pkgs = darwinPkgs;
-           modules = [
-             ./darwin/macbook.nix
-           ];
+          system = "aarch64-darwin";
+          inputs = { inherit darwin nixpkgs; };
+          pkgs = darwinPkgs;
+          modules = [
+            ./darwin/macbook.nix
+          ];
         };
       };
 

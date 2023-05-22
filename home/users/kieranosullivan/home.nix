@@ -17,6 +17,7 @@
   ];
 
   imports = [
+    ../../programs/neovim
   ];
 
   homeage = {
