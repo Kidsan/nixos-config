@@ -28,6 +28,7 @@
     ../../programs/fonts.nix
     ../../programs/git.nix
     ../../programs/neovim
+    ../../programs/nextcloud.nix
   ];
 
   homeage = {
