@@ -3,12 +3,13 @@
 {
   home.stateVersion = "22.05";
   home.packages = with pkgs; [
-  noisetorch
+    noisetorch
+    audacity
   ];
 
   imports = [
-  ./common.nix
-  ../../programs/i3.nix
+    ./common.nix
+    #    ../../programs/i3.nix
   ];
 
 }
