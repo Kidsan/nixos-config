@@ -147,6 +147,7 @@
 
   documentation.nixos.enable = false;
   programs.noisetorch.enable = true;
+  programs.dconf.enable = true;
 }
 
 

@@ -7,6 +7,8 @@
     audacity
   ];
 
+  services.easyeffects.enable = true;
+
   imports = [
     ./common.nix
     #    ../../programs/i3.nix
