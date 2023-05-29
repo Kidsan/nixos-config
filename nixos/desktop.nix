@@ -99,7 +99,6 @@
     go_1_19
     slack
     weechat
-    steam
     cachix
   ];
 
