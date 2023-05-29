@@ -11,6 +11,7 @@
       ./modules/fonts.nix
       ./modules/steam.nix
       ./modules/kde.nix
+      ./modules/ssh.nix
     ];
 
   # Bootloader.
@@ -94,12 +95,6 @@
   environment.systemPackages = with pkgs; [
     vim
     curl
-    discord
-    git
-    vscodium
-    neovim
-    go_1_19
-    slack
     weechat
     cachix
   ];
@@ -135,16 +130,6 @@
   '';
 
   virtualisation.docker.enable = true;
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      permitRootLogin = "yes";
-      passwordAuthentication = false;
-    };
-  };
-
-  systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
 
   documentation.nixos.enable = false;
   programs.noisetorch.enable = true;

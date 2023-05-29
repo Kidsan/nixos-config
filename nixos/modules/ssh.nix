@@ -3,8 +3,8 @@
   services.openssh = {
     enable = true;
     settings = {
-      permitRootLogin = "yes";
-      passwordAuthentication = false;
+      PermitRootLogin = "yes";
+      PasswordAuthentication = false;
     };
   };
   programs.ssh.extraConfig = ''
