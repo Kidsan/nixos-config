@@ -1,7 +1,11 @@
-{ pkgs, config, ... }:
-# Nix options
+{ lib
+, context
+, pkgs
+, config
+, ...
+}:
+
 {
-  # enable flakes
   nix = {
     package = pkgs.nixUnstable;
     gc = {

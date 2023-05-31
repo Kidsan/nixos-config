@@ -64,6 +64,14 @@
           modules = [
             ./home/users/kidsan/kidsan_thinkpad.nix
             homeage.homeManagerModules.homeage
+
+            # https://ayats.org/blog/channels-to-flakes/
+            (args: {
+              xdg.configFile."nix/inputs/nixpkgs".source = nixpkgs.outPath;
+              home.sessionVariables.NIX_PATH = "nixpkgs=${args.config.xdg.configHome}/nix/inputs/nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
+            })
+
+            { nix.registry.nixpkgs.flake = nixpkgs; }
           ];
         };
 

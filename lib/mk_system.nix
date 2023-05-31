@@ -20,6 +20,14 @@ nixpkgs.lib.nixosSystem (
         agenix.nixosModules.default
         secretsModule
 
+        # This fixes nixpkgs (for e.g. "nix shell") to match the system nixpkgs
+        ({ config, pkgs, options, ... }: { nix.registry.nixpkgs.flake = nixpkgs; })
+        {
+          # https://ayats.org/blog/channels-to-flakes/
+          environment.etc."nix/inputs/nixpkgs".source = nixpkgs.outPath;
+          nix.nixPath = [ "nixpkgs=/etc/nix/inputs/nixpkgs" ];
+        }
+
       ];
     # ++ attrValues self.nixosModules
     # ++ attrValues self.mixedModules;
