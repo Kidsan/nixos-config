@@ -94,6 +94,12 @@ lsp.configure('volar', {
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 })
 
+lsp.set_server_config({
+    on_init = function(client)
+        client.server_capabilities.semanticTokensProvider = nil
+    end,
+})
+
 lsp.nvim_workspace()
 lsp.setup()
 
