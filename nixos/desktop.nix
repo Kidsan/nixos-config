@@ -9,9 +9,10 @@
     [
       ../lib/cachix.nix
       ./modules/fonts.nix
-      ./modules/steam.nix
       ./modules/kde.nix
+      ./modules/nix-options.nix
       ./modules/ssh.nix
+      ./modules/steam.nix
     ];
 
   # Bootloader.
@@ -121,13 +122,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
-
-  # enable flakes
-  nix.package = pkgs.nixUnstable;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
 
   virtualisation.docker.enable = true;
 
