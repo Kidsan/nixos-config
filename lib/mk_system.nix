@@ -19,6 +19,11 @@ nixpkgs.lib.nixosSystem (
         hardware
         agenix.nixosModules.default
         secretsModule
+        {
+          nix.nixPath = [
+            "nixpkgs=${inputs.nixpkgs}"
+          ];
+        }
       ];
     # ++ attrValues self.nixosModules
     # ++ attrValues self.mixedModules;
