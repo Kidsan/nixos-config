@@ -15,7 +15,6 @@
     }
     export PS1="\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\[\033[33m\]\$(parse_git_branch)\[\033[1;32m\]\$\[\033[0m\] "
     fortune ~/fortunes/futurama
-    krabby random 1-2 --no-title
   '';
   programs.bash.shellAliases = {
     k = "kubectl";
