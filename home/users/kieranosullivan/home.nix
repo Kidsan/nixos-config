@@ -6,7 +6,7 @@
 
   home.stateVersion = "22.11";
   home.username = "kieranosullivan";
-  home.homeDirectory = "/home/kieranosullivan";
+  home.homeDirectory = "/Users/kieranosullivan";
 
   home.sessionVariables = {
     EDITOR = "nvim";
