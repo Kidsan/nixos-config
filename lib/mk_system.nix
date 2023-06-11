@@ -20,9 +20,7 @@ nixpkgs.lib.nixosSystem (
         agenix.nixosModules.default
         secretsModule
         {
-          nix.nixPath = [
-            "nixpkgs=${inputs.nixpkgs}"
-          ];
+          environment.etc."nix/inputs/nixpkgs".source = inputs.nixos.outPath;
         }
       ];
     # ++ attrValues self.nixosModules
