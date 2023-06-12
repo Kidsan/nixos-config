@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -32,6 +32,7 @@
 
   networking.hostName = "thinkpad"; # Define your hostname.
   networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
