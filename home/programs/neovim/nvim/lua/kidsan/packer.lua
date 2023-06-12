@@ -93,4 +93,5 @@ return require('packer').startup(function(use)
     use { 'folke/trouble.nvim', requires = 'nvim-tree/nvim-web-devicons' }
     use 'windwp/nvim-ts-autotag'
     use { 'nvim-telescope/telescope-ui-select.nvim' }
+    use "lukas-reineke/indent-blankline.nvim"
 end)
