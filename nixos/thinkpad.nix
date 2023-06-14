@@ -115,5 +115,9 @@
   virtualisation.docker.enable = true;
 
   hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = [
+    pkgs.libvdpau-va-gl
+    pkgs.vaapiVdpau
+  ];
   hardware.opengl.driSupport = true;
 }
