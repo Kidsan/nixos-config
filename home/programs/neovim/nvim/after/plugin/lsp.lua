@@ -90,22 +90,6 @@ lsp.configure('nil_ls', {
     }
 })
 
-lsp.configure('gopls', {
-    settings = {
-        gopls = {
-            hints = {
-                assignVariableTypes = true,
-                compositeLiteralFields = true,
-                compositeLiteralTypes = true,
-                constantValues = true,
-                functionTypeParameters = true,
-                parameterNames = true,
-                rangeVariableTypes = true,
-            }
-        }
-    }
-})
-
 lsp.configure('volar', {
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 })
