@@ -93,5 +93,16 @@ return require('packer').startup(function(use)
     use { 'folke/trouble.nvim', requires = 'nvim-tree/nvim-web-devicons' }
     use 'windwp/nvim-ts-autotag'
     use { 'nvim-telescope/telescope-ui-select.nvim' }
-    use "lukas-reineke/indent-blankline.nvim"
+    use 'lukas-reineke/indent-blankline.nvim'
+    use {
+        'folke/which-key.nvim',
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup {
+
+            }
+        end
+
+    }
 end)
