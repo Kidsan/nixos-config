@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -6,17 +6,20 @@
       ../lib/cachix.nix
       ./modules/fonts.nix
       ./modules/kde.nix
+      ./modules/linux-kernel.nix
+      ./modules/locale.nix
       ./modules/nix-options.nix
       ./modules/ssh.nix
       ./modules/steam.nix
-      ./modules/locale.nix
+      ./modules/pipewire.nix
+      ./modules/networkmanager.nix
+      ./modules/user.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.kernelPackages = pkgs.linuxPackages_6_4;
   boot.kernelModules = [ "coretemp" "nct6775" ];
   hardware.enableRedistributableFirmware = true;
 
@@ -30,39 +33,9 @@
   boot.initrd.luks.devices."luks-c1db48bc-8179-4529-945d-540de98b1a11".keyFile = "/crypto_keyfile.bin";
 
   networking.hostName = "desktop";
-  networking.networkmanager.enable = true;
-  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
-  systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
-  systemd.network.wait-online.enable = false;
-
-  # Configure console keymap
-  console.keyMap = "uk";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  users.users.kidsan = {
-    isNormalUser = true;
-    description = "kidsan";
-    extraGroups = [ "docker" "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kate
-    ];
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     vim
@@ -85,9 +58,6 @@
 
   virtualisation.docker.enable = true;
 
-  documentation.nixos.enable = false;
-  programs.noisetorch.enable = true;
-  programs.dconf.enable = true;
 }
 
 

@@ -2,10 +2,14 @@
 , context
 , pkgs
 , config
+, nixpkgs
 , ...
 }:
 
 {
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   nix = {
     package = pkgs.nixUnstable;
     gc = {

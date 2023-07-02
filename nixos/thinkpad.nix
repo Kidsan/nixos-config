@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -12,6 +12,11 @@
       ./modules/nix-options.nix
       ./modules/ssh.nix
       ./modules/locale.nix
+      ./modules/linux-kernel.nix
+      ./modules/pipewire.nix
+      ./modules/networkmanager.nix
+      ./modules/user.nix
+
     ];
 
   # Bootloader.
@@ -19,8 +24,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv7l-linux" ];
-
-  boot.kernelPackages = pkgs.linuxPackages_6_4;
 
   # Setup keyfile
   boot.initrd.secrets = {
@@ -32,38 +35,12 @@
   boot.initrd.luks.devices."luks-c797edd5-61ec-43fa-9df2-59a91f5aeb9a".keyFile = "/crypto_keyfile.bin";
 
   networking.hostName = "thinkpad"; # Define your hostname.
-  networking.networkmanager.enable = true;
-  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
   hardware.bluetooth.enable = true;
 
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.kidsan = {
-    isNormalUser = true;
-    description = "kidsan";
-    extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # Wayland stuff
-  programs.dconf.enable = true;
   security.pam.services.swaylock = { }; # allows swaylock check if password is correct
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -95,6 +72,7 @@
   virtualisation.docker.enable = true;
 
   hardware.opengl.enable = true;
+  # gpu accelerated video playback
   hardware.opengl.extraPackages = [
     pkgs.libvdpau-va-gl
     pkgs.vaapiVdpau
