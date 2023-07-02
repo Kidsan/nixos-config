@@ -3,20 +3,7 @@
 {
   imports =
     [
-      ../lib/cachix.nix
-      ./modules/fonts.nix
-      ./modules/xdg.nix
-      ./modules/thunar.nix
-      ./modules/weechat.nix
-      ./modules/tailscale.nix
-      ./modules/nix-options.nix
-      ./modules/ssh.nix
-      ./modules/locale.nix
-      ./modules/linux-kernel.nix
-      ./modules/pipewire.nix
-      ./modules/networkmanager.nix
-      ./modules/user.nix
-
+      ./hardware/thinkpad.nix
     ];
 
   # Bootloader.

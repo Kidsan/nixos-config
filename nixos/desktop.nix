@@ -3,17 +3,7 @@
 {
   imports =
     [
-      ../lib/cachix.nix
-      ./modules/fonts.nix
-      ./modules/kde.nix
-      ./modules/linux-kernel.nix
-      ./modules/locale.nix
-      ./modules/nix-options.nix
-      ./modules/ssh.nix
-      ./modules/steam.nix
-      ./modules/pipewire.nix
-      ./modules/networkmanager.nix
-      ./modules/user.nix
+      ./hardware/desktop.nix
     ];
 
   # Bootloader.

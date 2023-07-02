@@ -52,11 +52,8 @@
         config = { allowUnfree = true; };
       };
 
-      lib = nixpkgs.lib;
-      mkSystem = import ./lib/mk_system.nix;
-      mkAarch64System = import ./lib/mk_aarch_system.nix;
     in
-    rec {
+    {
       homeConfigurations = {
         "kidsan@thinkpad" = home-manager.lib.homeManagerConfiguration {
           pkgs = x86Pkgs;
@@ -111,11 +108,47 @@
 
       nixosConfigurations = {
 
-        desktop = mkSystem inputs "desktop" nixos;
+        desktop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules =
+            [
+              ./nixos/desktop.nix
+              agenix.nixosModules.default
+              secrets.nixosModules.desktop or { }
+              {
+                environment.etc."nix/inputs/nixpkgs".source = inputs.nixos.outPath;
+              }
+              ./lib/cachix.nix
+              ./nixos/modules/common.nix
+              ./nixos/modules/kde.nix
+              ./nixos/modules/steam.nix
+            ];
+        };
 
-        thinkpad = mkSystem inputs "thinkpad" nixos;
+        thinkpad = nixpkgs.lib.nixosSystem
+          {
+            system = "x86_64-linux";
+            modules = [
+              agenix.nixosModules.default
+              secrets.nixosModules.thinkpad or { }
+              {
+                environment.etc."nix/inputs/nixpkgs".source = inputs.nixos.outPath;
+              }
+              ./nixos/thinkpad.nix
+              ./lib/cachix.nix
+              ./nixos/modules/common.nix
+              ./nixos/modules/xdg.nix
+            ];
+          };
 
-        monster = mkAarch64System inputs "monster" nixos;
+        monster = nixpkgs.lib.nixosSystem
+          {
+            system = "aarch64-linux";
+            modules = [
+              ./nixos/monster.nix
+              ./nixos/modules/home-assistant.nix
+            ];
+          };
       };
 
       darwinConfigurations = {
