@@ -65,8 +65,4 @@
     pkgs.vaapiVdpau
   ];
   hardware.opengl.driSupport = true;
-
-  system.activationScripts.diff = ''
-    ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
-  '';
 }
