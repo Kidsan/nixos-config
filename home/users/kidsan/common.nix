@@ -22,6 +22,7 @@
     element-desktop
     chromium
     nixpkgs-fmt
+    jq
   ];
 
   imports = [
