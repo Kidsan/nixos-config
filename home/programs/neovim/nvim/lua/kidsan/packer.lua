@@ -103,6 +103,6 @@ return require('packer').startup(function(use)
 
             }
         end
-
     }
+    use 'folke/flash.nvim'
 end)
