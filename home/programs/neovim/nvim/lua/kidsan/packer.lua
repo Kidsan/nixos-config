@@ -83,6 +83,8 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
+    -- done as far as here
+
     use {
         'renerocksai/telekasten.nvim',
         requires = { 'nvim/telescope/telescope.nvim', 'renerocksai/calendar-vim' }
@@ -92,7 +94,7 @@ return require('packer').startup(function(use)
     use 'norcalli/nvim-colorizer.lua'
     use { 'folke/trouble.nvim', requires = 'nvim-tree/nvim-web-devicons' }
     use 'windwp/nvim-ts-autotag'
-    use { 'nvim-telescope/telescope-ui-select.nvim' }
+    -- use { 'nvim-telescope/telescope-ui-select.nvim' }
     use 'lukas-reineke/indent-blankline.nvim'
     use {
         'folke/which-key.nvim',
