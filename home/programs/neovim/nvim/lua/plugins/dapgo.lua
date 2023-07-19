@@ -1,6 +1,7 @@
 return {
     {
         'leoluz/nvim-dap-go',
+        ft = "go",
         dependencies = {
             { 'mfussenegger/nvim-dap' }
         },
@@ -16,7 +17,7 @@ return {
 
         },
         keys = {
-            { "<leader>dt", mode = "n", function() require('dap-go').debug_test end, desc = "dapgo debug test" },
+            { "<leader>dt", mode = "n", function() require('dap-go').debug_test() end, desc = "dapgo debug test" },
         },
         init = function()
             require('dap.ext.vscode').load_launchjs(nil, {})

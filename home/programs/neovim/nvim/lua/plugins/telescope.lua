@@ -1,6 +1,7 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
+        event = "VeryLazy",
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts = {
             extensions = {
@@ -16,13 +17,13 @@ return {
             {
                 "<leader>pf",
                 mode = "n",
-                function() require("telescope.builtin").find_files end,
+                function() require("telescope.builtin").find_files() end,
                 desc = "telescope find files"
             },
             {
                 "<C-p>",
                 mode = "n",
-                function() require("telescope.builtin").git_files end,
+                function() require("telescope.builtin").git_files() end,
                 desc = "telescope find files"
             },
             {

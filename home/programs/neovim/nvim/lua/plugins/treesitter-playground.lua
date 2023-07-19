@@ -1,5 +1,6 @@
 return {
     {
-        'nvim-treesitter/playground'
+        'nvim-treesitter/playground',
+        event = "VeryLazy"
     }
 }

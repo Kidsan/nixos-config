@@ -11,5 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
+vim.opt.termguicolors = true
 
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", { performance = { reset_packpath = false } })
+require("kidsan")

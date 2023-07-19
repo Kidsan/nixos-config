@@ -1,6 +1,7 @@
 return {
     {
         'ray-x/go.nvim',
+        ft = "go",
         dependencies = {
             { 'ray-x/guihua.lua' },
             { 'theHamsta/nvim-dap-virtual-text' }

@@ -36,4 +36,3 @@ vim.g.mapleader = " "
 vim.opt.autowrite = true
 vim.opt.autowriteall = true
 vim.opt.autoindent = true
-

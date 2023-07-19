@@ -2,7 +2,8 @@ local home = vim.fn.expand("~/zettelkasten/")
 return {
     {
         'renerocksai/telekasten.nvim',
-        dependencies = { 'nvim/telescope/telescope.nvim', 'renerocksai/calendar-vim' },
+        dependencies = { 'renerocksai/calendar-vim' },
+        lazy = true,
         keys = {
             { "<leader>z",  mode = "n", "<cmd>Telekasten panel<CR>",           desc = "Telekasten panel" },
             { "<leader>zf", mode = "n", "<cmd>Telekasten find_notes<CR>",      desc = "Telekasten find notes" },
