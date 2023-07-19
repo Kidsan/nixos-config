@@ -1,7 +1,6 @@
 return {
     {
         'tpope/vim-fugitive',
-        opts = {},
         event = "VeryLazy",
         keys = {
             {
