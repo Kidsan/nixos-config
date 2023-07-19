@@ -8,6 +8,5 @@ return {
                 theme = 'dracula',
             }
         }
-
     }
 }

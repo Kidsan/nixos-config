@@ -1,7 +1,7 @@
 return {
     {
         'simrat39/rust-tools.nvim',
-        ft = "rs",
+        event = { "BufReadPost *.rs" },
         opts = {
             tools = {
                 inlay_hints = {
