@@ -102,6 +102,7 @@ return {
                 vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
                 require("notify")("Debugger session ended", "warn", { title = "DAP" })
             end)
+            require('dap.ext.vscode').load_launchjs(nil, {})
         end
     }
 }

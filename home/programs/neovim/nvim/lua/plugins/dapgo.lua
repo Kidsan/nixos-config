@@ -18,10 +18,6 @@ return {
         },
         keys = {
             { "<leader>dt", mode = "n", function() require('dap-go').debug_test() end, desc = "dapgo debug test" },
-        },
-        init = function()
-            require('dap.ext.vscode').load_launchjs(nil, {})
-        end
-
+        }
     }
 }
