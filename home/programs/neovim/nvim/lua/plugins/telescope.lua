@@ -1,8 +1,15 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        event = "VeryLazy",
-        dependencies = { 'nvim-lua/plenary.nvim' },
+        cmd = "Telescope",
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            {
+                'nvim-telescope/telescope-file-browser.nvim',
+                event = "VeryLazy",
+                dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' }
+            }
+        },
         -- stylua: ignore
         keys = {
             {
@@ -42,9 +49,5 @@ return {
             require("telescope").load_extension "file_browser"
         end
 
-    },
-    {
-        'nvim-telescope/telescope-file-browser.nvim',
-        dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' }
     }
 }
