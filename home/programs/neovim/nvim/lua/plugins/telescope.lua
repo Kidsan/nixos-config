@@ -3,15 +3,6 @@ return {
         "nvim-telescope/telescope.nvim",
         event = "VeryLazy",
         dependencies = { 'nvim-lua/plenary.nvim' },
-        opts = {
-            extensions = {
-                file_browser = {
-                    respect_gitignore = false,
-                    hijack_netrw = true,
-                    hidden = true,
-                }
-            }
-        },
         -- stylua: ignore
         keys = {
             {
@@ -37,7 +28,17 @@ return {
                 desc = "telescope grep string"
             },
         },
-        init = function()
+        config = function()
+            local opts = {
+                extensions = {
+                    file_browser = {
+                        respect_gitignore = false,
+                        hijack_netrw = true,
+                        hidden = true,
+                    }
+                }
+            }
+            require('telescope').setup(opts)
             require("telescope").load_extension "file_browser"
         end
 
