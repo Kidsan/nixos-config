@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.opt.termguicolors = true
+vim.opt.guicursor = ""
 
 require("lazy").setup("plugins", { performance = { reset_packpath = false } })
 require("kidsan")
