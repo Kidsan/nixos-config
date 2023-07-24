@@ -1,7 +1,7 @@
 return {
     {
         'lewis6991/gitsigns.nvim',
-        event = "VeryLazy",
+        lazy = true,
         opts = {}
     }
 }
