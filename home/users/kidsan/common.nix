@@ -19,7 +19,7 @@
     unzip
     spotify
     discord
-    element-desktop
+    (element-desktop.override { electron = pkgs.electron_24; })
     chromium
     nixpkgs-fmt
     jq
