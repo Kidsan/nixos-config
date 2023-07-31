@@ -32,7 +32,7 @@
 
       keybindings =
         let
-          modifier = config.xsession.windowManager.i3.config.modifier;
+          inherit (config.xsession.windowManager.i3.config) modifier;
         in
         lib.mkOptionDefault {
           "XF86AudioRaiseVolume" = "exec 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ -l 1.0'";

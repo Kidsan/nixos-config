@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   services.easyeffects.enable = true;
   services.easyeffects.preset = "microphone";

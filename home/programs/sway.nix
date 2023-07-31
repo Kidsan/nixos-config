@@ -95,7 +95,7 @@
 
       keybindings =
         let
-          modifier = config.wayland.windowManager.sway.config.modifier;
+          inherit (config.wayland.windowManager.sway.config) modifier;
         in
         lib.mkOptionDefault {
           "XF86AudioRaiseVolume" = "exec 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ -l 1.0'";

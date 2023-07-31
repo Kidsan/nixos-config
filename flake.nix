@@ -38,13 +38,13 @@
       x86Pkgs = import nixpkgs {
         system = "x86_64-linux";
         config = { allowUnfree = true; };
-        overlays = overlays;
+        inherit overlays;
       };
 
       armPkgs = import nixpkgs {
         system = "aarch64-linux";
         config = { allowUnfree = true; };
-        overlays = overlays;
+        inherit overlays;
       };
 
       darwinPkgs = import nixpkgs {
