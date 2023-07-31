@@ -5,9 +5,6 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-emoji
-
     (stdenv.mkDerivation {
       pname = "symbols-nerd-font";
       version = "2.2.0";

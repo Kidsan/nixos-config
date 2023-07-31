@@ -9,7 +9,6 @@
     ./fonts.nix
     ./locale.nix
     ./thunar.nix
-    ./weechat.nix
     ./pipewire.nix
     ./tailscale.nix
     ./nix-options.nix
