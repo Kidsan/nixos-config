@@ -11,7 +11,6 @@
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
-      #inputs.neovim-flake.url = "github:neovim/neovim?dir=contrib&rev=88a202a01097de029beb01f60ad98aa0b5b44b50";
     };
 
     agenix.url = "github:ryantm/agenix";
@@ -33,6 +32,7 @@
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
+        (import ./overlays/weechat.nix)
       ];
 
       x86Pkgs = import nixpkgs {

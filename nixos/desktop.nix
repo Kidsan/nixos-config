@@ -30,7 +30,6 @@
   environment.systemPackages = with pkgs; [
     vim
     curl
-    weechat
     cachix
   ];
 

@@ -43,7 +43,6 @@
     cachix
     xfce.thunar
     xfce.thunar-volman
-    weechat
   ];
 
   environment.pathsToLink = [ "/share/bash-completion" ];

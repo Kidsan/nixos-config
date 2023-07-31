@@ -23,6 +23,7 @@
     chromium
     nixpkgs-fmt
     jq
+    weechat
   ];
 
   imports = [
