@@ -24,6 +24,7 @@
     nixpkgs-fmt
     jq
     weechat
+    vlc
   ];
 
   imports = [
