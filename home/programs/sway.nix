@@ -91,6 +91,11 @@
           accel_profile = "flat";
           pointer_accel = "-0.8";
         };
+        "1:1:AT_Translated_Set_2_keyboard" = {
+          xkb_layout = "gb,us";
+          xkb_variant = ",dvp";
+          xkb_options = "caps:escape,compose:ralt,grp:ctrls_toggle";
+        };
       };
 
       keybindings =
