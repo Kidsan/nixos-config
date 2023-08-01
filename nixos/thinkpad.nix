@@ -64,4 +64,5 @@
     pkgs.vaapiVdpau
   ];
   hardware.opengl.driSupport = true;
+  services.tlp.enable = true;
 }
