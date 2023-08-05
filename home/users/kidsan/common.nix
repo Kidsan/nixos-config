@@ -25,6 +25,7 @@
     jq
     weechat
     vlc
+    signal-desktop
   ];
 
   imports = [
