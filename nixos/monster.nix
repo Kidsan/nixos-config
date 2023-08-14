@@ -42,14 +42,6 @@
 
   #networking.networkmanager.enable = true;
 
-  services.openssh = {
-    enable = true;
-    settings = {
-      permitRootLogin = "yes";
-      passwordAuthentication = false;
-    };
-  };
-
   systemd.services.sshd.wantedBy = pkgs.lib.mkForce
     [ "multi-user.target" ];
 

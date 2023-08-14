@@ -26,9 +26,11 @@
 
     secrets.url = "git+ssh://git@github.com/kidsan/secrets.git?ref=main";
     secrets.inputs.nixpkgs.follows = "nixpkgs";
+
+    deploy-rs.url = "github:serokell/deploy-rs";
   };
 
-  outputs = { nixpkgs, nixos, home-manager, homeage, secrets, agenix, darwin, ... } @ inputs:
+  outputs = { self, nixpkgs, nixos, home-manager, homeage, secrets, agenix, darwin, deploy-rs, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -50,6 +52,20 @@
       darwinPkgs = import nixpkgs {
         system = "aarch64-darwin";
         config = { allowUnfree = true; };
+      };
+
+      deployPkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [
+          deploy-rs.overlay
+          (self: super: {
+            deploy-rs = {
+              pkgs = x86Pkgs;
+              inherit deploy-rs;
+              lib = super.deploy-rs.lib;
+            };
+          })
+        ];
       };
 
     in
@@ -145,6 +161,9 @@
           {
             system = "aarch64-linux";
             modules = [
+              agenix.nixosModules.default
+              secrets.nixosModules.monster or { }
+              ./nixos/modules/ssh.nix
               ./nixos/monster.nix
               ./nixos/modules/home-assistant.nix
             ];
@@ -161,6 +180,18 @@
           ];
         };
       };
+
+      deploy.nodes.thinkpad = {
+        hostname = "192.168.2.113";
+        fastConnection = true;
+        sshUser = "kidsan";
+        profiles.system = {
+          user = "root";
+          path = deployPkgs.deploy-rs.lib.activate.nixos self.nixosConfigurations.thinkpad;
+        };
+      };
+
+      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
       devShell.x86_64-linux = x86Pkgs.mkShell {
         nativeBuildInputs = [ x86Pkgs.bashInteractive ];
