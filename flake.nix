@@ -185,6 +185,8 @@
         hostname = "192.168.2.113";
         fastConnection = true;
         sshUser = "kidsan";
+        # sshOpts = [ "-t" ];
+        # sudo = "sudo -S -u";
         profiles.system = {
           user = "root";
           path = deployPkgs.deploy-rs.lib.activate.nixos self.nixosConfigurations.thinkpad;

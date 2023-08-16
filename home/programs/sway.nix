@@ -2,7 +2,7 @@
 
 {
 
-  programs.bash.bashrcExtra = ''
+  programs.bash.profileExtra = ''
     if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
       exec sway
     fi
