@@ -127,6 +127,7 @@
         "1" = [{ app_id = "firefox-nightly"; }];
         "2" = [{ app_id = "thunderbird"; } { app_id = "Slack"; }];
         "4" = [{ class = "discord"; } { class = "Spotify"; }];
+        "8" = [{ app_id = "com.nextcloud.desktopclient.nextcloud"; }];
       };
     };
   };
