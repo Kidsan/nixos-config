@@ -15,9 +15,6 @@ vim.opt.termguicolors = true
 vim.opt.guicursor = ""
 
 require("lazy").setup("plugins", {
-    -- performance = {
-    --     reset_packpath = false
-    -- },
     dev = {
         path = "~/.local/share/nvim/nix",
         fallback = false,
