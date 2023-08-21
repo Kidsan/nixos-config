@@ -3,7 +3,7 @@
 {
 
   programs.bash.profileExtra = ''
-    if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+    if [ -z "$DISPLAY" ] && [ "''\${XDG_VTNR:-0}" -eq 1 ]; then
       exec sway
     fi
   '';

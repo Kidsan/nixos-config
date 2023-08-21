@@ -14,7 +14,7 @@
       git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\[(\1)\]/'
     }
     export PS1="\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\[\033[33m\]\$(parse_git_branch)\[\033[1;32m\]\$\[\033[0m\] "
-    bash -c "fortune ~/.config/fortunes/futurama"
+    # bash -c "fortune ~/.config/fortunes/futurama"
     source <(${pkgs.kubectl}/bin/kubectl completion bash)
     complete -o default -F __start_kubectl k
   '';

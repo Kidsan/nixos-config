@@ -185,11 +185,15 @@
         hostname = "192.168.2.113";
         fastConnection = true;
         sshUser = "kidsan";
-        # sshOpts = [ "-t" ];
-        # sudo = "sudo -S -u";
-        profiles.system = {
-          user = "root";
-          path = deployPkgs.deploy-rs.lib.activate.nixos self.nixosConfigurations.thinkpad;
+        sshOpts = [ "-t" ];
+        # profiles.system = {
+        #   user = "root";
+        #   path = deployPkgs.deploy-rs.lib.activate.nixos self.nixosConfigurations.thinkpad;
+        # };
+        profiles.home = {
+          user = "kidsan";
+          path = deployPkgs.deploy-rs.lib.activate.home-manager self.homeConfigurations."kidsan@thinkpad";
+          profilePath = "/nix/var/nix/profiles/per-user/kidsan/profile";
         };
       };
 
@@ -200,6 +204,7 @@
         buildInputs = with x86Pkgs; [
           nil
           nixpkgs-fmt
+          deploy-rs.defaultPackage.x86_64-linux
         ];
       };
     };
