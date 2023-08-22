@@ -26,6 +26,7 @@
     weechat
     vlc
     signal-desktop
+    waypipe
   ];
 
   imports = [
