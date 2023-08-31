@@ -11,6 +11,7 @@
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.neovim-flake.url = "github:neovim/neovim?dir=contrib&rev=b641fc38749a2a52e40fa7eca6c7c41b1d9b031c";
     };
 
     agenix.url = "github:ryantm/agenix";
