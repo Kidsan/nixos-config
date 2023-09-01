@@ -319,10 +319,7 @@
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "neovim-nightly-overlay",
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "dir": "contrib",
@@ -431,6 +428,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1693377291,
+        "narHash": "sha256-vYGY9bnqEeIncNarDZYhm6KdLKgXMS+HA2mTRaWEc80=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "e7f38be3775bab9659575f192ece011c033655f0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1693355128,
         "narHash": "sha256-+ZoAny3ZxLcfMaUoLVgL9Ywb/57wP+EtsdNGuXUJrwg=",
         "owner": "NixOS",
@@ -453,7 +466,7 @@
         "homeage": "homeage",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixos": "nixos",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "secrets": "secrets"
       }
     },
