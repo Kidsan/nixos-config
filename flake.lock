@@ -282,11 +282,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1693399033,
-        "narHash": "sha256-yXhiMo8MnE86sGtPIHAKaLHhmhe8v9tqGGotlUgKJvY=",
+        "lastModified": 1693646047,
+        "narHash": "sha256-VsuXtCGOhrzp1qb1CSoV/cO+5f+GPtA4J/SFYqqLyfo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f5c15668f9842dd4d5430787d6aa8a28a07f7c10",
+        "rev": "fae8af43e201a8929ce45a5ea46192bbd1ffff18",
         "type": "github"
       },
       "original": {
@@ -319,7 +319,10 @@
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": [
+          "neovim-nightly-overlay",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "dir": "contrib",
@@ -348,11 +351,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1693613115,
-        "narHash": "sha256-E9ZHrLeeoMOFiKwo4kxYrEcj4Fx2pkD6Ga9ep2GFKts=",
+        "lastModified": 1693699519,
+        "narHash": "sha256-LY2LRKv2ozDZdvID7tMyB1bhDeFmRffupS5m+TfgI5o=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "75a8ceac2407741dfd03ae15569f1c99eabf3476",
+        "rev": "fb3956954072ed4afa953bc18978f81f3ff696d5",
         "type": "github"
       },
       "original": {
@@ -428,27 +431,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1693565476,
-        "narHash": "sha256-ya00zHt7YbPo3ve/wNZ/6nts61xt7wK/APa6aZAfey0=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "aa8aa7e2ea35ce655297e8322dc82bf77a31d04b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
-        "lastModified": 1693594656,
-        "narHash": "sha256-JgUQkso4tbQDaE5SJic/EDDrehAQ/xoOSGCuakGE6OM=",
+        "lastModified": 1693654884,
+        "narHash": "sha256-EqKKEl+IOS8TSjkt+xn1qGpsjnx5/ag33YNQ1+c7OuM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "cdceca7fb009a8ca0b7c4539f00b106ed21e86dc",
+        "rev": "e7f35e03abd06a2faef6684d0de813370e13bda8",
         "type": "github"
       },
       "original": {
@@ -466,7 +453,7 @@
         "homeage": "homeage",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixos": "nixos",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "secrets": "secrets"
       }
     },
