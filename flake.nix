@@ -29,6 +29,7 @@
     secrets.inputs.nixpkgs.follows = "nixpkgs";
 
     deploy-rs.url = "github:serokell/deploy-rs";
+    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, nixos, home-manager, homeage, secrets, agenix, darwin, deploy-rs, ... } @ inputs:
@@ -37,6 +38,8 @@
         inputs.neovim-nightly-overlay.overlay
         (import ./overlays/weechat.nix)
       ];
+
+      config = { allowUnfree = true; };
 
       x86Pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -175,7 +178,10 @@
         "Kierans-Air" = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           inputs = { inherit darwin nixpkgs; };
-          pkgs = darwinPkgs;
+          pkgs = import nixpkgs {
+            inherit config;
+            system = "aarch64-darwin";
+          };
           modules = [
             ./darwin/macbook.nix
           ];
