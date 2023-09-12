@@ -43,7 +43,11 @@
     cachix
     xfce.thunar
     xfce.thunar-volman
+    virt-manager
   ];
+  programs.dconf.enable = true;
+  users.users.kidsan.extraGroups = [ "libvirtd" ];
+  virtualisation.libvirtd.enable = true;
 
   environment.pathsToLink = [ "/share/bash-completion" ];
 
