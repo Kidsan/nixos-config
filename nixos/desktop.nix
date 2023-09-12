@@ -31,8 +31,11 @@
     vim
     curl
     cachix
+    virt-manager
   ];
-
+  programs.dconf.enable = true;
+  users.users.kidsan.extraGroups = [ "libvirtd" ];
+  virtualisation.libvirtd.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
