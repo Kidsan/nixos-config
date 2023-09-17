@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  environment.systemPackages = [ pkgs.mangohud ]; # used for limiting fps via steam command parameters
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
