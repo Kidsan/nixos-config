@@ -25,14 +25,18 @@
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    secrets.url = "git+ssh://git@github.com/kidsan/secrets.git?ref=main";
-    secrets.inputs.nixpkgs.follows = "nixpkgs";
 
     deploy-rs.url = "github:serokell/deploy-rs";
     deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
+
+
+    impermanence.url = "github:nix-community/impermanence/master";
+
+    disko.url = "github:nix-community/disko/master";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixos, home-manager, homeage, secrets, agenix, darwin, deploy-rs, ... } @ inputs:
+  outputs = { self, nixpkgs, nixos, home-manager, homeage, agenix, darwin, deploy-rs, impermanence, disko, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -106,6 +110,7 @@
           modules = [
             ./home/users/kidsan/kidsan_desktop.nix
             homeage.homeManagerModules.homeage
+            impermanence.nixosModules.home-manager.impermanence
             # https://ayats.org/blog/channels-to-flakes/
             (args: {
               xdg.configFile."nix/inputs/nixpkgs".source = nixpkgs.outPath;
@@ -132,9 +137,12 @@
           system = "x86_64-linux";
           modules =
             [
+              ({ config, pkgs, ... }: { nixpkgs.overlays = overlays; })
               ./nixos/desktop.nix
+              disko.nixosModules.disko
+              impermanence.nixosModule
+              ./nixos/modules/impermanence/desktop.nix
               agenix.nixosModules.default
-              secrets.nixosModules.desktop or { }
               {
                 environment.etc."nix/inputs/nixpkgs".source = inputs.nixos.outPath;
               }
@@ -142,6 +150,19 @@
               ./nixos/modules/common.nix
               ./nixos/modules/kde.nix
               ./nixos/modules/steam.nix
+              home-manager.nixosModules.home-manager
+              {
+                nixpkgs.overlays = overlays;
+                home-manager.useGlobalPkgs = true;
+                home-manager.users.kidsan = { pkgs, ... }: {
+                  imports = [
+                    ./home/users/kidsan/kidsan_desktop.nix
+                    impermanence.nixosModules.home-manager.impermanence
+                  ];
+                  xdg.configFile."nix/inputs/nixpkgs".source = nixpkgs.outPath;
+                  nix.registry.nixpkgs.flake = nixpkgs;
+                };
+              }
             ];
         };
 
@@ -150,7 +171,6 @@
             system = "x86_64-linux";
             modules = [
               agenix.nixosModules.default
-              secrets.nixosModules.thinkpad or { }
               {
                 environment.etc."nix/inputs/nixpkgs".source = inputs.nixos.outPath;
               }
@@ -166,7 +186,6 @@
             system = "aarch64-linux";
             modules = [
               agenix.nixosModules.default
-              secrets.nixosModules.monster or { }
               ./nixos/modules/ssh.nix
               ./nixos/monster.nix
               ./nixos/modules/home-assistant.nix

@@ -7,20 +7,13 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
+  #boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.kernelModules = [ "coretemp" "nct6775" ];
+
   hardware.enableRedistributableFirmware = true;
 
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-
-  # Enable swap on luks
-  boot.initrd.luks.devices."luks-c1db48bc-8179-4529-945d-540de98b1a11".device = "/dev/disk/by-uuid/c1db48bc-8179-4529-945d-540de98b1a11";
-  boot.initrd.luks.devices."luks-c1db48bc-8179-4529-945d-540de98b1a11".keyFile = "/crypto_keyfile.bin";
 
   networking.hostName = "desktop";
 
@@ -46,7 +39,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 
   virtualisation.docker.enable = true;
 

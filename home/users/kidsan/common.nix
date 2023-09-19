@@ -17,8 +17,6 @@
 
   home.packages = with pkgs; [
     unzip
-    spotify
-    discord
     (element-desktop.override { electron = pkgs.electron_24; })
     chromium
     nixpkgs-fmt
@@ -40,15 +38,15 @@
     ../../programs/nextcloud.nix
   ];
 
-  homeage = {
+#  homeage = {
     # Absolute path to identity (created not through home-manager)
-    identityPaths = [ "~/.ssh/id_ed25519" ];
+#    identityPaths = [ "~/.ssh/id_ed25519" ];
 
     # file."foo" = {
     #   source = ../../../secrets/foo/foo.age;
     #   symlinks = [ "${config.xdg.configHome}/kidsan/foo.txt" ];
     # };
-  };
+#  };
 
   # restart homeage decrypt services on home-manager change
   systemd.user.startServices = "sd-switch";
