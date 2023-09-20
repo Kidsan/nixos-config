@@ -107,18 +107,7 @@
         "kidsan@desktop" = home-manager.lib.homeManagerConfiguration {
           pkgs = x86Pkgs;
 
-          modules = [
-            ./home/users/kidsan/kidsan_desktop.nix
-            homeage.homeManagerModules.homeage
-            impermanence.nixosModules.home-manager.impermanence
-            # https://ayats.org/blog/channels-to-flakes/
-            (args: {
-              xdg.configFile."nix/inputs/nixpkgs".source = nixpkgs.outPath;
-              home.sessionVariables.NIX_PATH = "nixpkgs=${args.config.xdg.configHome}/nix/inputs/nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
-            })
-
-            { nix.registry.nixpkgs.flake = nixpkgs; }
-          ];
+          modules = [ ];
         };
 
         "kieranosullivan@Kierans-Air" = home-manager.lib.homeManagerConfiguration {
@@ -141,15 +130,10 @@
               ./nixos/desktop.nix
               disko.nixosModules.disko
               impermanence.nixosModule
-              ./nixos/modules/impermanence/desktop.nix
               agenix.nixosModules.default
               {
                 environment.etc."nix/inputs/nixpkgs".source = inputs.nixos.outPath;
               }
-              ./lib/cachix.nix
-              ./nixos/modules/common.nix
-              ./nixos/modules/kde.nix
-              ./nixos/modules/steam.nix
               home-manager.nixosModules.home-manager
               {
                 nixpkgs.overlays = overlays;
@@ -230,7 +214,6 @@
         buildInputs = with x86Pkgs; [
           nil
           nixpkgs-fmt
-          deploy-rs.defaultPackage.x86_64-linux
         ];
       };
     };

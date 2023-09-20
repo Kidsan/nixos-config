@@ -17,6 +17,8 @@
 
   home.packages = with pkgs; [
     unzip
+    spotify
+    discord
     (element-desktop.override { electron = pkgs.electron_24; })
     chromium
     nixpkgs-fmt
