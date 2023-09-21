@@ -15,6 +15,7 @@
     ];
     users.kidsan = {
       directories = [
+        { directory = ".mozilla"; mode = "0700"; user = "kidsan"; }
         { directory = ".config/discord"; mode = "0700"; user = "kidsan"; }
         { directory = ".local/share/nvim"; user = "kidsan"; }
         { directory = ".local/share/keyrings"; user = "kidsan"; }
