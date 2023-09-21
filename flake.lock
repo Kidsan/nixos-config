@@ -478,7 +478,29 @@
         "impermanence": "impermanence",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixos": "nixos",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "secrets": "secrets"
+      }
+    },
+    "secrets": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1676462910,
+        "narHash": "sha256-EzwPKdClF6C4DYgnXjc+kLCthQHurBg7tfYNjdiW9eQ=",
+        "ref": "main",
+        "rev": "fa2f7b6026f137f0fa105416f6171c3c01f12ba1",
+        "revCount": 14,
+        "type": "git",
+        "url": "ssh://git@github.com/kidsan/secrets.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/kidsan/secrets.git"
       }
     },
     "systems": {

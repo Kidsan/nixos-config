@@ -5,38 +5,53 @@
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
     nixos.url = "nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager/master";
+    };
 
     neovim-nightly-overlay = {
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.neovim-flake.url = "github:neovim/neovim?dir=contrib&rev=b641fc38749a2a52e40fa7eca6c7c41b1d9b031c";
     };
 
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:ryantm/agenix";
+    };
+
     homeage = {
-      url = "github:jordanisaacs/homeage";
-      # Optional
       inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:jordanisaacs/homeage";
     };
 
-    darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    darwin = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:lnl7/nix-darwin/master";
+    };
 
 
-    deploy-rs.url = "github:serokell/deploy-rs";
-    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
+    deploy-rs = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:serokell/deploy-rs";
+    };
 
+    impermanence = {
+      url = "github:nix-community/impermanence/master";
+    };
 
-    impermanence.url = "github:nix-community/impermanence/master";
+    disko = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/disko/master";
+    };
 
-    disko.url = "github:nix-community/disko/master";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    secrets = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "git+ssh://git@github.com/kidsan/secrets.git?ref=main";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos, home-manager, homeage, agenix, darwin, deploy-rs, impermanence, disko, ... } @ inputs:
+  outputs = { self, nixpkgs, nixos, home-manager, homeage, secrets, agenix, darwin, deploy-rs, impermanence, disko, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -140,6 +155,7 @@
               {
                 environment.etc."nix/inputs/nixpkgs".source = inputs.nixos.outPath;
               }
+              secrets.nixosModules.desktop or { }
             ];
         };
 
@@ -155,6 +171,7 @@
               ./lib/cachix.nix
               ./nixos/modules/common.nix
               ./nixos/modules/xdg.nix
+              secrets.nixosModules.thinkpad or { }
             ];
           };
 
@@ -166,6 +183,7 @@
               ./nixos/modules/ssh.nix
               ./nixos/monster.nix
               ./nixos/modules/home-assistant.nix
+              secrets.nixosModules.monster or { }
             ];
           };
       };
