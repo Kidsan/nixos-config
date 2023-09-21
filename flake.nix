@@ -107,7 +107,14 @@
         "kidsan@desktop" = home-manager.lib.homeManagerConfiguration {
           pkgs = x86Pkgs;
 
-          modules = [ ];
+          modules = [
+            ./home/users/kidsan/kidsan_desktop.nix
+            (args: {
+              nix.registry.nixpkgs.flake = nixpkgs;
+              xdg.configFile."nix/inputs/nixpkgs".source = nixpkgs.outPath;
+              home.sessionVariables.NIX_PATH = "nixpkgs=${args.config.xdg.configHome}/nix/inputs/nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
+            })
+          ];
         };
 
         "kieranosullivan@Kierans-Air" = home-manager.lib.homeManagerConfiguration {
@@ -126,26 +133,12 @@
           system = "x86_64-linux";
           modules =
             [
-              ({ config, pkgs, ... }: { nixpkgs.overlays = overlays; })
               ./nixos/desktop.nix
               disko.nixosModules.disko
               impermanence.nixosModule
               agenix.nixosModules.default
               {
                 environment.etc."nix/inputs/nixpkgs".source = inputs.nixos.outPath;
-              }
-              home-manager.nixosModules.home-manager
-              {
-                nixpkgs.overlays = overlays;
-                home-manager.useGlobalPkgs = true;
-                home-manager.users.kidsan = { pkgs, ... }: {
-                  imports = [
-                    ./home/users/kidsan/kidsan_desktop.nix
-                    impermanence.nixosModules.home-manager.impermanence
-                  ];
-                  xdg.configFile."nix/inputs/nixpkgs".source = nixpkgs.outPath;
-                  nix.registry.nixpkgs.flake = nixpkgs;
-                };
               }
             ];
         };

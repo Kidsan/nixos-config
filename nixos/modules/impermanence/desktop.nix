@@ -13,9 +13,29 @@
     files = [
       "/etc/machine-id"
     ];
+    users.kidsan = {
+      directories = [
+        { directory = ".config/discord"; mode = "0700"; user = "kidsan"; }
+        { directory = ".local/share/nvim"; user = "kidsan"; }
+        { directory = ".local/share/keyrings"; user = "kidsan"; }
+        { directory = ".local/share/direnv"; user = "kidsan"; }
+        { directory = ".ssh"; user = "kidsan"; }
+        { directory = "workspace"; user = "kidsan"; }
+        { directory = "nixos-config"; user = "kidsan"; }
+        {
+          user = "kidsan";
+          directory = ".local/share/Steam";
+        }
+      ];
+    };
   };
   fileSystems."/persist".neededForBoot = true;
 
   programs.fuse.userAllowOther = true; # requied for home-manager impermanence
+
+  security.sudo.extraConfig = ''
+    # rollback results in sudo lectures after each reboot
+    Defaults lecture = never
+  '';
 }
 
