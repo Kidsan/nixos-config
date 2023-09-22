@@ -15,19 +15,19 @@
     ];
     users.kidsan = {
       directories = [
-        { directory = ".mozilla"; mode = "0700"; user = "kidsan"; }
-        { directory = ".local/state/nix"; mode = "0700"; user = "kidsan"; }
         { directory = ".config/discord"; mode = "0700"; user = "kidsan"; }
-        { directory = ".local/share/nvim"; user = "kidsan"; }
-        { directory = ".local/share/keyrings"; user = "kidsan"; }
         { directory = ".local/share/direnv"; user = "kidsan"; }
+        { directory = ".local/share/keyrings"; user = "kidsan"; }
+        { directory = ".local/share/nvim"; user = "kidsan"; }
+        { directory = ".local/share/Steam"; user = "kidsan"; }
+        { directory = ".local/state/nix"; mode = "0700"; user = "kidsan"; }
+        { directory = ".mozilla"; mode = "0700"; user = "kidsan"; }
         { directory = ".ssh"; user = "kidsan"; }
-        { directory = "workspace"; user = "kidsan"; }
         { directory = "nixos-config"; user = "kidsan"; }
-        {
-          user = "kidsan";
-          directory = ".local/share/Steam";
-        }
+        { directory = "workspace"; user = "kidsan"; }
+      ];
+      files = [
+        { file = ".bash_history"; }
       ];
     };
   };

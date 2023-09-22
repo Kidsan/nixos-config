@@ -10,6 +10,8 @@
   system.stateVersion = "20.03";
   imports = [
     ./hardware/monster.nix
+    ./modules/ssh.nix
+    ./modules/home-assistant.nix
   ];
 
   boot = {

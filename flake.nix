@@ -60,6 +60,11 @@
 
       config = { allowUnfree = true; };
 
+      nixosPackages = import nixos {
+        system = "x86_64-linux";
+        config = { allowUnfree = true; };
+      };
+
       x86Pkgs = import nixpkgs {
         system = "x86_64-linux";
         config = { allowUnfree = true; };
@@ -94,44 +99,6 @@
     in
     {
       homeConfigurations = {
-        "kidsan@thinkpad" = home-manager.lib.homeManagerConfiguration {
-          pkgs = x86Pkgs;
-
-          modules = [
-            ./home/users/kidsan/kidsan_thinkpad.nix
-            homeage.homeManagerModules.homeage
-
-            # https://ayats.org/blog/channels-to-flakes/
-            (args: {
-              xdg.configFile."nix/inputs/nixpkgs".source = nixpkgs.outPath;
-              home.sessionVariables.NIX_PATH = "nixpkgs=${args.config.xdg.configHome}/nix/inputs/nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
-            })
-
-            { nix.registry.nixpkgs.flake = nixpkgs; }
-          ];
-        };
-
-        lobster = home-manager.lib.homeManagerConfiguration {
-          pkgs = armPkgs;
-
-          modules = [
-            ./home/users/lobster/home.nix
-          ];
-        };
-
-        "kidsan@desktop" = home-manager.lib.homeManagerConfiguration {
-          pkgs = x86Pkgs;
-
-          modules = [
-            ./home/users/kidsan/kidsan_desktop.nix
-            (args: {
-              nix.registry.nixpkgs.flake = nixpkgs;
-              xdg.configFile."nix/inputs/nixpkgs".source = nixpkgs.outPath;
-              home.sessionVariables.NIX_PATH = "nixpkgs=${args.config.xdg.configHome}/nix/inputs/nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
-            })
-          ];
-        };
-
         "kieranosullivan@Kierans-Air" = home-manager.lib.homeManagerConfiguration {
           pkgs = darwinPkgs;
 
@@ -143,9 +110,9 @@
       };
 
       nixosConfigurations = {
-
-        desktop = nixpkgs.lib.nixosSystem {
+        desktop = nixos.lib.nixosSystem {
           system = "x86_64-linux";
+          pkgs = nixosPackages;
           modules =
             [
               ./nixos/desktop.nix
@@ -156,34 +123,60 @@
                 environment.etc."nix/inputs/nixpkgs".source = inputs.nixos.outPath;
               }
               secrets.nixosModules.desktop or { }
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.extraSpecialArgs = {
+                  pkgs = x86Pkgs;
+                };
+                home-manager.users.kidsan = import ./home/users/kidsan/kidsan_desktop.nix;
+              }
+              ({
+                nix.registry.nixpkgs.flake = nixpkgs;
+              })
+
             ];
         };
 
-        thinkpad = nixpkgs.lib.nixosSystem
-          {
-            system = "x86_64-linux";
-            modules = [
-              agenix.nixosModules.default
-              {
-                environment.etc."nix/inputs/nixpkgs".source = inputs.nixos.outPath;
-              }
-              ./nixos/thinkpad.nix
-              ./lib/cachix.nix
-              ./nixos/modules/common.nix
-              ./nixos/modules/xdg.nix
-              secrets.nixosModules.thinkpad or { }
-            ];
-          };
+        thinkpad = nixos.lib.nixosSystem {
+          system = "x86_64-linux";
+          pkgs = nixosPackages;
+          modules = [
+            agenix.nixosModules.default
+            {
+              environment.etc."nix/inputs/nixpkgs".source = inputs.nixos.outPath;
+            }
+            ./nixos/thinkpad.nix
+            secrets.nixosModules.thinkpad or { }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = {
+                pkgs = x86Pkgs;
+              };
+              home-manager.users.kidsan = import ./home/users/kidsan/kidsan_thinkpad.nix;
+            }
+            ({
+              nix.registry.nixpkgs.flake = nixpkgs;
+            })
+          ];
+        };
 
-        monster = nixpkgs.lib.nixosSystem
+        monster = nixos.lib.nixosSystem
           {
             system = "aarch64-linux";
             modules = [
               agenix.nixosModules.default
-              ./nixos/modules/ssh.nix
               ./nixos/monster.nix
-              ./nixos/modules/home-assistant.nix
               secrets.nixosModules.monster or { }
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.extraSpecialArgs = {
+                  pkgs = armPkgs;
+                };
+                home-manager.users.lobster = import ./home/users/lobster/home.nix;
+              }
+              ({
+                nix.registry.nixpkgs.flake = nixpkgs;
+              })
             ];
           };
       };
@@ -207,10 +200,6 @@
         fastConnection = true;
         sshUser = "kidsan";
         sshOpts = [ "-t" ];
-        # profiles.system = {
-        #   user = "root";
-        #   path = deployPkgs.deploy-rs.lib.activate.nixos self.nixosConfigurations.thinkpad;
-        # };
         profiles.home = {
           user = "kidsan";
           path = deployPkgs.deploy-rs.lib.activate.home-manager self.homeConfigurations."kidsan@thinkpad";
