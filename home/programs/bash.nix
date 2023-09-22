@@ -4,6 +4,8 @@
   home.packages = [
     pkgs.krabby
     pkgs.fortune
+    pkgs.eza
+    pkgs.bat
   ];
 
   programs.fzf.enable = true;
@@ -20,6 +22,8 @@
   '';
   programs.bash.shellAliases = {
     k = "kubectl";
+    ls = "eza";
+    cat = "bat --paging=never";
   };
 
   home.file.".config/fortunes" = { source = ./fortunes; };
