@@ -2,6 +2,7 @@ return {
     {
         'VonHeikemen/lsp-zero.nvim',
         event = { "BufReadPre", "BufNewFile" },
+        branch = 'v2.x',
         dependencies = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
