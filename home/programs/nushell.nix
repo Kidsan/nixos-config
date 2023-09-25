@@ -2,6 +2,17 @@
 {
   programs.nushell = {
     enable = true;
+    envFile = {
+      text = ''
+        $env.config = {
+          cursor_shape: {
+            emacs: inherit # block, underscore, line (line is the default)
+            vi_insert: inherit # block, underscore, line (block is the default)
+            vi_normal: inherit # block, underscore, line  (underscore is the default)
+          }
+        };
+      '';
+    };
   };
 
   programs.starship = {
