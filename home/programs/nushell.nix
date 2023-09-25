@@ -5,6 +5,7 @@
     envFile = {
       text = ''
         $env.config = {
+          show_banner: false,
           cursor_shape: {
             emacs: inherit # block, underscore, line (line is the default)
             vi_insert: inherit # block, underscore, line (block is the default)
