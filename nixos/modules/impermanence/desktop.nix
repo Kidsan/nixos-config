@@ -28,6 +28,7 @@
       ];
       files = [
         { file = ".bash_history"; }
+        { file = ".config/kcminputrc"; }
       ];
     };
   };
