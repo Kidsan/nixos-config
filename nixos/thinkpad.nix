@@ -51,6 +51,7 @@
   ];
   programs.dconf.enable = true;
   users.users.kidsan.extraGroups = [ "libvirtd" ];
+  users.users.kidsan.shell = pkgs.nushell;
   virtualisation.libvirtd.enable = true;
 
   environment.pathsToLink = [ "/share/bash-completion" ];

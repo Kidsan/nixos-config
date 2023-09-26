@@ -1,6 +1,5 @@
 _:
 {
-
   users.users.kidsan = {
     isNormalUser = true;
     description = "kidsan";
