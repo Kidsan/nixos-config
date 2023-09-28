@@ -2,8 +2,15 @@
 {
   programs.nushell = {
     enable = true;
+    shellAliases = {
+      k = "kubectl";
+    };
     envFile = {
       text = ''
+        $env.PATH = ($env.PATH | split row (char esep) | append '$env.HOME/.nix-profile/bin')
+        $env.PATH = ($env.PATH | split row (char esep) | append '/etc/profiles/per-user/$env.USER/bin')
+        $env.PATH = ($env.PATH | split row (char esep) | append '/run/current-system/sw/bin')
+        $env.PATH = ($env.PATH | split row (char esep) | append '/nix/var/nix/profiles/default/bin')
         $env.config = {
           show_banner: false,
           cursor_shape: {
