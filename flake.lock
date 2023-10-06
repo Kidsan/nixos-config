@@ -181,11 +181,11 @@
     "flake-compat_3": {
       "flake": false,
       "locked": {
-        "lastModified": 1696416586,
-        "narHash": "sha256-Dk1zfIAQeVBzBtI2LdkFJDj9Z4e3Xb6Fy0gTRy6uAIE=",
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
         "owner": "edolstra",
         "repo": "flake-compat",
-        "rev": "5a16547d46553d7bdd1dfc2cf418f5f7d236f6ad",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
         "type": "github"
       },
       "original": {
@@ -419,11 +419,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1696370659,
-        "narHash": "sha256-gLnzy6safyn+XVY8fnzxU16h2CKPDRF2yshoPh95B+A=",
+        "lastModified": 1696505474,
+        "narHash": "sha256-i+uB553ud0rWZoNqZ/D1DI8PI+LdMWAAqYG5bZt4j9Q=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "1e7e9ee91f73c62b8c5ba9dbdabba3a3b6dc0130",
+        "rev": "f67517bba30b6233bea85e1f6a8505171142d4ca",
         "type": "github"
       },
       "original": {
@@ -444,11 +444,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1696421174,
-        "narHash": "sha256-hU7eRD+NI7Ld0eRnCWwI7JrbV08rZ0XVZEI8ZX+v6A4=",
+        "lastModified": 1696519180,
+        "narHash": "sha256-KSE88c2OZRyosxrL+ump3GTHBi7Erf7jXPTL1ick/1w=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "1294c96baead66a8e3b051172f113069c8c19d1a",
+        "rev": "5732f5376c14dc268d3c82c2c8c2586bc3d2514f",
         "type": "github"
       },
       "original": {
