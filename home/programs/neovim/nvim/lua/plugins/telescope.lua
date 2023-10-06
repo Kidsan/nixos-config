@@ -34,6 +34,12 @@ return {
                 end,
                 desc = "telescope grep string"
             },
+            {
+                "<leader>pb",
+                mode = "n",
+                function() require("telescope.builtin").buffers() end,
+                desc = "telescope buffers"
+            },
         },
         config = function()
             local opts = {
