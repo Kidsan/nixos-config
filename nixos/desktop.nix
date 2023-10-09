@@ -45,7 +45,13 @@
   hardware = {
     enableRedistributableFirmware = true;
     opengl.enable = true;
-    nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
+    nvidia = {
+      modesetting.enable = true;
+      nvidiaSettings = true;
+      open = true;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      powerManagement.enable = false;
+    };
   };
 
   networking.hostId = "e39fd16b";
