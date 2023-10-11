@@ -50,13 +50,13 @@
     };
 
     apple-silicon-support = {
-        url = "github:tpwrules/nixos-apple-silicon";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:tpwrules/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     apple-silicon-firmware = {
-        url = "git+ssh://git@github.com/kidsan/apple-silicon-firmware.git?ref=main";
-        flake = false;
+      url = "git+ssh://git@github.com/kidsan/apple-silicon-firmware.git?ref=main";
+      flake = false;
     };
   };
 
@@ -147,7 +147,7 @@
               impermanence.nixosModule
               agenix.nixosModules.default
               {
-                environment.etc."nix/inputs/nixpkgs".source = inputs.nixos.outPath;
+                nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
               }
               secrets.nixosModules.desktop or { }
               home-manager.nixosModules.home-manager
@@ -218,7 +218,7 @@
             ./nixos/modules/fonts.nix
             ./nixos/modules/ssh.nix
             apple-silicon-support.nixosModules.apple-silicon-support
-            ({  hardware.asahi.peripheralFirmwareDirectory = apple-silicon-firmware;})
+            ({ hardware.asahi.peripheralFirmwareDirectory = apple-silicon-firmware; })
           ];
         };
       };

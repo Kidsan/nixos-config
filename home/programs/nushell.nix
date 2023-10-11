@@ -53,6 +53,12 @@
         };
       '';
     };
+    loginFile = {
+      text = ''
+        $env.EDITOR = "nvim"
+        $env.NIX_PATH = "nixpkgs=flake:nixpkgs"
+      '';
+    };
   };
 
   programs.starship = {

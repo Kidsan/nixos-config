@@ -33,6 +33,9 @@
   # Wayland stuff
   security.pam.services.swaylock = { }; # allows swaylock check if password is correct
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.shells = [
+    pkgs.nushell
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
