@@ -51,6 +51,7 @@
             vi_normal: inherit # block, underscore, line  (underscore is the default)
           }
         };
+        $env.NIXPKGS_ALLOW_UNFREE = 1
       '';
     };
     loginFile = {
