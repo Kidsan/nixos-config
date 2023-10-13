@@ -2,7 +2,7 @@
 
 {
   home.stateVersion = "22.11";
-  home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX+PATH}";
+  home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
 
   imports = [
     ./common.nix
