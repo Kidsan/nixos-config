@@ -20,7 +20,6 @@
     spotify
     discord
     (element-desktop.override { electron = pkgs.electron_24; })
-    chromium
     nixpkgs-fmt
     jq
     weechat
