@@ -30,11 +30,6 @@
       url = "github:lnl7/nix-darwin/master";
     };
 
-    deploy-rs = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:serokell/deploy-rs";
-    };
-
     impermanence = {
       url = "github:nix-community/impermanence/master";
     };
@@ -60,7 +55,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos, home-manager, homeage, secrets, agenix, darwin, deploy-rs, impermanence, disko, apple-silicon-support, apple-silicon-firmware, ... } @ inputs:
+  outputs = { self, nixpkgs, nixos, home-manager, homeage, secrets, agenix, darwin, impermanence, disko, apple-silicon-support, apple-silicon-firmware, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -71,13 +66,12 @@
 
       nixosPackages = import nixos {
         system = "x86_64-linux";
-        config = { allowUnfree = true; };
+        inherit config overlays;
       };
 
       x86Pkgs = import nixpkgs {
         system = "x86_64-linux";
-        config = { allowUnfree = true; };
-        inherit overlays;
+        inherit config overlays;
       };
 
       armPkgs = import nixpkgs {
@@ -89,20 +83,6 @@
       darwinPkgs = import nixpkgs {
         system = "aarch64-darwin";
         config = { allowUnfree = true; };
-      };
-
-      deployPkgs = import nixpkgs {
-        system = "x86_64-linux";
-        overlays = [
-          deploy-rs.overlay
-          (self: super: {
-            deploy-rs = {
-              pkgs = x86Pkgs;
-              inherit deploy-rs;
-              lib = super.deploy-rs.lib;
-            };
-          })
-        ];
       };
 
     in
@@ -236,20 +216,6 @@
           ];
         };
       };
-
-      deploy.nodes.thinkpad = {
-        hostname = "192.168.2.113";
-        fastConnection = true;
-        sshUser = "kidsan";
-        sshOpts = [ "-t" ];
-        profiles.home = {
-          user = "kidsan";
-          path = deployPkgs.deploy-rs.lib.activate.home-manager self.homeConfigurations."kidsan@thinkpad";
-          profilePath = "/nix/var/nix/profiles/per-user/kidsan/profile";
-        };
-      };
-
-      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
       devShell.x86_64-linux = x86Pkgs.mkShell {
         nativeBuildInputs = [ x86Pkgs.bashInteractive ];
