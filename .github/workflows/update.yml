@@ -30,7 +30,7 @@ jobs:
     - name: Update the flake
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: nix flake lock --update-input nixos --update-input home-manager --update-input nixpkgs --update-input agenix --update-input neovim-nightly-overlay --update-input homeage  
+      run: nix flake lock --update-input nixos --update-input home-manager --update-input nixpkgs --update-input agenix --update-input neovim-nightly-overlay --update-input homeage --update-input apple-silicon-support 
     - name: Store flake.lock
       uses: actions/upload-artifact@v3
       with:
