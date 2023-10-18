@@ -51,6 +51,9 @@
             vi_normal: inherit # block, underscore, line  (underscore is the default)
           }
         };
+        def dockill [] {
+          docker ps -aq | str trim |  split row "\n" | each { |it| docker rm -f $it }
+        }
         $env.NIXPKGS_ALLOW_UNFREE = 1
       '';
     };
