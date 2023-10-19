@@ -20,11 +20,6 @@
       url = "github:ryantm/agenix";
     };
 
-    homeage = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:jordanisaacs/homeage";
-    };
-
     darwin = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:lnl7/nix-darwin/master";
@@ -55,7 +50,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos, home-manager, homeage, secrets, agenix, darwin, impermanence, disko, apple-silicon-support, apple-silicon-firmware, ... } @ inputs:
+  outputs = { self, nixpkgs, nixos, home-manager, secrets, agenix, darwin, impermanence, disko, apple-silicon-support, apple-silicon-firmware, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -93,7 +88,6 @@
 
           modules = [
             ./home/users/kieranosullivan/home.nix
-            homeage.homeManagerModules.homeage
           ];
         };
 
@@ -103,7 +97,6 @@
 
           modules = [
             ./home/users/kidsan/kidsan_ihasa.nix
-            homeage.homeManagerModules.homeage
 
             # https://ayats.org/blog/channels-to-flakes/
             (args: {

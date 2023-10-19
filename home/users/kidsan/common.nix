@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   # Let Home Manager install and manage itself.
@@ -38,16 +38,6 @@
     ../../programs/neovim
     ../../programs/nextcloud.nix
   ];
-
-  #  homeage = {
-  # Absolute path to identity (created not through home-manager)
-  #    identityPaths = [ "~/.ssh/id_ed25519" ];
-
-  # file."foo" = {
-  #   source = ../../../secrets/foo/foo.age;
-  #   symlinks = [ "${config.xdg.configHome}/kidsan/foo.txt" ];
-  # };
-  #  };
 
   # restart homeage decrypt services on home-manager change
   systemd.user.startServices = "sd-switch";
