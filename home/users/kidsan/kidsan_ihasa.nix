@@ -17,6 +17,10 @@
     EDITOR = "nvim";
   };
 
+  home.packages = [
+    pkgs.armcord
+  ];
+
   imports = [
     ../../programs/bash.nix
     ../../programs/git.nix

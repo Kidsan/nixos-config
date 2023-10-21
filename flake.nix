@@ -76,7 +76,7 @@
 
       armPkgs = import nixpkgs {
         system = "aarch64-linux";
-        config = { allowUnfree = true; };
+        config = { allowUnfree = true; allowUnsupportedSystem = true; };
         inherit overlays;
       };
 
