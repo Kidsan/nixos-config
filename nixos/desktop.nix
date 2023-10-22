@@ -5,7 +5,6 @@
     [
       ./hardware/desktop.nix
       ./modules/impermanence/desktop.nix
-      ../lib/cachix.nix
       ./modules/common.nix
       ./modules/kde.nix
       ./modules/steam.nix
