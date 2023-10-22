@@ -4,7 +4,6 @@
   imports =
     [
       ./hardware/thinkpad.nix
-      ../lib/cachix.nix
       ./modules/common.nix
       ./modules/xdg.nix
     ];
