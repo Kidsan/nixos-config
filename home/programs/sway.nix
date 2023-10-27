@@ -129,6 +129,17 @@
         "4" = [{ class = "discord"; } { class = "Spotify"; }];
         "8" = [{ app_id = "com.nextcloud.desktopclient.nextcloud"; }];
       };
+      workspaceOutputAssign = [
+        { output = "eDP-1"; workspace = "8"; }
+        { output = "HDMI-A-1"; workspace = "1"; }
+        { output = "HDMI-A-1"; workspace = "2"; }
+        { output = "HDMI-A-1"; workspace = "3"; }
+        { output = "HDMI-A-1"; workspace = "4"; }
+        { output = "HDMI-A-1"; workspace = "5"; }
+        { output = "HDMI-A-1"; workspace = "6"; }
+        { output = "HDMI-A-1"; workspace = "7"; }
+        { output = "HDMI-A-1"; workspace = "9"; }
+      ];
     };
   };
 
