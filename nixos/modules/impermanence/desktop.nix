@@ -16,6 +16,8 @@
     users.kidsan = {
       directories = [
         { directory = ".config/discord"; mode = "0700"; user = "kidsan"; }
+        { directory = ".config/systemd"; user = "kidsan"; }
+        { directory = ".config/easyeffects"; user = "kidsan"; }
         { directory = ".local/share/direnv"; user = "kidsan"; }
         { directory = ".local/share/keyrings"; user = "kidsan"; }
         { directory = ".local/share/nvim"; user = "kidsan"; }
