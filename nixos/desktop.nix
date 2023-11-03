@@ -6,7 +6,7 @@
       ./hardware/desktop.nix
       ./modules/impermanence/desktop.nix
       ./modules/common.nix
-      ./modules/kde.nix
+      ./modules/i3.nix
       ./modules/steam.nix
     ];
 
