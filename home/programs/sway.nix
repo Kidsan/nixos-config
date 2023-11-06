@@ -191,7 +191,7 @@
         position = "top";
         height = 30;
         modules-left = [ "sway/workspaces" "sway/mode" ];
-        modules-center = [ "sway/window" ];
+        modules-center = [ "custom/weather" "sway/window" ];
         modules-right = [
           "custom/media"
           "bluetooth"
@@ -326,6 +326,14 @@
         "tray" = {
           "icon-size" = 21;
           "spacing" = 10;
+        };
+
+        "custom/weather" = {
+          "format" = "{}° ";
+          "tooltip" = true;
+          "interval" = 3600;
+          "exec" = "wttrbar --location Bonn";
+          "return-type" = "json";
         };
 
         "bluetooth" = {
