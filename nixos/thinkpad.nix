@@ -76,4 +76,5 @@
   ];
   hardware.opengl.driSupport = true;
   services.tlp.enable = true;
+  programs.noisetorch.enable = true;
 }
