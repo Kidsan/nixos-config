@@ -12,5 +12,6 @@
     ./common.nix
     ../../programs/sway.nix
     ../../programs/nushell.nix
+    ../../programs/easyeffects.nix
   ];
 }
