@@ -7,6 +7,6 @@ lib.mkMerge [
     boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   })
   (lib.mkIf (host != "desktop") {
-    boot.kernelPackages = pkgs.linuxPackages_6_6;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
   })
 ]
