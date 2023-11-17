@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.stateVersion = "22.11";
@@ -12,6 +12,5 @@
     ./common.nix
     ../../programs/sway.nix
     ../../programs/nushell.nix
-    ../../programs/easyeffects.nix
   ];
 }
