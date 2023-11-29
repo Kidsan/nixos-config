@@ -1,5 +1,13 @@
 { pkgs, ... }:
 {
+  environment.systemPackages = [
+    pkgs.xautolock
+    pkgs.lm_sensors
+  ];
+  programs.i3lock = {
+    enable = true;
+    u2fSupport = true;
+  };
   services.xserver = {
     enable = true;
     excludePackages = with pkgs; [ xterm ];
@@ -27,6 +35,7 @@
         enable = true;
         noDesktop = true;
         enableXfwm = false;
+        enableScreensaver = false;
       };
     };
     displayManager = {

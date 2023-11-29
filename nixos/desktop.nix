@@ -15,6 +15,8 @@
     curl
     vim
     virt-manager
+    openssl
+    i3blocks
   ];
 
   boot = {

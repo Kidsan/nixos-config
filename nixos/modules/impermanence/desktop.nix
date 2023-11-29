@@ -28,6 +28,7 @@
         { directory = ".ssh"; user = "kidsan"; }
         { directory = "nixos-config"; user = "kidsan"; }
         { directory = "workspace"; user = "kidsan"; }
+        { directory = ".config/i3blocks"; user = "kidsan"; }
       ];
       files = [
         { file = ".bash_history"; }
