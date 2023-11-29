@@ -16,7 +16,7 @@
         Type = "oneshot";
         ExecStart = "${pkgs.writeShellScript "sync-zettelkasten" ''
           #!/run/current-system/sw/bin/bash
-          ${pkgs.nextcloud-client}/bin/nextcloudcmd --path /zettelkasten -n ~/zettelkasten <server-url>
+          # ${pkgs.nextcloud-client}/bin/nextcloudcmd --path /zettelkasten -n ~/zettelkasten <server-url>
         ''}";
       };
     };
