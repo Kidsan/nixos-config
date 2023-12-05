@@ -34,6 +34,7 @@ in
     ripgrep
     fd
     lua-language-server
+    rust-analyzer-unwrapped
   ];
 
   programs.neovim = {

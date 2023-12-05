@@ -28,7 +28,6 @@ return {
             lsp.preset('recommended')
 
             lsp.ensure_installed({
-                'rust_analyzer',
                 'gopls',
                 'nil_ls'
             })
