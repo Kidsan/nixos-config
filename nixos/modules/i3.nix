@@ -17,7 +17,7 @@
 
     libinput = {
       mouse = {
-        accelSpeed = "-0.8";
+        accelSpeed = "-0.5";
         accelProfile = "flat";
       };
     };
