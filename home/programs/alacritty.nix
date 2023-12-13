@@ -8,6 +8,7 @@
         "~/.config/alacritty/dracula.yaml"
       ];
       font = {
+        size = 13;
         normal = {
           family = "JetBrains Mono Nerd Font";
           style = "Regular";
