@@ -24,6 +24,7 @@
       init = { defaultBranch = "main"; };
       pull = { rebase = true; };
       push = { autoSetupRemote = true; };
+      merge = { conflictstyle = "diff3"; };
     };
   };
 }
