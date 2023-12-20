@@ -38,6 +38,7 @@
     ../../programs/git.nix
     ../../programs/neovim
     ../../programs/nextcloud.nix
+    ../../programs/tmux.nix
   ];
 
   # restart homeage decrypt services on home-manager change

@@ -1,0 +1,19 @@
+{ ... }:
+{
+  programs.tmux = {
+    enable = true;
+    escapeTime = 10;
+    baseIndex = 1;
+    clock24 = true;
+
+    keyMode = "vi";
+    shell = "/home/kidsan/.nix-profile/bin/nu";
+    terminal = "tmux-256color";
+    extraConfig = ''
+      set -g default-terminal "tmux-256color"
+      set -ag terminal-overrides ",*:Tc"
+      set-environment -g COLORTERM "truecolor"
+    '';
+  };
+
+}
