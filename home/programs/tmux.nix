@@ -13,6 +13,8 @@
       set -g default-terminal "tmux-256color"
       set -ag terminal-overrides ",*:Tc"
       set-environment -g COLORTERM "truecolor"
+      bind C-p previous-window
+      bind C-n next-window
     '';
   };
 
