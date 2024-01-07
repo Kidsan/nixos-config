@@ -17,7 +17,8 @@
 
     libinput = {
       mouse = {
-        accelSpeed = "-0.5";
+        dev = "/dev/input/event6";
+        accelSpeed = "-0.7";
         accelProfile = "flat";
       };
     };
