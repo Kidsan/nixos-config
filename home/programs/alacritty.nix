@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       import = [
-        "~/.config/alacritty/dracula.yaml"
+        "~/.config/alacritty/dracula.toml"
       ];
       font = {
         size = 13;
@@ -31,35 +31,30 @@
 
   # Dracula theme
   home.file = {
-    "./.config/alacritty/dracula.yaml".text = ''
-      # Colors (Dracula)
-      colors:
-        # Default colors
-        primary:
-          background: '0x282a36'
-          foreground: '0xf8f8f2'
+    "./.config/alacritty/dracula.toml".text = /*toml*/ ''
+      [colors.bright]
+      black = "0x555555"
+      blue = "0xcaa9fa"
+      cyan = "0x8be9fd"
+      green = "0x50fa7b"
+      magenta = "0xff79c6"
+      red = "0xff5555"
+      white = "0xffffff"
+      yellow = "0xf1fa8c"
 
-        # Normal colors
-        normal:
-          black:   '0x000000'
-          red:     '0xff5555'
-          green:   '0x50fa7b'
-          yellow:  '0xf1fa8c'
-          blue:    '0xbd93f9'
-          magenta: '0xff79c6'
-          cyan:    '0x8be9fd'
-          white:   '0xbbbbbb'
+      [colors.normal]
+      black = "0x000000"
+      blue = "0xbd93f9"
+      cyan = "0x8be9fd"
+      green = "0x50fa7b"
+      magenta = "0xff79c6"
+      red = "0xff5555"
+      white = "0xbbbbbb"
+      yellow = "0xf1fa8c"
 
-        # Bright colors
-        bright:
-          black:   '0x555555'
-          red:     '0xff5555'
-          green:   '0x50fa7b'
-          yellow:  '0xf1fa8c'
-          blue:    '0xcaa9fa'
-          magenta: '0xff79c6'
-          cyan:    '0x8be9fd'
-          white:   '0xffffff'
+      [colors.primary]
+      background = "0x282a36"
+      foreground = "0xf8f8f2"
     '';
   };
 }
