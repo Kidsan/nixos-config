@@ -15,9 +15,10 @@
     xkbVariant = ",dvp";
     xkbOptions = "caps:escape,compose:ralt,grp:ctrls_toggle";
 
+    exportConfiguration = true;
     libinput = {
+      enable = true;
       mouse = {
-        dev = "/dev/input/event6";
         accelSpeed = "-0.7";
         accelProfile = "flat";
       };
