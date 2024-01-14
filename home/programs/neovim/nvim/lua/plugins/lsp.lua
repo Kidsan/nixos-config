@@ -61,33 +61,7 @@ return {
             vim.api.nvim_create_autocmd("BufWritePre", {
                 pattern = "*",
                 callback = function()
-                    if vim.b.noAutoFormat == 1 then
-                        return
-                    else
-                        vim.lsp.buf.format({ timeout_ms = 200 })
-                    end
-                end,
-                group = format_sync_grp,
-            })
-
-            vim.api.nvim_create_autocmd("Filetype", {
-                pattern = "typescript",
-                callback = function()
-                    vim.b.noAutoFormat = 1
-                end,
-                group = format_sync_grp,
-            })
-            vim.api.nvim_create_autocmd("Filetype", {
-                pattern = "javascript",
-                callback = function()
-                    vim.b.noAutoFormat = 1
-                end,
-                group = format_sync_grp,
-            })
-            vim.api.nvim_create_autocmd("Filetype", {
-                pattern = "vue",
-                callback = function()
-                    vim.b.noAutoFormat = 1
+                    vim.lsp.buf.format({ timeout_ms = 200 })
                 end,
                 group = format_sync_grp,
             })
@@ -102,6 +76,7 @@ return {
                 vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
                 vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
                 vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
+                vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts)
                 vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
                 vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
                 vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
