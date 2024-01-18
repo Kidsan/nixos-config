@@ -98,6 +98,18 @@
         };
       };
 
+      modes =
+        let
+          inherit (config.wayland.windowManager.sway.config) modifier;
+        in
+        lib.mkOptionDefault
+          {
+            gaming = {
+              "${modifier}+shift+g" = "mode default";
+              "${modifier}+f" = "fullscreen toggle";
+            };
+          };
+
       keybindings =
         let
           inherit (config.wayland.windowManager.sway.config) modifier;
@@ -109,6 +121,7 @@
           "Print" = "exec 'FILENAME=\"screenshot-`date +%F-%T`\"; grim -g \"$(slurp)\" ~/Downloads/$FILENAME.png '";
           "${modifier}+period" = "exec 'playerctl -p spotify next'";
           "${modifier}+comma" = "exec 'playerctl -p spotify previous'";
+          "${modifier}+shift+g" = "mode gaming";
         };
 
       bars = [
