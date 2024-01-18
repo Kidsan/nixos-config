@@ -4,9 +4,20 @@ _:
   services.easyeffects.preset = "microphone";
 
   home.file.".config/easyeffects/input/microphone.json" = {
-    text = ''
+    text = /*json*/''
       {
           "input": {
+              "bass_enhancer#0": {
+                  "amount": 7.0,
+                  "blend": 0.0,
+                  "bypass": false,
+                  "floor": 20.0,
+                  "floor-active": false,
+                  "harmonics": 9.999999999999995,
+                  "input-gain": -0.8,
+                  "output-gain": -0.1,
+                  "scope": 250.0
+              },
               "blocklist": [],
               "compressor#0": {
                   "attack": 20.0,
@@ -32,8 +43,10 @@ _:
                       "preamp": 0.0,
                       "reactivity": 10.0,
                       "source": "Middle",
+                      "stereo-split-source": "Left/Right",
                       "type": "Feed-forward"
                   },
+                  "stereo-split": false,
                   "threshold": -12.0,
                   "wet": 0.0
               },
@@ -53,19 +66,6 @@ _:
                   "ratio": 3.0,
                   "sc-listen": false,
                   "threshold": -18.0
-              },
-              "filter#0": {
-                  "balance": 0.0,
-                  "bypass": false,
-                  "frequency": 80.0,
-                  "gain": 0.0,
-                  "input-gain": 0.0,
-                  "mode": "RLC (BT)",
-                  "output-gain": 0.0,
-                  "quality": 0.0,
-                  "slope": "x1",
-                  "type": "Low-pass",
-                  "width": 4.0
               },
               "gate#0": {
                   "attack": 5.0,
@@ -91,8 +91,10 @@ _:
                       "mode": "RMS",
                       "preamp": 0.0,
                       "reactivity": 10.0,
-                      "source": "Middle"
+                      "source": "Middle",
+                      "stereo-split-source": "Left/Right"
                   },
+                  "stereo-split": false,
                   "wet": 0.0
               },
               "limiter#0": {
@@ -118,14 +120,14 @@ _:
               "plugins_order": [
                   "gate#0",
                   "compressor#0",
-                  "filter#0",
                   "deesser#0",
                   "rnnoise#0",
+                  "bass_enhancer#0",
                   "limiter#0"
               ],
               "rnnoise#0": {
                   "bypass": false,
-                  "enable-vad": false,
+                  "enable-vad": true,
                   "input-gain": 0.0,
                   "model-path": "",
                   "output-gain": 0.0,
