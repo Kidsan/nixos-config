@@ -186,11 +186,11 @@
 
       # gaming mode so that modifier key works in game
       mode "gaming" {
-          bindsym $mod+Shift+G mode default
+          bindsym $mod+Shift+G exec "~/.config/i3/mode_default.sh"
           bindsym $mod+f fullscreen toggle
       }
 
-      bindsym $mod+Shift+G mode gaming
+      bindsym $mod+Shift+G exec "~/.config/i3/mode_gaming.sh"
 
       # exec_always --no-startup-id ~/.config/i3/bar.sh
 
@@ -353,5 +353,25 @@
       #interval=once
       #signal=11
     '';
+
+    "./.config/i3/mode_gaming.sh" = {
+      executable = true;
+      text = ''
+        #!/bin/sh
+
+        i3-msg 'mode gaming'
+        setxkbmap -option -option caps:none
+      '';
+    };
+
+    "./.config/i3/mode_default.sh" = {
+      executable = true;
+      text = ''
+        #!/bin/sh
+        i3-msg 'mode default'
+        setxkbmap -option -option caps:escape
+      '';
+    };
+
   };
 }
