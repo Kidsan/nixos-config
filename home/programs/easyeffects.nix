@@ -7,17 +7,6 @@ _:
     text = /*json*/''
       {
           "input": {
-              "bass_enhancer#0": {
-                  "amount": 7.0,
-                  "blend": 0.0,
-                  "bypass": false,
-                  "floor": 20.0,
-                  "floor-active": false,
-                  "harmonics": 9.999999999999995,
-                  "input-gain": -0.8,
-                  "output-gain": -0.1,
-                  "scope": 250.0
-              },
               "blocklist": [],
               "compressor#0": {
                   "attack": 20.0,
@@ -122,7 +111,6 @@ _:
                   "compressor#0",
                   "deesser#0",
                   "rnnoise#0",
-                  "bass_enhancer#0",
                   "limiter#0"
               ],
               "rnnoise#0": {
