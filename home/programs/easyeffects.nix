@@ -120,7 +120,7 @@ _:
                   "model-path": "",
                   "output-gain": 0.0,
                   "release": 20.0,
-                  "vad-thres": 50.0,
+                  "vad-thres": 0.0,
                   "wet": 0.0
               }
           }
