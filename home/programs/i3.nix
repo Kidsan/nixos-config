@@ -190,7 +190,7 @@
           bindsym $mod+f fullscreen toggle
           bindsym XF86AudioRaiseVolume exec --no-startup-id "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0 && pkill -SIGRTMIN+10 i3blocks"
           bindsym XF86AudioLowerVolume exec --no-startup-id "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 1.0 && pkill -SIGRTMIN+10 i3blocks"
-          bindsym XF86AudioMute exec --no-startup-id "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && pkill -SIGRTMIN+10 i3blocks"
+          bindsym XF86AudioMute exec --no-startup-id "kill -s USR1 $(ps -C gpu-screen-recorder)"
       }
 
       bindsym $mod+Shift+G exec "~/.config/i3/mode_gaming.sh"
@@ -364,6 +364,10 @@
 
         i3-msg 'mode gaming'
         setxkbmap -option -option caps:none
+
+        window=$(xdotool getactivewindow)
+        window_name=$(xdotool getwindowclassname "$window" || xdotool getwindowname "$window" || echo "game")
+        gpu-screen-recorder -w "$window" -f 60 -c mp4 -a "alsa_output.usb-Universal_Audio_Volt_1_23032036038581-00.analog-stereo.monitor" -r 30 -o "$HOME/Videos/replay/$window_name"
       '';
     };
 
@@ -373,6 +377,7 @@
         #!/bin/sh
         i3-msg 'mode default'
         setxkbmap -option -option caps:escape
+        pkill gpu-screen-reco
       '';
     };
 

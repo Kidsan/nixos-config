@@ -5,6 +5,8 @@
   home.packages = with pkgs; [
     # audacity
     transcribe
+    gpu-screen-recorder
+    xdotool
   ];
 
   imports = [
