@@ -22,6 +22,8 @@ return {
             -- Snippet Collection (Optional)
             { 'rafamadriz/friendly-snippets' },
 
+            { 'onsails/lspkind.nvim' }
+
         },
         config = function()
             local lsp = require('lsp-zero')
@@ -51,9 +53,27 @@ return {
                 cmp_autopairs.on_confirm_done()
             )
 
+            local lspkind = require("lspkind")
 
             lsp.setup_nvim_cmp({
-                mapping = cmp_mappings
+                mapping = cmp_mappings,
+                formatting = {
+                    format = lspkind.cmp_format({
+                        mode = 'symbol_text',
+                        maxwidth = 50,
+                        ellipsis_char = '...',
+                        symbol_map = {
+                            Copilot = "",
+                        },
+                    })
+                },
+                sources = {
+                    { name = 'nvim_lsp' },
+                    { name = 'buffer' },
+                    { name = 'copilot', group_index = 2 },
+                    { name = 'path' },
+                    { name = 'luasnip' },
+                }
             })
 
 
