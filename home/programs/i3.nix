@@ -227,12 +227,12 @@
       # The second parameter overrides the mixer selection
       # See the script for details.
 
-      #label=♪
       [volume]
-      label=VOL
-      interval=once
+      label=♪ 
+      # label=VOL
+      interval=1
       signal=10
-      command=wpctl get-volume @DEFAULT_AUDIO_SINK@
+      command=wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -c 9-
       #STEP=5%
 
       # Memory usage
