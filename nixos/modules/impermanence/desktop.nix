@@ -30,6 +30,7 @@
         { directory = "nixos-config"; user = "kidsan"; }
         { directory = "workspace"; user = "kidsan"; }
         { directory = ".config/i3blocks"; user = "kidsan"; }
+        { directory = "Videos/replay"; user = "kidsan"; }
       ];
       files = [
         { file = ".bash_history"; }

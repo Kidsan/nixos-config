@@ -11,9 +11,11 @@
   services.xserver = {
     enable = true;
     excludePackages = with pkgs; [ xterm ];
-    layout = "gb,us";
-    xkbVariant = ",dvp";
-    xkbOptions = "caps:escape,compose:ralt,grp:ctrls_toggle";
+    xkb = {
+      layout = "gb,us";
+      variant = ",dvp";
+      options = "caps:escape,compose:ralt,grp:ctrls_toggle";
+    };
 
     exportConfiguration = true;
     libinput = {
