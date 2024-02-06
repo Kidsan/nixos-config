@@ -42,6 +42,7 @@ in
     package = pkgs.neovim-nightly;
     vimAlias = true;
     coc.enable = false;
+    withNodeJs = true;
 
     plugins = [
       treesitterWithGrammars
