@@ -6,6 +6,7 @@
 {
   environment.persistence."/persist/system" = {
     directories = [
+      "/etc/ssh"
       "/etc/nixos"
       "/var/log"
       "/var/lib"
@@ -32,6 +33,7 @@
         { directory = "nixos-config"; user = "kidsan"; }
         { directory = "workspace"; user = "kidsan"; }
         { directory = ".config/i3blocks"; user = "kidsan"; }
+        { directory = ".ollama"; user = "kidsan"; }
         { directory = "Videos/replay"; user = "kidsan"; }
       ];
       files = [
