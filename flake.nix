@@ -57,7 +57,11 @@
         (import ./overlays/weechat.nix)
       ];
 
-      config = { allowUnfree = true; };
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [ "electron-25.9.0" ];
+
+      };
 
       nixosPackages = import nixos {
         system = "x86_64-linux";

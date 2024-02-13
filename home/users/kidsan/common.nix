@@ -26,7 +26,7 @@
     vlc
     signal-desktop
     waypipe
-    # obsidian
+    obsidian
   ];
 
   imports = [

@@ -72,6 +72,7 @@
     config = {
       modifier = "Mod1";
       terminal = "alacritty";
+      defaultWorkspace = "workspace number 1";
       startup = [
         { command = "sleep 5; systemctl --user restart kanshi.service"; always = true; }
         { command = "firefox"; }
@@ -139,8 +140,7 @@
       assigns = {
         "1" = [{ app_id = "firefox-nightly"; }];
         "2" = [{ app_id = "thunderbird"; } { app_id = "Slack"; }];
-        "4" = [{ class = "discord"; } { class = "Spotify"; }];
-        "8" = [{ app_id = "com.nextcloud.desktopclient.nextcloud"; }];
+        "5" = [{ app_id = "discord"; }];
       };
       workspaceOutputAssign = [
         { output = "eDP-1"; workspace = "8"; }
