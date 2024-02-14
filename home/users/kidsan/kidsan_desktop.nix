@@ -7,6 +7,7 @@
     transcribe
     gpu-screen-recorder
     xdotool
+    chromium
   ];
 
   imports = [
