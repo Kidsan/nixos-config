@@ -75,6 +75,7 @@
       defaultWorkspace = "workspace number 1";
       startup = [
         { command = "sleep 5; systemctl --user restart kanshi.service"; always = true; }
+        { command = "obsidian"; always = true; }
         { command = "firefox"; }
         { command = "slack"; }
         { command = "thunderbird"; }
@@ -123,6 +124,7 @@
           "${modifier}+period" = "exec 'playerctl -p spotify next'";
           "${modifier}+comma" = "exec 'playerctl -p spotify previous'";
           "${modifier}+shift+g" = "mode gaming";
+          "${modifier}+o" = "exec 'swaymsg [app_id=\"obsidian\"] scratchpad show";
         };
 
       bars = [
@@ -152,6 +154,14 @@
         { output = "HDMI-A-1"; workspace = "6"; }
         { output = "HDMI-A-1"; workspace = "7"; }
         { output = "HDMI-A-1"; workspace = "9"; }
+      ];
+      window.commands = [
+        {
+          command = "move scratchpad";
+          criteria = {
+            app_id = "obsidian";
+          };
+        }
       ];
     };
   };
