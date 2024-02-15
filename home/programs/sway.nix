@@ -19,7 +19,19 @@
     bemenu # wayland clone of dmenu
     xdg-utils
     waybar
+    waylogout
   ];
+
+  home.file.".config/waylogout/config".text = ''
+    suspend-command=systemctl suspend
+    reboot-command=reboot
+    poweroff-command=systemctl poweroff
+    lock-command=swaylock -f -c 000000
+    default-action=lock
+    color=000000
+    selection-label
+    hide-cancel
+  '';
 
   gtk = {
     enable = true;
@@ -125,6 +137,7 @@
           "${modifier}+comma" = "exec 'playerctl -p spotify previous'";
           "${modifier}+shift+g" = "mode gaming";
           "${modifier}+o" = "exec 'swaymsg [app_id=\"obsidian\"] scratchpad show";
+          "${modifier}+shift+y" = "exec 'waylogout'";
         };
 
       bars = [
