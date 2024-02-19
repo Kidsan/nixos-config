@@ -34,6 +34,7 @@ in
     signal-desktop
     waypipe
     obsidian
+    btop
   ];
 
   imports = [
