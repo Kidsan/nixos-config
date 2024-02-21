@@ -79,13 +79,12 @@
   users = {
     mutableUsers = false;
     users.kidsan = {
-      extraGroups = [ "libvirtd" ];
+      extraGroups = [ ];
       hashedPasswordFile = "/persist/passwords/kidsan";
     };
   };
 
   virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
 }
 
 
