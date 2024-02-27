@@ -235,72 +235,6 @@
       command=wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -c 9-
       #STEP=5%
 
-      # Memory usage
-      #
-      # The type defaults to "mem" if the instance is not specified.
-      [memory]
-      label=MEM
-      separator=false
-      interval=30
-
-      [memory]
-      label=SWAP
-      instance=swap
-      separator=false
-      interval=30
-
-      # Disk usage
-      #
-      # The directory defaults to $HOME if the instance is not specified.
-      # The script may be called with a optional argument to set the alert
-      # (defaults to 10 for 10%).
-      [disk]
-      label=HOME
-      #DIR=/mnt/data
-      interval=30
-
-      # Network interface monitoring
-      #
-      # If the instance is not specified, use the interface used for default route.
-      # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
-      [iface]
-      #IFACE=wlan0
-      color=#00FF00
-      interval=10
-      separator=false
-
-      [wifi]
-      #INTERFACE=wlp3s0
-      label=wifi:
-      interval=10
-      separator=false
-
-      [bandwidth]
-      #INTERFACE=eth0
-      interval=5
-
-      # CPU usage
-      #
-      # The script may be called with -w and -c switches to specify thresholds,
-      # see the script for details.
-      [cpu_usage]
-      label=CPU
-      interval=10
-      min_width=CPU 100.00%
-      #separator=false
-
-      [load_average]
-      label=LOAD
-      interval=10
-
-      # Battery indicator
-      #
-      # The battery instance defaults to 0.
-      [battery]
-      label=BAT
-      #label=⚡
-      interval=30
-
       [weather]
       command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
       interval=3600
@@ -311,50 +245,6 @@
       [time]
       command=date '+%Y-%m-%d %H:%M:%S'
       interval=5
-
-      # Generic media player support
-      #
-      # This displays "ARTIST - SONG" if a music is playing.
-      # Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
-      # Set to %any to automatically pick (Requires playerctl >=2.1.1)
-      #[mediaplayer]
-      # This picks any player, with vlc as first, and spotify as last choice
-      #instance=vlc,%any,spotify
-      #interval=5
-      #signal=10
-
-      # OpenVPN support
-      #
-      # Support multiple VPN, with colors.
-      #[openvpn]
-      #interval=20
-
-      # Temperature
-      #
-      # Support multiple chips, though lm-sensors.
-      # The script may be called with -w and -c switches to specify thresholds,
-      # see the script for details.
-      #[temperature]
-      #label=TEMP
-      #interval=10
-
-      # Key indicators
-      #
-      # Add the following bindings to i3 config file:
-      #
-      # bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
-      # bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
-      #[keyindicator]
-      #KEY=CAPS
-      #markup=pango
-      #interval=once
-      #signal=11
-
-      #[keyindicator]
-      #KEY=NUM
-      #markup=pango
-      #interval=once
-      #signal=11
     '';
 
     "./.config/i3/mode_gaming.sh" = {
