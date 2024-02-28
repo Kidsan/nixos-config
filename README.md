@@ -8,12 +8,10 @@ This configures nixos for the following hosts
 
 + _desktop_: my main machine for development, gaming, etc
 + _thinkpad_: my laptop, primarily for development
-+ _monster_: raspberry pi 4 (image built with https://github.com/Robertof/nixos-docker-sd-image-builder)
++ _monster_: raspberry pi 4 
 
 It also configures darwin machines via nix-darwin for
 
 + _Kierans-Air_: an m1 macbook air
 
-## apply-system.sh
 
-This is a script that lazily performs garbage collection for the nix store, does a git pull to update the flake, and then applies both the system and user configuration in nix. Based on Wil T's guides and the scripts he suggests (but much lazier).
