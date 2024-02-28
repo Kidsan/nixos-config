@@ -107,7 +107,6 @@
               home.sessionVariables.NIX_PATH = "nixpkgs=${args.config.xdg.configHome}/nix/inputs/nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
             })
 
-            { nix.registry.nixpkgs.flake = nixpkgs; }
           ];
         };
       };
@@ -133,10 +132,6 @@
                 };
                 home-manager.users.kidsan = import ./home/users/kidsan/kidsan_desktop.nix;
               }
-              ({
-                nix.registry.nixpkgs.flake = nixpkgs;
-              })
-
             ];
         };
 
@@ -157,9 +152,6 @@
               };
               home-manager.users.kidsan = import ./home/users/kidsan/kidsan_thinkpad.nix;
             }
-            ({
-              nix.registry.nixpkgs.flake = nixpkgs;
-            })
           ];
         };
 
@@ -177,9 +169,6 @@
                 };
                 home-manager.users.lobster = import ./home/users/lobster/home.nix;
               }
-              ({
-                nix.registry.nixpkgs.flake = nixpkgs;
-              })
             ];
           };
         ihasa = nixpkgs.lib.nixosSystem {
