@@ -184,14 +184,14 @@
     profiles = {
       undocked = {
         outputs = [
-          { criteria = "eDP-1"; status = "enable"; }
+          { criteria = "eDP-1"; status = "enable"; mode = "1920x1200@59.999Hz"; }
         ];
       };
 
       docked = {
         outputs = [
-          { criteria = "eDP-1"; status = "enable"; }
-          { criteria = "HDMI-A-1"; status = "enable"; }
+          { criteria = "eDP-1"; status = "enable"; mode = "1920x1200@59.999Hz"; }
+          { criteria = "HDMI-A-1"; status = "enable"; adaptiveSync = true; mode = "2560x1440@99.946Hz"; }
         ];
       };
 
