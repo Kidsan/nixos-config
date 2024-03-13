@@ -10,14 +10,20 @@
       ./modules/steam.nix
     ];
 
-  environment.systemPackages = with pkgs; [
-    cachix
-    curl
-    vim
-    virt-manager
-    openssl
-    i3blocks
-  ];
+  environment = {
+    shells = [
+      pkgs.nushell
+      pkgs.bashInteractive
+    ];
+    systemPackages = [
+      pkgs.cachix
+      pkgs.curl
+      pkgs.i3blocks
+      pkgs.openssl
+      pkgs.vim
+      pkgs.virt-manager
+    ];
+  };
 
   boot = {
     initrd.checkJournalingFS = false;
@@ -80,6 +86,7 @@
     mutableUsers = false;
     users.kidsan = {
       extraGroups = [ ];
+      shell = pkgs.nushell;
       hashedPasswordFile = "/persist/passwords/kidsan";
     };
   };
