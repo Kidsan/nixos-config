@@ -19,6 +19,7 @@
         { directory = ".config/discord"; mode = "0700"; user = "kidsan"; }
         { directory = ".config/systemd"; user = "kidsan"; }
         { directory = ".config/spotify"; user = "kidsan"; }
+        { directory = ".config/Signal"; user = "kidsan"; }
         { directory = ".config/dconf"; user = "kidsan"; }
         { directory = ".config/easyeffects"; user = "kidsan"; }
         { directory = ".config/i3"; user = "kidsan"; }
