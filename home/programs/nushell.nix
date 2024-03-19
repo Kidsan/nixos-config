@@ -61,7 +61,7 @@
       text = ''
         $env.EDITOR = "nvim"
         $env.NIX_PATH = "nixpkgs=flake:nixpkgs"
-        if $env.XDG_VTNR? == "1" {
+        if $env.XDG_VTNR? == "1" and (which sway | length) > 0 {
             sway
         } 
       '';

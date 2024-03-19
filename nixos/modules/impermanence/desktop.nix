@@ -39,6 +39,7 @@
       ];
       files = [
         { file = ".bash_history"; }
+        { file = ".config/nushell/history.txt"; }
       ];
     };
   };

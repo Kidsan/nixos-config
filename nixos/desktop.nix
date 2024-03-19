@@ -11,9 +11,11 @@
     ];
 
   environment = {
+    pathsToLink = [
+      "/share/bash-completion"
+    ];
     shells = [
       pkgs.nushell
-      pkgs.bashInteractive
     ];
     systemPackages = [
       pkgs.cachix
