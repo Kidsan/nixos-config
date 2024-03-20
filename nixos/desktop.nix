@@ -28,6 +28,7 @@
   };
 
   boot = {
+    binfmt.emulatedSystems = [ "aarch64-linux" "armv7l-linux" ];
     initrd.checkJournalingFS = false;
     initrd.postDeviceCommands = lib.mkAfter ''
       zfs rollback -r rpool/root/nixos@blank
