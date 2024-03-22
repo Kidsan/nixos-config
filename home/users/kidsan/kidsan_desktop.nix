@@ -8,6 +8,7 @@
     gpu-screen-recorder
     xdotool
     chromium
+    r2modman
   ];
 
   imports = [
