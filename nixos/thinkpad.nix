@@ -5,6 +5,7 @@
     [
       ./hardware/thinkpad.nix
       ./modules/common.nix
+      ./modules/networkmanager.nix
       ./modules/xdg.nix
     ];
 

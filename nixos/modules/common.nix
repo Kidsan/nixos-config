@@ -20,7 +20,6 @@
     ./tailscale.nix
     ./nix-options.nix
     ./linux-kernel.nix
-    ./networkmanager.nix
     ./upgrades.nix
   ];
 }
