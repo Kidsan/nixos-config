@@ -29,11 +29,32 @@
 
   boot = {
     binfmt.emulatedSystems = [ "aarch64-linux" "armv7l-linux" ];
-    initrd.checkJournalingFS = false;
-    initrd.postDeviceCommands = lib.mkAfter ''
-      zfs rollback -r rpool/root/nixos@blank
-    '';
-    kernelModules = [ "coretemp" "nct6775" ];
+    initrd = {
+      checkJournalingFS = false;
+      network = {
+        enable = true;
+        ssh = {
+          enable = true;
+          port = 2222;
+          hostKeys = [ /persist/system/home/kidsan/other/ssh_host_ed25519_key ];
+          authorizedKeys = [
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKas9qjJOceFVG6IS3LgH1RL0EBNZ66LFeLrsOqT31IL kidsan@thinkpad"
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPkgNbqSgAdMEx/IaXFsGW6HlobqrsSnl7lanbdfMYaZ JuiceSSH"
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPUoDNMX11//LajxTS4G0Ndj84jwh1mxn38J4g1CULhN kidsan@desktop"
+          ];
+        };
+        postCommands = ''
+          zpool import -a
+          echo "zfs load-key -a; killall zfs" >> /root/.profile
+        '';
+      };
+      kernelModules = [ "r8169" ];
+      postDeviceCommands = lib.mkAfter ''
+        zfs rollback -r rpool/root/nixos@blank
+      '';
+
+    };
+    kernelModules = [ "coretemp" "nct6775" "r8169" ];
     loader = {
       grub = {
         # Use the GRUB 2 boot loader.
@@ -66,6 +87,7 @@
 
   networking.hostId = "e39fd16b";
   networking.hostName = "desktop";
+  networking.useDHCP = true;
 
   programs.dconf.enable = true;
 
