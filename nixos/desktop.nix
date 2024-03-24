@@ -41,6 +41,7 @@
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKas9qjJOceFVG6IS3LgH1RL0EBNZ66LFeLrsOqT31IL kidsan@thinkpad"
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPkgNbqSgAdMEx/IaXFsGW6HlobqrsSnl7lanbdfMYaZ JuiceSSH"
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMAhyQg3HIZZ+XcpmIEzNkmbMUQwXX2YyjX+RTYAY6cG u0_a191@localhost"
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDj31MXtyzN28GceFMNpvXoTioUl3r+aaw4CUQuvAUm/ kidsan@macbookair"
           ];
         };
         postCommands = ''
@@ -88,6 +89,10 @@
   networking.hostId = "e39fd16b";
   networking.hostName = "desktop";
   networking.useDHCP = true;
+  networking.interfaces.enp42s0.wakeOnLan = {
+    enable = true;
+    policy = [ "magic" ];
+  };
 
   programs.dconf.enable = true;
 
