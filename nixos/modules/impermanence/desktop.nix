@@ -22,6 +22,7 @@
         { directory = ".config/Signal"; user = "kidsan"; }
         { directory = ".config/dconf"; user = "kidsan"; }
         { directory = ".config/easyeffects"; user = "kidsan"; }
+        { directory = ".config/github-copilot"; user = "kidsan"; }
         { directory = ".config/i3"; user = "kidsan"; }
         { directory = ".config/vlc"; user = "kidsan"; }
         { directory = ".local/share/direnv"; user = "kidsan"; }
