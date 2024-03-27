@@ -33,6 +33,14 @@ return {
                 desc = "telescope grep string"
             },
             {
+                "<leader>pt",
+                mode = "n",
+                function()
+                    require("telescope.builtin").treesitter()
+                end,
+                desc = "telescope treesitter"
+            },
+            {
                 "<leader>pb",
                 mode = "n",
                 function() require("telescope.builtin").buffers() end,
