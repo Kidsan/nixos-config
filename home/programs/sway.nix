@@ -22,7 +22,7 @@
     waylogout
   ];
 
-  home.file.".config/waylogout/config".text = ''
+  home.file.".config/waylogout/config".text = /*toml*/''
     suspend-command=systemctl suspend
     reboot-command=reboot
     poweroff-command=systemctl poweroff
@@ -203,7 +203,7 @@
     enable = true;
     defaultTimeout = 5000;
     ignoreTimeout = true;
-    extraConfig = ''
+    extraConfig = /*toml*/ ''
       background-color=#282a36
       text-color=#ffffff
       border-color=#282a36
@@ -402,7 +402,7 @@
       };
 
     };
-    style = ''
+    style = /* css */ ''
       /* =============================================================================
        *
        * Waybar configuration
