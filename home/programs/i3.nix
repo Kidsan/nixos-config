@@ -2,7 +2,7 @@
 {
   # i3 config
   home.file = {
-    "./.config/i3/config".text = /*/*i3config*/ i3config * / ''
+    "./.config/i3/config".text = ''
       set $mod Mod1
       default_border pixel 3
       for_window [class="^steam$"] border pixel 3
