@@ -148,7 +148,7 @@
       };
 
       darwinConfigurations = {
-        "Kierans-Air" = darwin.lib.darwinSystem {
+        "Kierans-MacBook-Air" = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           inputs = { inherit darwin nixpkgs; };
           pkgs = import nixpkgs {
