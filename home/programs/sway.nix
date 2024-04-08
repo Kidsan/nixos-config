@@ -133,10 +133,11 @@
           "XF86AudioLowerVolume" = "exec 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- -l 1.0'";
           "XF86AudioMute" = "exec 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'";
           "Print" = "exec 'FILENAME=\"screenshot-`date +%F-%T`\"; grim -g \"$(slurp)\" ~/Downloads/$FILENAME.png '";
-          "${modifier}+period" = "exec 'playerctl -p spotify next'";
-          "${modifier}+comma" = "exec 'playerctl -p spotify previous'";
+          "${modifier}+period" = "exec 'playerctl -p ncspot next'";
+          "${modifier}+comma" = "exec 'playerctl -p ncspot previous'";
           "${modifier}+shift+g" = "mode gaming";
           "${modifier}+o" = "exec 'swaymsg [app_id=\"obsidian\"] scratchpad show";
+          "${modifier}+m" = "exec 'swaymsg [title=\"ncspot\"] scratchpad show";
           "${modifier}+shift+y" = "exec 'waylogout'";
         };
 
@@ -173,6 +174,13 @@
           command = "move scratchpad";
           criteria = {
             app_id = "obsidian";
+          };
+        }
+        {
+          command = "move scratchpad";
+          criteria = {
+            app_id = "Alacritty";
+            title = "ncspot";
           };
         }
       ];
@@ -389,15 +397,15 @@
           "format" = "{icon} {}";
           "return-type" = "json";
           "smooth-scrolling-threshold" = 1;
-          "on-scroll-up" = "playerctl -p spotify next";
-          "on-scroll-down" = "playerctl -p spotify previous";
+          "on-scroll-up" = "playerctl -p ncspot next";
+          "on-scroll-down" = "playerctl -p ncspot previous";
           "format-icons" = {
             "Playing" = "";
             "Paused" = "";
           };
           "max-length" = 30;
-          "exec" = "playerctl -p spotify -a metadata --format '{\"text\": \"{{markup_escape(title)}} - {{artist}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
-          "on-click" = "playerctl -p spotify play-pause";
+          "exec" = "playerctl -p ncspot -a metadata --format '{\"text\": \"{{markup_escape(title)}} - {{artist}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+          "on-click" = "playerctl -p ncspot play-pause";
         };
       };
 

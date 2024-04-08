@@ -12,4 +12,12 @@
     ../../programs/sway.nix
     ../../programs/easyeffects.nix
   ];
+
+  programs.ncspot = {
+    enable = true;
+    settings = {
+      shuffle = true;
+      gapless = true;
+    };
+  };
 }
