@@ -88,6 +88,7 @@
       startup = [
         { command = "sleep 5; systemctl --user restart kanshi.service"; always = true; }
         { command = "obsidian"; always = true; }
+        { command = "alacritty -e ncspot"; }
         { command = "firefox"; }
         { command = "slack"; }
         { command = "thunderbird"; }
