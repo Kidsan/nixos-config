@@ -22,17 +22,12 @@ return {
             -- Snippet Collection (Optional)
             { 'rafamadriz/friendly-snippets' },
 
-            { 'onsails/lspkind.nvim' }
+            { 'onsails/lspkind.nvim' },
 
         },
         config = function()
             local lsp = require('lsp-zero')
             lsp.preset('recommended')
-
-            lsp.ensure_installed({
-                'gopls',
-                'nil_ls'
-            })
 
             -- don't initialize this language server
             -- we will use rust-tools to setup rust_analyzer
@@ -76,6 +71,16 @@ return {
                 }
             })
 
+            local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+            parser_config.nu = {
+                install_info = {
+                    url = "https://github.com/nushell/tree-sitter-nu",
+                    files = { "src/parser.c" },
+                    branch = "main",
+                },
+                filetype = "nu",
+            }
 
             local format_sync_grp = vim.api.nvim_create_augroup("Format", {})
             vim.api.nvim_create_autocmd("BufWritePre", {
@@ -108,6 +113,13 @@ return {
                         formatting = { command = { "nixpkgs-fmt" } }
                     }
                 }
+            })
+
+            lsp.configure('nushell', {
+                command = { "nu", "--lsp" },
+                filetypes = { "nu" },
+                root_dir = require("lspconfig.util").find_git_ancestor,
+                singe_file_support = true,
             })
 
             lsp.configure('volar', {
