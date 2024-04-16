@@ -8,6 +8,7 @@
       ./modules/common.nix
       ./modules/i3.nix
       ./modules/steam.nix
+      ./modules/ollama.nix
     ];
 
   environment = {
@@ -123,12 +124,6 @@
 
   virtualisation.docker.enable = true;
   virtualisation.docker.enableNvidia = true;
-
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
-    listenAddress = "0.0.0.0:11434";
-  };
 }
 
 
