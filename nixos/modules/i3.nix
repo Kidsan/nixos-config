@@ -44,7 +44,7 @@
     };
     displayManager = {
       lightdm.enable = true;
-      defaultSession = "xfce+i3";
     };
   };
+  services.displayManager.defaultSession = "xfce+i3";
 }
