@@ -10,7 +10,7 @@
       k = "kubectl";
     };
     envFile = {
-      text = ''
+      text = /* nu */''
         let fish_completer = {|spans|
           fish --command $'complete "--do-complete=($spans | str join " ")"'
           | $"value(char tab)description(char newline)" + $in
@@ -58,7 +58,7 @@
       '';
     };
     loginFile = {
-      text = ''
+      text = /* nu */''
         $env.EDITOR = "nvim"
         $env.NIX_PATH = "nixpkgs=flake:nixpkgs"
         if $env.XDG_VTNR? == "1" and (which sway | length) > 0 {
