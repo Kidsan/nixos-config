@@ -4,6 +4,13 @@
     pkgs.ffmpeg
   ];
 
+  services.printing.drivers = [ pkgs.hplipWithPlugin ];
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.hplipWithPlugin ];
+  };
+
+
   security.polkit.enable = true;
 
   system.activationScripts.diff = ''
