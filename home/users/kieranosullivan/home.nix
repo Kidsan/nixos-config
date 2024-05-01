@@ -18,6 +18,7 @@
 
   imports = [
     ../../programs/neovim
+    ../../programs/nushell.nix
   ];
 
 }

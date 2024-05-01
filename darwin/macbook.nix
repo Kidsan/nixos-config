@@ -4,6 +4,10 @@
     pkgs.vim
   ];
 
+  environment.shells = [ pkgs.nushell ];
+  users.users.kieranosullivan.shell = pkgs.nushell;
+  environment.loginShell = pkgs.nushell;
+
   documentation.enable = false;
 
   # Auto upgrade nix package and the daemon service.
@@ -17,5 +21,4 @@
     experimental-features = nix-command flakes
   '';
 
-  services.karabiner-elements.enable = true;
 }
