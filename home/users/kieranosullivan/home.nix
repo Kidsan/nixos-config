@@ -19,6 +19,7 @@
   imports = [
     ../../programs/neovim
     ../../programs/nushell.nix
+    ../../programs/alacritty.nix
   ];
 
 }
