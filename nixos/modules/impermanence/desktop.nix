@@ -37,6 +37,7 @@
         { directory = ".config/i3blocks"; user = "kidsan"; }
         { directory = ".ollama"; user = "kidsan"; }
         { directory = "Videos/replay"; user = "kidsan"; }
+        { directory = "Zomboid"; user = "kidsan"; }
       ];
       files = [
         { file = ".bash_history"; }
