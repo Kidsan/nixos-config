@@ -8,6 +8,16 @@
     enable = true;
     u2fSupport = true;
   };
+
+  services = {
+    libinput = {
+      enable = true;
+      mouse = {
+        accelSpeed = "-0.8";
+        accelProfile = "flat";
+      };
+    };
+  };
   services.xserver = {
     enable = true;
     excludePackages = with pkgs; [ xterm ];
@@ -18,13 +28,6 @@
     };
 
     exportConfiguration = true;
-    libinput = {
-      enable = true;
-      mouse = {
-        accelSpeed = "-0.8";
-        accelProfile = "flat";
-      };
-    };
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
