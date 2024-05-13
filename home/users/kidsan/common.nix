@@ -49,6 +49,7 @@ in
     ../../programs/nextcloud.nix
     ../../programs/tmux.nix
     ../../programs/nushell.nix
+    ../../programs/nix-flake-templates
   ];
 
   # restart homeage decrypt services on home-manager change
