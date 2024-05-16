@@ -12,6 +12,7 @@
     ./hardware/monster.nix
     ./modules/ssh.nix
     ./modules/home-assistant.nix
+    ./modules/ttrss.nix
   ];
 
   boot = {
