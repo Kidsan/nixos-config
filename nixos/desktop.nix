@@ -116,7 +116,7 @@
   users = {
     mutableUsers = false;
     users.kidsan = {
-      extraGroups = [ ];
+      extraGroups = [ "dialout" ];
       shell = pkgs.nushell;
       hashedPasswordFile = "/persist/passwords/kidsan";
     };
@@ -124,6 +124,10 @@
 
   virtualisation.docker.enable = true;
   virtualisation.docker.enableNvidia = true;
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+
+  ];
 }
 
 
