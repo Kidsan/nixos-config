@@ -7,7 +7,7 @@
     git
   ];
 
-  system.stateVersion = "20.03";
+  system.stateVersion = "22.05";
   imports = [
     ./hardware/monster.nix
     ./modules/ssh.nix
@@ -93,6 +93,5 @@
 
     configFile = config.age.secrets.znc.path;
   };
-
   documentation.nixos.enable = false;
 }
