@@ -13,13 +13,9 @@
     neovim-nightly-overlay = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/neovim-nightly-overlay";
-      # inputs.neovim-flake.url = "github:neovim/neovim?dir=contrib&rev=88a202a01097de029beb01f60ad98aa0b5b44b50";
+      inputs.neovim-flake.url = "github:neovim/neovim?dir=contrib&rev=8744ee8783a8597f9fce4a573ae05aca2f412120";
     };
 
-    treesitter-fixed = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:r-ryantm/nixpkgs/auto-update/tree-sitter";
-    };
 
     agenix = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,14 +42,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos, home-manager, treesitter-fixed, secrets, agenix, darwin, impermanence, disko, ... } @ inputs:
+  outputs = { self, nixpkgs, nixos, home-manager, secrets, agenix, darwin, impermanence, disko, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
         (import ./overlays/weechat.nix)
-        (final: prev: {
-            inherit (inputs.treesitter-fixed.legacyPackages.${prev.system}) tree-sitter;
-         })
       ];
 
       config = {

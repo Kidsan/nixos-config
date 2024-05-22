@@ -246,24 +246,22 @@
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "neovim-nightly-overlay",
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1715815279,
-        "narHash": "sha256-Pf7ZlqPnr195NZb5ADzMVsXurPMjRZ+JMXf6JxvXArE=",
+        "lastModified": 1703942320,
+        "narHash": "sha256-CcaBqA0yFCffNPmXOJTo8c9v1jrEBiqAl8CG5Dj5YxE=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "9ca81b025990911c2a0dbda92af39ba84983bac3",
+        "rev": "8744ee8783a8597f9fce4a573ae05aca2f412120",
         "type": "github"
       },
       "original": {
         "dir": "contrib",
         "owner": "neovim",
         "repo": "neovim",
+        "rev": "8744ee8783a8597f9fce4a573ae05aca2f412120",
         "type": "github"
       }
     },
@@ -308,6 +306,22 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1716293225,
+        "narHash": "sha256-pU9ViBVE3XYb70xZx+jK6SEVphvt7xMTbm6yDIF4xPs=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "3eaeaeb6b1e08a016380c279f8846e0bd8808916",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1716312448,
         "narHash": "sha256-PH3w5av8d+TdwCkiWN4UPBTxrD9MpxIQPDVWctlomVo=",
         "owner": "NixOS",
@@ -330,9 +344,8 @@
         "impermanence": "impermanence",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixos": "nixos",
-        "nixpkgs": "nixpkgs",
-        "secrets": "secrets",
-        "treesitter-fixed": "treesitter-fixed"
+        "nixpkgs": "nixpkgs_2",
+        "secrets": "secrets"
       }
     },
     "secrets": {
@@ -383,22 +396,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "treesitter-fixed": {
-      "locked": {
-        "lastModified": 1715190945,
-        "narHash": "sha256-4io2n235V0Uz1UpRAobYy3oICK0o+y36g/SEbLh0F9w=",
-        "owner": "r-ryantm",
-        "repo": "nixpkgs",
-        "rev": "693471128715a7ea020ac4c81c3b03db33b8387b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "r-ryantm",
-        "ref": "auto-update/tree-sitter",
-        "repo": "nixpkgs",
         "type": "github"
       }
     }
