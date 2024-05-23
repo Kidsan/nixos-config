@@ -25,6 +25,11 @@
       pkgs.openssl
       pkgs.vim
       pkgs.virt-manager
+      (pkgs.lutris.override {
+        extraPkgs = pkgs: [
+          pkgs.wine-staging
+        ];
+      })
     ];
   };
 
