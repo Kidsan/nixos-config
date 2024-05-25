@@ -28,6 +28,7 @@
         { directory = ".config/vlc"; user = "kidsan"; }
         { directory = ".local/share/direnv"; user = "kidsan"; }
         { directory = ".local/share/keyrings"; user = "kidsan"; }
+        { directory = ".local/share/lutris"; user = "kidsan"; }
         { directory = ".local/share/nvim"; user = "kidsan"; }
         { directory = ".local/share/Steam"; user = "kidsan"; }
         { directory = ".local/state/nix"; mode = "0700"; user = "kidsan"; }
