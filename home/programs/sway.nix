@@ -8,7 +8,10 @@
     fi
   '';
 
+  home.file."Pictures/wallpaper.png".source = ./wallpaper.png;
+
   home.packages = with pkgs; [
+    gamescope
     playerctl
     glib # gsettings
     swaylock
@@ -73,6 +76,7 @@
 
   wayland.windowManager.sway = {
     enable = true;
+    package = pkgs.sway-unwrapped;
     checkConfig = false;
     wrapperFeatures = {
       gtk = true;

@@ -40,13 +40,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "git+ssh://git@github.com/kidsan/secrets.git?ref=main";
     };
+
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixos, home-manager, secrets, agenix, darwin, impermanence, disko, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-wayland, nixos, home-manager, secrets, agenix, darwin, impermanence, disko, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlays.default
         (import ./overlays/weechat.nix)
+        inputs.nixpkgs-wayland.overlays.default
       ];
 
       config = {
