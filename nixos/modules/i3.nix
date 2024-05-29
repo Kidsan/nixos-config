@@ -3,6 +3,7 @@
   environment.systemPackages = [
     pkgs.xautolock
     pkgs.lm_sensors
+    pkgs.i3blocks
   ];
   programs.i3lock = {
     enable = true;
