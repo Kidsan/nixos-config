@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, osConfig, ... }:
 
 {
 
@@ -161,20 +161,29 @@
 
       assigns = {
         "1" = [{ app_id = "firefox-nightly"; }];
-        "2" = [{ app_id = "thunderbird"; } { app_id = "Slack"; }];
+        "2" = [{ app_id = "thunderbird"; } { app_id = "Slack"; } { app_id = "Steam"; }];
         "5" = [{ app_id = "discord"; }];
       };
-      workspaceOutputAssign = [
-        { output = "eDP-1"; workspace = "8"; }
-        { output = "HDMI-A-1"; workspace = "1"; }
-        { output = "HDMI-A-1"; workspace = "2"; }
-        { output = "HDMI-A-1"; workspace = "3"; }
-        { output = "HDMI-A-1"; workspace = "4"; }
-        { output = "HDMI-A-1"; workspace = "5"; }
-        { output = "HDMI-A-1"; workspace = "6"; }
-        { output = "HDMI-A-1"; workspace = "7"; }
-        { output = "HDMI-A-1"; workspace = "9"; }
-      ];
+      workspaceOutputAssign =
+        lib.mkMerge [
+          (lib.mkIf (osConfig.networking.hostName == "desktop") [ ])
+          (lib.mkIf (osConfig.networking.hostName != "desktop")
+            [
+              { output = "eDP-1"; workspace = "8"; }
+              { output = "HDMI-A-1"; workspace = "1"; }
+              { output = "HDMI-A-1"; workspace = "2"; }
+              { output = "HDMI-A-1"; workspace = "3"; }
+              { output = "HDMI-A-1"; workspace = "4"; }
+              { output = "HDMI-A-1"; workspace = "5"; }
+              { output = "HDMI-A-1"; workspace = "6"; }
+              { output = "HDMI-A-1"; workspace = "7"; }
+              { output = "HDMI-A-1"; workspace = "9"; }
+            ]
+
+          )
+        ];
+
+      window.titlebar = false;
       window.commands = [
         {
           command = "move scratchpad";
@@ -195,22 +204,29 @@
 
   services.kanshi = {
     enable = true;
-    profiles = {
-      undocked = {
-        outputs = [
+    settings = [
+      {
+        profile.name = "undocked";
+        profile.outputs = [
           { criteria = "eDP-1"; status = "enable"; mode = "1920x1200@59.999Hz"; }
         ];
-      };
+      }
 
-      docked = {
-        outputs = [
+      {
+        profile.name = "desktop";
+        profile.outputs = [
+          { criteria = "DP-1"; status = "enable"; adaptiveSync = true; mode = "2560x1440@143.973Hz"; }
+        ];
+      }
+
+      {
+        profile.name = "docked";
+        profile.outputs = [
           { criteria = "eDP-1"; status = "enable"; mode = "1920x1200@59.999Hz"; }
           { criteria = "HDMI-A-1"; status = "enable"; adaptiveSync = true; mode = "2560x1440@99.946Hz"; }
         ];
-      };
-
-    };
-
+      }
+    ];
   };
 
   services.mako = {
