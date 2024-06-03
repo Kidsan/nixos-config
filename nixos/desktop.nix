@@ -6,7 +6,7 @@
       ./hardware/desktop.nix
       ./modules/impermanence/desktop.nix
       ./modules/common.nix
-      # ./modules/i3.nix
+      ./modules/i3.nix
       ./modules/steam.nix
       # ./modules/ollama.nix
     ];
@@ -36,6 +36,7 @@
   # Wayland stuff
   security.pam.services.swaylock = { }; # allows swaylock check if password is correct
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  security.pam.services.gpu-screen-recorder = { }; # allows swaylock check if password is correct
 
   boot = {
     binfmt.emulatedSystems = [ "aarch64-linux" "armv7l-linux" ];
@@ -87,6 +88,10 @@
   hardware = {
     enableRedistributableFirmware = true;
     opengl.enable = true;
+    opengl.extraPackages = [
+      pkgs.vulkan-validation-layers
+
+    ];
     nvidia = {
       modesetting.enable = true;
       nvidiaSettings = true;
