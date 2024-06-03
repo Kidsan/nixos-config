@@ -66,6 +66,7 @@
       '';
 
     };
+    kernel.sysctl."vm.max_map_count" = 2147483642;
     kernelModules = [ "coretemp" "nct6775" "r8169" ];
     loader = {
       grub = {
