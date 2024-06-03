@@ -636,4 +636,30 @@
     '';
 
   };
+
+  home.file."./.config/i3/mode_gaming.sh" = {
+    executable = true;
+    text = ''
+      #!/bin/sh
+
+      i3-msg 'mode gaming'
+      setxkbmap -option -option caps:none
+
+      window=$(xdotool getactivewindow)
+      window_name=$(xdotool getwindowclassname "$window" || xdotool getwindowname "$window" || echo "game")
+      gpu-screen-recorder -w "$window" -f 60 -c mp4 -a "alsa_output.usb-Universal_Audio_Volt_1_23032036038581-00.analog-stereo.monitor" -r 30 -o "$HOME/Videos/replay/$window_name"
+    '';
+  };
+
+  home.file."./.config/i3/mode_default.sh" = {
+    executable = true;
+    text = ''
+      #!/bin/sh
+      i3-msg 'mode default'
+      setxkbmap -option -option caps:escape
+      pkill gpu-screen-reco
+    '';
+  };
+
+
 }
