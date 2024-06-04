@@ -60,7 +60,6 @@
     loginFile = {
       text = /* nu */''
         $env.EDITOR = "nvim"
-        $env.WLR_RENDERER = "vulkan";
         $env.NIX_PATH = "nixpkgs=flake:nixpkgs"
         if $env.XDG_VTNR? == "1" and (which sway | length) > 0 {
             sway --unsupported-gpu
