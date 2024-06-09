@@ -5,6 +5,9 @@
     pkgs.lm_sensors
     pkgs.i3blocks
   ];
+	environment.xfce.excludePackages = [
+	  pkgs.xfce.xfce4-power-manager
+	];
   programs.i3lock = {
     enable = true;
     u2fSupport = true;
