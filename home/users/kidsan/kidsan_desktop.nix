@@ -15,7 +15,7 @@
     ./common.nix
     ../../programs/easyeffects.nix
     ../../programs/i3.nix
-    ../../programs/sway.nix
+    # ../../programs/sway.nix
   ];
 
 }
