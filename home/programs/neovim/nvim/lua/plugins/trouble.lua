@@ -8,41 +8,34 @@ return {
             {
                 "<leader>xx",
                 mode = "n",
-                "<cmd>TroubleToggle<cr>",
+                "<cmd>Trouble diagnostics<cr>",
                 desc = "TroubleToggle"
-            },
-            {
-                "<leader>xw",
-                mode = "n",
-                "<cmd>TroubleToggle workspace_diagnostics<cr>",
-                desc =
-                "TroubleToggle workspace_diagnostics"
             },
             {
                 "<leader>xd",
                 mode = "n",
                 "<cmd>TroubleToggle document_diagnostics<cr>",
                 desc =
-                "TroubleToggle document_diagnostics"
+                "Trouble document_diagnostics"
             },
             {
                 "<leader>xl",
                 mode = "n",
-                "<cmd>TroubleToggle loclist<cr>",
-                desc = "TroubleToggle loclist"
+                "<cmd>Trouble loclist<cr>",
+                desc = "Trouble loclist"
             },
             {
                 "<leader>xq",
                 mode = "n",
-                "<cmd>TroubleToggle quickfix<cr>",
-                desc = "TroubleToggle quickfix"
+                "<cmd>Trouble quickfix<cr>",
+                desc = "Trouble quickfix"
             },
             {
                 "<leader>xR",
                 mode = "n",
-                "<cmd>TroubleToggle lsp_references<cr>",
+                "<cmd>Trouble lsp_references<cr>",
                 desc =
-                "TroubleToggle lsp_references"
+                "Trouble lsp_references"
             },
         }
     }
