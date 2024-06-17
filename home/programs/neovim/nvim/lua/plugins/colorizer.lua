@@ -1,7 +1,6 @@
 return {
-    {
-        "norcalli/nvim-colorizer.lua",
-        event = { "BufReadPost", "BufNewFile" },
-        opts = {},
-    }
+    "norcalli/nvim-colorizer.lua",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {},
+    enabled = false,
 }
