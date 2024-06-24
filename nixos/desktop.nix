@@ -88,8 +88,8 @@
 
   hardware = {
     enableRedistributableFirmware = true;
-    opengl.enable = true;
-    opengl.extraPackages = [
+    graphics.enable = true;
+    graphics.extraPackages = [
       pkgs.vulkan-validation-layers
 
     ];
