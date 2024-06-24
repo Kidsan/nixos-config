@@ -61,9 +61,14 @@
       text = /* nu */''
         $env.EDITOR = "nvim"
         $env.NIX_PATH = "nixpkgs=flake:nixpkgs"
-        if $env.XDG_VTNR? == "1" and (which sway | length) > 0 {
-            exec sway --unsupported-gpu
-        } 
+        if $env.XDG_VTNR? == "1" {
+            if (which sway | length) > 0 {
+                exec sway --unsupported-gpu
+            } 
+            if (which kdeconnect-indicator | length) > 0 {
+                exec kdeconnect-indicator
+            } 
+        }
       '';
     };
   };
