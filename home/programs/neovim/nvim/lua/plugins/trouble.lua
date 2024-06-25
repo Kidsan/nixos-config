@@ -3,7 +3,9 @@ return {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         lazy = true,
-        opts = {},
+        opts = {
+            focus = true,
+        },
         keys = {
             {
                 "<leader>xx",
