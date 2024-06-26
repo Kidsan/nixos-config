@@ -36,6 +36,8 @@
       # and nm-applet is a desktop environment-independent system tray GUI for it.
       exec --no-startup-id nm-applet
 
+      exec --no-startup-id kdeconnect-indicator
+
       # Use pactl to adjust volume in PulseAudio.
       set $refresh_i3status killall -SIGUSR1 i3status
       bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0 && pkill -SIGRTMIN+10 i3blocks
