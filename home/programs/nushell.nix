@@ -65,9 +65,6 @@
             if (which sway | length) > 0 {
                 exec sway --unsupported-gpu
             } 
-            if (which kdeconnect-indicator | length) > 0 {
-                exec kdeconnect-indicator
-            } 
         }
       '';
     };
