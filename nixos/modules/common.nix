@@ -5,6 +5,11 @@
   ];
 
   services.printing.drivers = [ pkgs.hplipWithPlugin ];
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
   hardware.sane = {
     enable = true;
     extraBackends = [ pkgs.hplipWithPlugin ];
