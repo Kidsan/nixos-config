@@ -4,7 +4,7 @@
   home.stateVersion = "23.05";
   home.packages = with pkgs; [
     # audacity
-    transcribe
+    # transcribe
     gpu-screen-recorder
     xdotool
     chromium
@@ -15,7 +15,7 @@
     ./common.nix
     ../../programs/easyeffects.nix
     ../../programs/i3.nix
-    # ../../programs/sway.nix
+    ../../programs/sway.nix
   ];
 
 }

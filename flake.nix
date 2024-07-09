@@ -51,6 +51,18 @@
         inputs.neovim-nightly-overlay.overlays.default
         (import ./overlays/weechat.nix)
         inputs.nixpkgs-wayland.overlays.default
+        (final: prev: {
+          wlroots = prev.wlroots.overrideAttrs
+            {
+              src = nixosPackages.fetchFromGitLab {
+                domain = "gitlab.freedesktop.org";
+                owner = "emersion";
+                repo = "wlroots";
+                rev = "3ff189f3dfe1e0b8ef2e83c3bca25c4995bb1e06";
+                sha256 = "sha256-he3ffE14XW5CHwmV4SNeuyKD1yGLGBfM9h3aNEUHk30=";
+              };
+            };
+        })
       ];
 
       config = {
