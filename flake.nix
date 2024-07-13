@@ -112,6 +112,7 @@
                   pkgs = x86Pkgs;
                 };
                 home-manager.users.kidsan = import ./home/users/kidsan/kidsan_desktop.nix;
+                home-manager.backupFileExtension = "backup";
               }
             ];
         };
@@ -167,13 +168,14 @@
         };
       };
 
-      devShell.x86_64-linux = x86Pkgs.mkShell {
-        nativeBuildInputs = [ x86Pkgs.bashInteractive ];
-        buildInputs = with x86Pkgs; [
-          nil
-          nixpkgs-fmt
-        ];
-      };
+      devShell.x86_64-linux = x86Pkgs.mkShell
+        {
+          nativeBuildInputs = [ x86Pkgs.bashInteractive ];
+          buildInputs = with x86Pkgs; [
+            nil
+            nixpkgs-fmt
+          ];
+        };
     };
 
 }
