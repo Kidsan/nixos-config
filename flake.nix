@@ -50,6 +50,7 @@
       overlays = [
         inputs.neovim-nightly-overlay.overlays.default
         (import ./overlays/weechat.nix)
+        (import ./overlays/transcribe.nix)
         inputs.nixpkgs-wayland.overlays.default
       ];
 
