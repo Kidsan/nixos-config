@@ -32,11 +32,12 @@
 
   services.yabai = {
     enable = true;
+    enableScriptingAddition = true;
     config = {
       external_bar = "off:40:0";
       menubar_opacity = "1.0";
       mouse_follows_focus = "off";
-      focus_follows_mouse = "off";
+      focus_follows_mouse = "on";
       display_arrangement_order = "default";
       window_origin_display = "default";
       window_placement = "second_child";
@@ -56,7 +57,7 @@
       bottom_padding = "0";
       left_padding = "0";
       right_padding = "0";
-      window_gap = "0";
+      window_gap = "1";
       layout = "bsp";
       mouse_modifier = "fn";
       mouse_action1 = "move";
@@ -64,6 +65,47 @@
       mouse_drop_action = "swap";
     };
   };
+
+
+  services.skhd = {
+    enable = true;
+    skhdConfig = ''
+      # move window
+      lshift + cmd - h : yabai -m window --swap east
+      lshift + cmd - l : yabai -m window --swap west
+      lshift + cmd - k : yabai -m window --swap north
+      lshift + cmd - j : yabai -m window --swap south
+      lshift + cmd - 1 : yabai -m window --space 1
+      lshift + cmd - 2 : yabai -m window --space 2
+      lshift + cmd - 3 : yabai -m window --space 3
+      lshift + cmd - 4 : yabai -m window --space 4
+
+      # focus window
+      cmd - h : yabai -m window --focus west
+      cmd - l : yabai -m window --focus east
+      cmd - j : yabai -m window --focus south
+      cmd - k : yabai -m window --focus north
+
+
+      # move workspaces
+      cmd - 1 : yabai -m space --focus 1
+      cmd - 2 : yabai -m space --focus 2
+      cmd - 3 : yabai -m space --focus 3
+      cmd - 4 : yabai -m space --focus 4
+      cmd - 5 : yabai -m space --focus 5
+      cmd - 6 : yabai -m space --focus 6
+      cmd - 7 : yabai -m space --focus 7
+      cmd - 8 : yabai -m space --focus 8
+      cmd - 9 : yabai -m space --focus 9
+
+      # cmd - enter : alacritty
+    '';
+  };
+
+  services.sketchybar = {
+    enable = true;
+  };
+
 
 }
 
