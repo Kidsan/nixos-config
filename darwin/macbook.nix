@@ -33,6 +33,28 @@
   services.yabai = {
     enable = true;
     enableScriptingAddition = true;
+    extraConfig = ''
+      function setup_space {
+        local idx="$1"
+        local space=
+        echo "setup space $idx "
+
+        space=$(yabai -m query --spaces --space "$idx")
+        if [ -z "$space" ]; then
+          yabai -m space --create
+        fi
+      }
+
+      setup_space 1
+      setup_space 2
+      setup_space 3
+      setup_space 4
+      setup_space 5
+      setup_space 6
+      setup_space 7
+      setup_space 8
+      setup_space 9
+    '';
     config = {
       external_bar = "off:40:0";
       menubar_opacity = "1.0";
@@ -79,6 +101,11 @@
       lshift + cmd - 2 : yabai -m window --space 2
       lshift + cmd - 3 : yabai -m window --space 3
       lshift + cmd - 4 : yabai -m window --space 4
+      lshift + cmd - 5 : yabai -m window --space 5
+      lshift + cmd - 6 : yabai -m window --space 6
+      lshift + cmd - 7 : yabai -m window --space 7
+      lshift + cmd - 8 : yabai -m window --space 8
+      lshift + cmd - 9 : yabai -m window --space 9
 
       # focus window
       cmd - h : yabai -m window --focus west
@@ -98,7 +125,7 @@
       cmd - 8 : yabai -m space --focus 8
       cmd - 9 : yabai -m space --focus 9
 
-      # cmd - enter : alacritty
+      cmd - return : alacritty
     '';
   };
 
