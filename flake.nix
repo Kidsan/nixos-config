@@ -43,15 +43,20 @@
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
+
+    termin-monitor.url = "github:kidsan/termin-monitor";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-wayland, nixos, home-manager, secrets, agenix, darwin, impermanence, disko, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-wayland, nixos, home-manager, secrets, agenix, darwin, impermanence, disko, termin-monitor, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlays.default
         (import ./overlays/weechat.nix)
         (import ./overlays/transcribe.nix)
         inputs.nixpkgs-wayland.overlays.default
+        (self: super: {
+          termin-monitor = termin-monitor.packages."aarch64-linux".bot;
+        })
       ];
 
       config = {
