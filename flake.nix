@@ -55,7 +55,7 @@
         (import ./overlays/transcribe.nix)
         inputs.nixpkgs-wayland.overlays.default
         (self: super: {
-          termin-monitor = termin-monitor.packages."aarch64-linux".bot;
+          termin-monitor = termin-monitor.packages."x86_64-linux".bot;
         })
       ];
 
