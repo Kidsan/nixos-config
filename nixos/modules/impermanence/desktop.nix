@@ -13,6 +13,7 @@
     ];
     files = [
       "/etc/machine-id"
+      "/etc/termin-monitor"
     ];
     users.kidsan = {
       directories = [
