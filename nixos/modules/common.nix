@@ -7,7 +7,7 @@
   services.printing.drivers = [ pkgs.hplipWithPlugin ];
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     openFirewall = true;
   };
   hardware.sane = {
