@@ -138,7 +138,7 @@
   };
 
   virtualisation.docker.enable = true;
-  virtualisation.docker.enableNvidia = true;
+  hardware.nvidia-container-toolkit.enable = true;
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
 
