@@ -8,7 +8,6 @@
       ./modules/common.nix
       ./modules/i3.nix
       ./modules/steam.nix
-      ./modules/termin-monitor.nix
     ];
 
   environment = {
