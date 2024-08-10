@@ -567,11 +567,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722950149,
-        "narHash": "sha256-sBKAwieQZH28wwrQP7dC6PwYEt8D89xnR/4tyaNLWSk=",
+        "lastModified": 1723291048,
+        "narHash": "sha256-y78BsyNbRiyOuoVBxFKWlN71aggmxCgKdA8sI6T6itY=",
         "ref": "main",
-        "rev": "d79ba68e886c20966af67021fdc7b187ec8aa608",
-        "revCount": 24,
+        "rev": "4a6309317c51530d5054990876ec3742f053098d",
+        "revCount": 25,
         "type": "git",
         "url": "ssh://git@github.com/kidsan/secrets.git"
       },
