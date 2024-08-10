@@ -9,6 +9,7 @@
     xdotool
     chromium
     r2modman
+    remmina
   ];
 
   imports = [
