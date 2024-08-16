@@ -18,7 +18,7 @@ jobs:
       with:
         extra_nix_config: |
           auto-optimise-store = true
-          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+          access-tokens = github.com=${{ secrets.PERSONAL_ACCESS_TOKEN }}
           experimental-features = nix-command flakes
           substituters = https://cache.nixos.org/ https://nix-community.cachix.org
           trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
@@ -27,10 +27,13 @@ jobs:
       run: |
         git config user.email bots@kidsan.dev
         git config user.name "Git Bot"
+        git config --global --add url."https://${{ secrets.PERSONAL_ACCESS_TOKEN }}:x-oauth-basic@github".insteadOf ssh://git@github
+        git config --global --add url."https://${{ secrets.PERSONAL_ACCESS_TOKEN }}:x-oauth-basic@github".insteadOf https://github
+        git config --global --add url."https://${{ secrets.PERSONAL_ACCESS_TOKEN }}:x-oauth-basic@github".insteadOf git@github
     - name: Update the flake
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: nix flake lock --update-input nixos --update-input home-manager --update-input nixpkgs --update-input agenix --update-input neovim-nightly-overlay --update-input homeage 
+      # env:
+      #   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: nix flake update
     - name: Store flake.lock
       uses: actions/upload-artifact@v3
       with:
