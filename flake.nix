@@ -53,6 +53,11 @@
         (import ./overlays/weechat.nix)
         (import ./overlays/transcribe.nix)
         inputs.nixpkgs-wayland.overlays.default
+        (self: super: {
+          vulkan-validation-layers = super.vulkan-validation-layers.overrideAttrs (old: {
+            buildInputs = old.buildInputs ++ [ super.spirv-tools ];
+          });
+        })
       ];
 
       config = {
