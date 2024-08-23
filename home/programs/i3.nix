@@ -205,6 +205,8 @@
               status_command i3blocks
               position top
       }
+      for_window [class="discord"] move to workspace 2
+      for_window [class="^steam$"] move to workspace 2
     '';
 
     "./.config/i3blocks/config".text = ''
