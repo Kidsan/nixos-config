@@ -29,6 +29,7 @@
           pkgs.wine-staging
         ];
       })
+      pkgs.qpwgraph
     ];
   };
 
