@@ -6,7 +6,7 @@
       ./hardware/desktop.nix
       ./modules/impermanence/desktop.nix
       ./modules/common.nix
-      ./modules/i3.nix
+      # ./modules/i3.nix
       ./modules/steam.nix
     ];
 
@@ -22,6 +22,7 @@
       pkgs.curl
       pkgs.openssl
       pkgs.vim
+      pkgs.jq
       pkgs.virt-manager
       pkgs.winetricks
       (pkgs.lutris.override {

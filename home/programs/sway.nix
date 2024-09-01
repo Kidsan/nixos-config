@@ -95,8 +95,6 @@
         { command = "obsidian"; always = true; }
         { command = "alacritty -e ncspot"; }
         { command = "firefox"; }
-        { command = "slack"; }
-        { command = "thunderbird"; }
       ];
 
       menu = "bemenu-run -H 30 --tb '#6272a4' --tf '#f8f8f2' --fb '#282a36' --ff '#f8f8f2' --nb '#282a36' --nf '#6272a4' --hb '#44475a' --hf '#50fa7b' --sb '#44475a' --sf '#50fa7b' --scb '#282a36' --scf '#ff79c6'";
@@ -125,8 +123,11 @@
         lib.mkOptionDefault
           {
             gaming = {
-              "${modifier}+shift+g" = "mode default";
+              "${modifier}+shift+g" = "exec '~/.config/sway/mode_default.sh'";
               "${modifier}+f" = "fullscreen toggle";
+	      "XF86AudioRaiseVolume" =  "exec --no-startup-id 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0'";
+              "XF86AudioLowerVolume" =  "exec --no-startup-id 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 1.0'";
+              "XF86AudioMute" =  "exec --no-startup-id 'kill -s USR1 $(ps -C gpu-screen-recorder)'";
             };
           };
 
@@ -141,7 +142,7 @@
           "Print" = "exec 'FILENAME=\"screenshot-`date +%F-%T`\"; grim -g \"$(slurp)\" ~/Downloads/$FILENAME.png '";
           "${modifier}+period" = "exec 'playerctl -p ncspot next'";
           "${modifier}+comma" = "exec 'playerctl -p ncspot previous'";
-          "${modifier}+shift+g" = "mode gaming";
+          "${modifier}+shift+g" = "exec '~/.config/sway/mode_gaming.sh'";
           "${modifier}+o" = "exec 'swaymsg [app_id=\"obsidian\"] scratchpad show";
           "${modifier}+m" = "exec 'swaymsg [title=\"ncspot\"] scratchpad show";
           "${modifier}+shift+y" = "exec 'waylogout'";
@@ -161,8 +162,8 @@
 
       assigns = {
         "1" = [{ app_id = "firefox-nightly"; }];
-        "2" = [{ app_id = "thunderbird"; } { app_id = "Slack"; } { app_id = "Steam"; }];
-        "5" = [{ app_id = "discord"; }];
+        "2" = [{ app_id = "thunderbird"; } { app_id = "Slack"; } { class = "steam"; } { app_id = "discord"; } ];
+        # "5" = [{ app_id = "discord"; }];
       };
       workspaceOutputAssign =
         lib.mkMerge [
@@ -637,26 +638,26 @@
 
   };
 
-  home.file."./.config/i3/mode_gaming.sh" = {
+  home.file."./.config/sway/mode_gaming.sh" = {
     executable = true;
     text = ''
       #!/bin/sh
 
-      i3-msg 'mode gaming'
-      setxkbmap -option -option caps:none
+      swaymsg 'mode gaming'
+      # setxkbmap -option -option caps:none
 
-      window=$(xdotool getactivewindow)
-      window_name=$(xdotool getwindowclassname "$window" || xdotool getwindowname "$window" || echo "game")
-      gpu-screen-recorder -w "$window" -f 60 -c mp4 -a "alsa_output.usb-Universal_Audio_Volt_1_23032036038581-00.analog-stereo.monitor" -r 30 -o "$HOME/Videos/replay/$window_name"
+      game=$(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .name')
+
+      gpu-screen-recorder -w screen -f 60 -c mp4 -a "alsa_output.usb-Universal_Audio_Volt_1_23032036038581-00.analog-stereo.monitor" -r 30 -o "$HOME/Videos/replay/$game"
     '';
   };
 
-  home.file."./.config/i3/mode_default.sh" = {
+  home.file."./.config/sway/mode_default.sh" = {
     executable = true;
     text = ''
       #!/bin/sh
-      i3-msg 'mode default'
-      setxkbmap -option -option caps:escape
+      swaymsg 'mode default'
+      # setxkbmap -option -option caps:escape
       pkill gpu-screen-reco
     '';
   };
