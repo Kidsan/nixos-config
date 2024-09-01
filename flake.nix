@@ -57,6 +57,10 @@
           vulkan-validation-layers = super.vulkan-validation-layers.overrideAttrs (old: {
             buildInputs = old.buildInputs ++ [ super.spirv-tools ];
           });
+          swayidle = super.swayidle.overrideAttrs (old: {
+            nativeBuildInputs = old.nativeBuildInputs ++ [ super.cmake ];
+            buildInputs = old.buildInputs ++ [ super.wayland-scanner ];
+          });
         })
       ];
 
