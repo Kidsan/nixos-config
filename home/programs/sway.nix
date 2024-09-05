@@ -43,7 +43,7 @@
       name = "Dracula";
     };
     cursorTheme = {
-      package = pkgs.gnome3.adwaita-icon-theme;
+      package = pkgs.adwaita-icon-theme;
       name = "Adwaita";
     };
     font = {
