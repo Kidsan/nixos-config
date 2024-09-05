@@ -54,6 +54,7 @@
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPkgNbqSgAdMEx/IaXFsGW6HlobqrsSnl7lanbdfMYaZ JuiceSSH"
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMAhyQg3HIZZ+XcpmIEzNkmbMUQwXX2YyjX+RTYAY6cG u0_a191@localhost"
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDj31MXtyzN28GceFMNpvXoTioUl3r+aaw4CUQuvAUm/ kidsan@macbookair"
+	    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIfLqsgzH8AdYco3e1LbE+gkIIaey/h9QgJevlEC0i67" 
           ];
         };
         postCommands = ''
