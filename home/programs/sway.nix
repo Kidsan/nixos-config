@@ -140,7 +140,7 @@
           "XF86AudioRaiseVolume" = "exec 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ -l 1.0'";
           "XF86AudioLowerVolume" = "exec 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- -l 1.0'";
           "XF86AudioMute" = "exec 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'";
-          "Print" = "exec 'FILENAME=\"screenshot-`date +%F-%T`\"; grim -g \"$(slurp)\" ~/Downloads/$FILENAME.png '";
+          "Print" = "exec 'mkdir -p ~/Downloads; FILENAME=\"screenshot-`date +%F-%T`\"; grim -g \"$(slurp)\" ~/Downloads/$FILENAME.png '";
 	  "${modifier}+Print" = "exec 'grim -g \"$(slurp -d)\" - | wl-copy";
           "${modifier}+period" = "exec 'playerctl -p ncspot next'";
           "${modifier}+comma" = "exec 'playerctl -p ncspot previous'";
