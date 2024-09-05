@@ -10,6 +10,7 @@
     chromium
     r2modman
     remmina
+    discordo
   ];
 
   imports = [
