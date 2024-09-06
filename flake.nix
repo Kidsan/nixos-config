@@ -61,6 +61,28 @@
             nativeBuildInputs = old.nativeBuildInputs ++ [ super.cmake ];
             buildInputs = old.buildInputs ++ [ super.wayland-scanner ];
           });
+	  # vimPlugins = super.vimPlugins // {
+	  #   nvim-treesitter = super.vimPlugins.nvim-treesitter.overrideAttrs (old: {
+	  #     version = "";
+	  #     src = super.fetchFromGitHub {
+	  #              owner = "nvim-treesitter";
+	  #              repo = "nvim-treesitter";
+	  #              rev = "093b29f2b409278e2ed69a90462fee54714b5a84";
+	  #              sha256 = "ddd";
+	  #     };
+	  #   });
+	  # };
+	  vimPlugins = super.vimPlugins.extend (self': super': {
+	    nvim-treesitter = super'.nvim-treesitter.overrideAttrs (old: {
+	      version = "nightly";
+	      src = super.fetchFromGitHub {
+                owner = "nvim-treesitter";
+                repo = "nvim-treesitter";
+                rev = "093b29f2b409278e2ed69a90462fee54714b5a84";
+                sha256 = "sha256-ZC3ks3TWO0UrAvDgzlIOb6IZe2xVt+BJnEPdd9oZAmg=";
+	      };
+	    });
+	  });
         })
       ];
 
