@@ -1,34 +1,25 @@
 return {
     {
-        'VonHeikemen/lsp-zero.nvim',
-        event = { "BufReadPre", "BufNewFile" },
-        branch = 'v4.x',
-        dependencies = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
 
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
+        'VonHeikemen/lsp-zero.nvim',
+        branch = "v4.x",
+        lazy = true,
+        config = false
+    },
+    {
+        'hrsh7th/nvim-cmp',
+        event = 'InsertEnter',
+        dependencies = {
+            { 'L3MON4D3/LuaSnip' },
+            --     -- Snippet Collection (Optional)
+            { 'rafamadriz/friendly-snippets' },
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-path' },
             { 'saadparwaiz1/cmp_luasnip' },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-nvim-lua' },
-
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' },
-            -- Snippet Collection (Optional)
-            { 'rafamadriz/friendly-snippets' },
-
-            { 'onsails/lspkind.nvim' },
-            { 'nvim-treesitter/nvim-treesitter' },
-
         },
         config = function()
-            local lsp = require('lsp-zero')
-
             local cmp = require('cmp')
             -- local cmp_format = require('lsp-zero').cmp_format()
             local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -69,9 +60,39 @@ return {
                     { name = 'luasnip' },
                 }
             })
+        end
+    },
+    {
+        'neovim/nvim-lspconfig',
+        event = { "BufReadPre", "BufNewFile" },
+        branch = 'v4.x',
+        -- dependencies = {
+        --     -- LSP Support
+        --     { 'neovim/nvim-lspconfig' },
+        { 'williamboman/mason.nvim' },
+        { 'williamboman/mason-lspconfig.nvim' },
+        --
+        --     -- Autocompletion
+        --     { 'hrsh7th/nvim-cmp' },
+        --     { 'hrsh7th/cmp-buffer' },
+        --     { 'hrsh7th/cmp-path' },
+        --     { 'saadparwaiz1/cmp_luasnip' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+        --     { 'hrsh7th/cmp-nvim-lua' },
+        --
+        --     -- Snippets
+        --     { 'L3MON4D3/LuaSnip' },
+        --     -- Snippet Collection (Optional)
+        --     { 'rafamadriz/friendly-snippets' },
+        --
+        { 'onsails/lspkind.nvim' },
+        { 'nvim-treesitter/nvim-treesitter' },
+        --
+        -- },
+        config = function()
+            local lsp = require('lsp-zero')
 
             local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-
             parser_config.nu = {
                 install_info = {
                     url = "https://github.com/nushell/tree-sitter-nu",
