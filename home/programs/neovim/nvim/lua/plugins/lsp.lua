@@ -2,7 +2,7 @@ return {
     {
         'VonHeikemen/lsp-zero.nvim',
         event = { "BufReadPre", "BufNewFile" },
-        branch = 'v2.x',
+        branch = 'v4.x',
         dependencies = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -23,23 +23,22 @@ return {
             { 'rafamadriz/friendly-snippets' },
 
             { 'onsails/lspkind.nvim' },
+            { 'nvim-treesitter/nvim-treesitter' },
 
         },
         config = function()
             local lsp = require('lsp-zero')
-            lsp.preset('recommended')
-
-            -- don't initialize this language server
-            -- we will use rust-tools to setup rust_analyzer
-            lsp.skip_server_setup({ 'rust_analyzer' })
 
             local cmp = require('cmp')
+            -- local cmp_format = require('lsp-zero').cmp_format()
             local cmp_select = { behavior = cmp.SelectBehavior.Select }
-            local cmp_mappings = lsp.defaults.cmp_mappings({
+            local cmp_mappings = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<CR>'] = cmp.mapping.confirm({ select = true }),
                 ['<C-Space>'] = cmp.mapping.complete(),
+                ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-d>'] = cmp.mapping.scroll_docs(4),
             })
 
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -50,7 +49,7 @@ return {
 
             local lspkind = require("lspkind")
 
-            lsp.setup_nvim_cmp({
+            cmp.setup({
                 mapping = cmp_mappings,
                 formatting = {
                     format = lspkind.cmp_format({
@@ -91,49 +90,36 @@ return {
                 group = format_sync_grp,
             })
 
-            lsp.on_attach(function(client, bufnr)
+            local lsp_attach = function(_, bufnr)
                 local opts = { buffer = bufnr, remap = false }
-
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
                 vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
                 vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-                vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-                vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
+                vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, opts)
+                vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, opts)
                 vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
                 vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts)
                 vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
                 vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
                 vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-            end)
+            end
 
-            lsp.configure('nil_ls', {
-                settings = {
-                    ['nil'] = {
-                        formatting = { command = { "nixpkgs-fmt" } }
-                    }
-                }
+
+            lsp.extend_lspconfig({
+                capabilities = require('cmp_nvim_lsp').default_capabilities(),
+                lsp_attach = lsp_attach,
+                float_border = 'rounded',
+                sign_text = true,
+                set_lsp_keymaps = { preserve_mappings = false }
             })
 
-            lsp.configure('nushell', {
+            require('lspconfig').nushell.setup({
                 command = { "nu", "--lsp" },
                 filetypes = { "nu" },
-                root_dir = require("lspconfig.util").find_git_ancestor,
-                singe_file_support = true,
+                root_di = require("lspconfig.util").find_git_ancestor,
+                single_file_support = true,
             })
-
-            lsp.configure('volar', {
-                filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
-            })
-
-            lsp.set_server_config({
-                on_init = function(client)
-                    client.server_capabilities.semanticTokensProvider = nil
-                end,
-            })
-
-            lsp.nvim_workspace()
-            lsp.setup()
 
             vim.diagnostic.config({
                 virtual_text = true,
@@ -142,6 +128,36 @@ return {
                 underline = true,
                 severity_sort = false,
                 float = true,
+            })
+
+            require('mason').setup({})
+            require('mason-lspconfig').setup({
+                ensure_installed = { 'lua_ls', 'gopls', 'terraformls' },
+                handlers = {
+                    function(server_name)
+                        require('lspconfig')[server_name].setup({})
+                    end,
+
+                    gopls = lsp.noop,
+                    rust_analyzer = lsp.noop,
+
+                    lua_ls = function()
+                        require('lspconfig').lua_ls.setup({
+                            on_init = function(client)
+                                lsp.nvim_lua_settings(client, {})
+                            end
+                        })
+                    end,
+                    nil_ls = function()
+                        local nil_ls_opts = {}
+                        nil_ls_opts['nil'] = {
+                            formatting = {
+                                command = "nixpkgs-fmt"
+                            }
+                        }
+                        require("lspconfig").nil_ls.setup(nil_ls_opts)
+                    end,
+                }
             })
         end
     }

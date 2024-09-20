@@ -9,6 +9,7 @@ return {
         config = function()
             local opts = {
                 luasnip = true,
+                lsp_cfg = true,
             }
             require('go').setup(opts)
             local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
