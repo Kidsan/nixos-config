@@ -1,6 +1,13 @@
 return {
     {
 
+        'williamboman/mason.nvim',
+        config = function()
+            require("mason").setup()
+        end
+    },
+    {
+
         'VonHeikemen/lsp-zero.nvim',
         branch = "v4.x",
         lazy = true,
@@ -66,32 +73,12 @@ return {
         'neovim/nvim-lspconfig',
         event = { "BufReadPre", "BufNewFile" },
         branch = 'v4.x',
-        -- dependencies = {
-        --     -- LSP Support
-        --     { 'neovim/nvim-lspconfig' },
-        { 'williamboman/mason.nvim' },
-        { 'williamboman/mason-lspconfig.nvim' },
-        --
-        --     -- Autocompletion
-        --     { 'hrsh7th/nvim-cmp' },
-        --     { 'hrsh7th/cmp-buffer' },
-        --     { 'hrsh7th/cmp-path' },
-        --     { 'saadparwaiz1/cmp_luasnip' },
-        { 'hrsh7th/cmp-nvim-lsp' },
-        --     { 'hrsh7th/cmp-nvim-lua' },
-        --
-        --     -- Snippets
-        --     { 'L3MON4D3/LuaSnip' },
-        --     -- Snippet Collection (Optional)
-        --     { 'rafamadriz/friendly-snippets' },
-        --
-        { 'onsails/lspkind.nvim' },
-        { 'nvim-treesitter/nvim-treesitter' },
-        --
-        -- },
+        dependencies = {
+            { 'williamboman/mason-lspconfig.nvim' },
+            { 'nvim-treesitter/nvim-treesitter' },
+        },
         config = function()
             local lsp = require('lsp-zero')
-
             local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
             parser_config.nu = {
                 install_info = {
@@ -151,7 +138,6 @@ return {
                 float = true,
             })
 
-            require('mason').setup({})
             require('mason-lspconfig').setup({
                 ensure_installed = { 'lua_ls', 'gopls', 'terraformls' },
                 handlers = {

@@ -4,7 +4,34 @@ return {
         lazy = true,
         dependencies = {
             { 'rcarriga/nvim-dap-ui' },
-            { 'nvim-neotest/nvim-nio' }
+            { 'nvim-neotest/nvim-nio' },
+            {'leoluz/nvim-dap-go'},
+        },
+        keys = {
+            {"<leader>ds", mode = "n", function()
+                require("dap").continue()
+                require("dapui").toggle({})
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false) -- Spaces buffers evenly
+            end, desc = "dap start"},
+            { "<leader>dl",mode = "n", function() require("dap.ui.widgets").hover() end, desc = "dap ui hove"},
+            { "<leader>dc",mode = "n", function() require("dap").continue() end, desc="dap continue"},
+            { "<leader>db",mode = "n", function() require("dap").toggle_breakpoint() end, desc="dap breakpoint toggle"},
+            { "<leader>dn",mode = "n", function() require("dap").step_over() end, desc=" dap step over"},
+            { "<leader>di",mode = "n", function() require("dap").step_into() end, desc="dap step into"},
+            { "<leader>do",mode = "n", function() require("dap").step_out() end, desc=" dap step out"},
+            {"<leader>dC", mode = "n", function()
+                require("dap").clear_breakpoints()
+                require("notify")("Breakpoints cleared", "warn", { title = "DAP" })
+            end, desc = "dap clear"},
+
+            -- Close debugger and clear breakpoints
+            {"<leader>de", mode = "n", function()
+                require("dap").clear_breakpoints()
+                require("dapui").toggle({})
+                require("dap").terminate()
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
+                require("notify")("Debugger session ended", "warn", { title = "DAP" })
+            end, desc = ""},
         },
         config = function()
             local dap = require('dap')
@@ -58,12 +85,25 @@ return {
                 go = {
                     {
                         type = "go",        -- Which adapter to use
-                        name = "Debug",     -- Human readable name
+                        name = "Debug go file",     -- Human readable name
                         request = "launch", -- Whether to "launch" or "attach" to program
                         program = "${file}",
                     },
                 }
             }
+
+            local opts = {
+                dap_configurations = {
+                    {
+                        type = "go",
+                        name = "Attach remote",
+                        mode = "remote",
+                        request = "attach",
+                    },
+                }
+            }
+            require('dap-go').setup(opts)
+            require('dap.ext.vscode').load_launchjs(nil, {})
 
             dap.adapters.go = {
                 type = "server",
@@ -75,34 +115,6 @@ return {
             }
 
             vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'Error' })
-
-            -- Start debugging session
-            vim.keymap.set("n", "<leader>ds", function()
-                dap.continue()
-                ui.toggle({})
-                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false) -- Spaces buffers evenly
-            end)
-
-            -- Set breakpoints, get variable values, step into/out of functions, etc.
-            vim.keymap.set("n", "<leader>dl", require("dap.ui.widgets").hover)
-            vim.keymap.set("n", "<leader>dc", dap.continue)
-            vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
-            vim.keymap.set("n", "<leader>dn", dap.step_over)
-            vim.keymap.set("n", "<leader>di", dap.step_into)
-            vim.keymap.set("n", "<leader>do", dap.step_out)
-            vim.keymap.set("n", "<leader>dC", function()
-                dap.clear_breakpoints()
-                require("notify")("Breakpoints cleared", "warn", { title = "DAP" })
-            end)
-
-            -- Close debugger and clear breakpoints
-            vim.keymap.set("n", "<leader>de", function()
-                dap.clear_breakpoints()
-                ui.toggle({})
-                dap.terminate()
-                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
-                require("notify")("Debugger session ended", "warn", { title = "DAP" })
-            end)
         end
     }
 }
