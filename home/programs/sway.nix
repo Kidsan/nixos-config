@@ -8,8 +8,6 @@
     fi
   '';
 
-  home.file."Pictures/wallpaper.png".source = ./wallpaper.png;
-
   home.packages = with pkgs; [
     gamescope
     playerctl
@@ -81,10 +79,6 @@
     wrapperFeatures = {
       gtk = true;
     };
-
-    extraConfig = ''
-      output "*" bg /home/kidsan/Pictures/wallpaper.png fill
-    '';
 
     config = {
       modifier = "Mod1";
