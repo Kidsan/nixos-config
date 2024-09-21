@@ -10,6 +10,14 @@ return {
             local opts = {
                 luasnip = true,
                 lsp_cfg = true,
+                diagnostic = {
+                    virtual_text = true,
+                    signs = true,
+                    update_in_insert = true,
+                    underline = true,
+                    severity_sort = false,
+                    float = true,
+                },
             }
             require('go').setup(opts)
             local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})

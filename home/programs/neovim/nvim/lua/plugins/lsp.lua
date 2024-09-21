@@ -17,6 +17,7 @@ return {
         'hrsh7th/nvim-cmp',
         event = 'InsertEnter',
         dependencies = {
+            { 'onsails/lspkind.nvim' },
             { 'L3MON4D3/LuaSnip' },
             --     -- Snippet Collection (Optional)
             { 'rafamadriz/friendly-snippets' },
@@ -72,7 +73,6 @@ return {
     {
         'neovim/nvim-lspconfig',
         event = { "BufReadPre", "BufNewFile" },
-        branch = 'v4.x',
         dependencies = {
             { 'williamboman/mason-lspconfig.nvim' },
             { 'nvim-treesitter/nvim-treesitter' },

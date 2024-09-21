@@ -1,7 +1,7 @@
 return {
     {
         'mrcjkb/rustaceanvim',
-        version = "^3",
+        version = "^5",
         event = { "BufReadPost *.rs" },
         keys = {
             { "<Leader>a", mode = "n", function() vim.cmd.RustLsp('codeAction') end, { buffer = vim.api.nvim_get_current_buf() }, desc = "LSP Code Action" },
