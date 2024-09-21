@@ -11,6 +11,7 @@
       "/var/log"
       "/var/lib"
       "/var/lib/nixos"
+      "/etc/sponsorblocktv"
     ];
     files = [
       "/etc/machine-id"
