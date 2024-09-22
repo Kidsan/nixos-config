@@ -10,6 +10,7 @@ return {
             local opts = {
                 luasnip = true,
                 lsp_cfg = true,
+                lsp_semantic_highlights = false,
                 diagnostic = {
                     virtual_text = true,
                     signs = true,
