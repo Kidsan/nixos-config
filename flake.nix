@@ -5,41 +5,24 @@
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
     nixos.url = "nixpkgs/nixos-unstable";
 
-    home-manager = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager/master";
-    };
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager/master";
 
-    neovim-nightly-overlay = {
-      # TODO: set this override again in future
-      # inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/neovim-nightly-overlay";
-    };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.url = "github:ryantm/agenix";
 
-    agenix = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:ryantm/agenix";
-    };
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.url = "github:lnl7/nix-darwin/master";
 
-    darwin = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:lnl7/nix-darwin/master";
-    };
+    impermanence.url = "github:nix-community/impermanence/63f4d0443e32b0dd7189001ee1894066765d18a5";
 
-    impermanence = {
-      url = "github:nix-community/impermanence/master";
-    };
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko.url = "github:nix-community/disko/master";
 
-    disko = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/disko/master";
-    };
-
-    secrets = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "git+ssh://git@github.com/kidsan/secrets.git?ref=main";
-    };
+    secrets.inputs.nixpkgs.follows = "nixpkgs";
+    secrets.url = "git+ssh://git@github.com/kidsan/secrets.git?ref=main";
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
