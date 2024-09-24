@@ -123,10 +123,12 @@ return {
                 set_lsp_keymaps = { preserve_mappings = false }
             })
 
-            require('lspconfig').nushell.setup({
+            local lspconfig = require("lspconfig")
+
+            lspconfig.nushell.setup({
                 command = { "nu", "--lsp" },
                 filetypes = { "nu" },
-                root_di = require("lspconfig.util").find_git_ancestor,
+                root_dir = require("lspconfig.util").find_git_ancestor,
                 single_file_support = true,
             })
 
@@ -143,14 +145,14 @@ return {
                 ensure_installed = { 'lua_ls', 'gopls', 'terraformls' },
                 handlers = {
                     function(server_name)
-                        require('lspconfig')[server_name].setup({})
+                        lspconfig[server_name].setup({})
                     end,
 
                     gopls = lsp.noop,
                     rust_analyzer = lsp.noop,
 
                     lua_ls = function()
-                        require('lspconfig').lua_ls.setup({
+                        lspconfig.lua_ls.setup({
                             on_init = function(client)
                                 lsp.nvim_lua_settings(client, {})
                             end
@@ -163,7 +165,7 @@ return {
                                 command = "nixpkgs-fmt"
                             }
                         }
-                        require("lspconfig").nil_ls.setup(nil_ls_opts)
+                        lspconfig.nil_ls.setup(nil_ls_opts)
                     end,
                 }
             })

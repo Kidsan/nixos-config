@@ -1,7 +1,7 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        cmd = "Telescope",
+        lazy = false,
         dependencies = {
             'nvim-lua/plenary.nvim',
             {
@@ -45,6 +45,12 @@ return {
                 mode = "n",
                 function() require("telescope.builtin").buffers() end,
                 desc = "telescope buffers"
+            },
+            {
+                "<leader>pv",
+                mode = "n",
+                function() require("telescope").extensions.file_browser.file_browser() end,
+                desc = "telescope file browser"
             },
         },
         config = function()
