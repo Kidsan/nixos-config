@@ -151,6 +151,18 @@ return {
                     gopls = lsp.noop,
                     rust_analyzer = lsp.noop,
 
+                    yamlls = function()
+                        require('lspconfig').yamlls.setup({
+                            settings = {
+                                yaml = {
+                                    format = {
+                                        enable = true,
+                                    }
+                                },
+                            },
+                        })
+                    end,
+
                     lua_ls = function()
                         lspconfig.lua_ls.setup({
                             on_init = function(client)
