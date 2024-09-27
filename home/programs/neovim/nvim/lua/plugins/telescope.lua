@@ -41,7 +41,7 @@ return {
                 desc = "telescope treesitter"
             },
             {
-                "<leader>pb",
+                "<leader>b",
                 mode = "n",
                 function() require("telescope.builtin").buffers() end,
                 desc = "telescope buffers"
