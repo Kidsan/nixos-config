@@ -11,6 +11,9 @@ return {
                 luasnip = true,
                 lsp_cfg = true,
                 lsp_semantic_highlights = false,
+                lsp_inlay_hints = {
+                    enable = false,
+                },
                 diagnostic = {
                     virtual_text = true,
                     signs = true,
