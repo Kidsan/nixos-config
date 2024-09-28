@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  system.stateVersion = 5;
   environment.systemPackages = [
     pkgs.vim
   ];
@@ -31,8 +32,8 @@
   ];
 
   services.yabai = {
-    enable = true;
-    enableScriptingAddition = true;
+    enable = false;
+    enableScriptingAddition = false;
     extraConfig = ''
       function setup_space {
         local idx="$1"
@@ -90,7 +91,7 @@
 
 
   services.skhd = {
-    enable = true;
+    enable = false;
     skhdConfig = ''
       # move window
       lshift + cmd - h : yabai -m window --swap east
@@ -130,7 +131,7 @@
   };
 
   services.sketchybar = {
-    enable = true;
+    enable = false;
   };
 
 
