@@ -20,19 +20,7 @@
     bemenu # wayland clone of dmenu
     xdg-utils
     waybar
-    waylogout
   ];
-
-  home.file.".config/waylogout/config".text = /*toml*/''
-    suspend-command=systemctl suspend
-    reboot-command=reboot
-    poweroff-command=systemctl poweroff
-    lock-command=swaylock -f -c 000000
-    default-action=lock
-    color=000000
-    selection-label
-    hide-cancel
-  '';
 
   gtk = {
     enable = true;
@@ -89,7 +77,7 @@
         { command = "obsidian"; always = true; }
         { command = "alacritty -e ncspot"; }
         { command = "firefox"; }
-	{ command = "kdeconnect-indicator"; }
+        { command = "kdeconnect-indicator"; }
       ];
 
       menu = "bemenu-run -H 30 --tb '#6272a4' --tf '#f8f8f2' --fb '#282a36' --ff '#f8f8f2' --nb '#282a36' --nf '#6272a4' --hb '#44475a' --hf '#50fa7b' --sb '#44475a' --sf '#50fa7b' --scb '#282a36' --scf '#ff79c6'";
@@ -120,9 +108,9 @@
             gaming = {
               "${modifier}+shift+g" = "exec '~/.config/sway/mode_default.sh'";
               "${modifier}+f" = "fullscreen toggle";
-	      "XF86AudioRaiseVolume" =  "exec --no-startup-id 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0'";
-              "XF86AudioLowerVolume" =  "exec --no-startup-id 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 1.0'";
-              "XF86AudioMute" =  "exec --no-startup-id 'kill -s USR1 $(ps -C gpu-screen-recorder)'";
+              "XF86AudioRaiseVolume" = "exec --no-startup-id 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0'";
+              "XF86AudioLowerVolume" = "exec --no-startup-id 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 1.0'";
+              "XF86AudioMute" = "exec --no-startup-id 'kill -s USR1 $(ps -C gpu-screen-recorder)'";
             };
           };
 
@@ -135,13 +123,13 @@
           "XF86AudioLowerVolume" = "exec 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- -l 1.0'";
           "XF86AudioMute" = "exec 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'";
           "Print" = "exec 'mkdir -p ~/Downloads; FILENAME=\"screenshot-`date +%F-%T`\"; grim -g \"$(slurp)\" ~/Downloads/$FILENAME.png '";
-	  "${modifier}+Print" = "exec 'grim -g \"$(slurp -d)\" - | wl-copy";
+          "${modifier}+Print" = "exec 'grim -g \"$(slurp -d)\" - | wl-copy";
           "${modifier}+period" = "exec 'playerctl -p ncspot next'";
           "${modifier}+comma" = "exec 'playerctl -p ncspot previous'";
           "${modifier}+shift+g" = "exec '~/.config/sway/mode_gaming.sh'";
           "${modifier}+o" = "exec 'swaymsg [app_id=\"obsidian\"] scratchpad show";
           "${modifier}+m" = "exec 'swaymsg [title=\"ncspot\"] scratchpad show";
-          "${modifier}+shift+y" = "exec 'waylogout'";
+          "${modifier}+shift+y" = "exec 'swaylock -f -c 000000'";
         };
 
       bars = [
@@ -158,7 +146,7 @@
 
       assigns = {
         "1" = [{ app_id = "firefox-nightly"; }];
-        "2" = [{ app_id = "thunderbird"; } { app_id = "Slack"; } { class = "steam"; } { app_id = "discord"; } ];
+        "2" = [{ app_id = "thunderbird"; } { app_id = "Slack"; } { class = "steam"; } { app_id = "discord"; }];
         # "5" = [{ app_id = "discord"; }];
       };
       workspaceOutputAssign =
