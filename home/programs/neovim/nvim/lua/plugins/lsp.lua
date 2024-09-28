@@ -171,10 +171,12 @@ return {
                         })
                     end,
                     nil_ls = function()
-                        local nil_ls_opts = {}
-                        nil_ls_opts['nil'] = {
+                        local nil_ls_opts = {
+                            settings = {}
+                        }
+                        nil_ls_opts.settings['nil'] = {
                             formatting = {
-                                command = "nixpkgs-fmt"
+                                command = { "nixpkgs-fmt" }
                             }
                         }
                         lspconfig.nil_ls.setup(nil_ls_opts)

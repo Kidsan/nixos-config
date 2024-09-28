@@ -143,14 +143,14 @@
   virtualisation.docker.enable = true;
   hardware.nvidia-container-toolkit.enable = true;
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [];
+  programs.nix-ld.libraries = with pkgs; [ ];
 
-virtualisation.oci-containers = {
+  virtualisation.oci-containers = {
     backend = "docker";
     containers.isponsorblock = {
-    volumes = [ "/etc/sponsorblocktv:/app/data" ];
-    image = "ghcr.io/dmunozv04/isponsorblocktv:latest";
-      ports = [];
+      volumes = [ "/etc/sponsorblocktv:/app/data" ];
+      image = "ghcr.io/dmunozv04/isponsorblocktv:latest";
+      ports = [ ];
       autoStart = true;
       extraOptions = [
         "--net=host"
