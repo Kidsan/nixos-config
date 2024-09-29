@@ -12,6 +12,7 @@
   imports = [
     ../programs/git.nix
     ../programs/tmux.nix
+    ../programs/nushell.nix
   ];
 
   # Let Home Manager install and manage itself.
