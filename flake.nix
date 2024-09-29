@@ -44,28 +44,28 @@
             nativeBuildInputs = old.nativeBuildInputs ++ [ super.cmake ];
             buildInputs = old.buildInputs ++ [ super.wayland-scanner ];
           });
-	  # vimPlugins = super.vimPlugins // {
-	  #   nvim-treesitter = super.vimPlugins.nvim-treesitter.overrideAttrs (old: {
-	  #     version = "";
-	  #     src = super.fetchFromGitHub {
-	  #              owner = "nvim-treesitter";
-	  #              repo = "nvim-treesitter";
-	  #              rev = "093b29f2b409278e2ed69a90462fee54714b5a84";
-	  #              sha256 = "ddd";
-	  #     };
-	  #   });
-	  # };
-	  vimPlugins = super.vimPlugins.extend (self': super': {
-	    nvim-treesitter = super'.nvim-treesitter.overrideAttrs (old: {
-	      version = "nightly";
-	      src = super.fetchFromGitHub {
+          # vimPlugins = super.vimPlugins // {
+          #   nvim-treesitter = super.vimPlugins.nvim-treesitter.overrideAttrs (old: {
+          #     version = "";
+          #     src = super.fetchFromGitHub {
+          #              owner = "nvim-treesitter";
+          #              repo = "nvim-treesitter";
+          #              rev = "093b29f2b409278e2ed69a90462fee54714b5a84";
+          #              sha256 = "ddd";
+          #     };
+          #   });
+          # };
+          vimPlugins = super.vimPlugins.extend (self': super': {
+            nvim-treesitter = super'.nvim-treesitter.overrideAttrs (old: {
+              version = "nightly";
+              src = super.fetchFromGitHub {
                 owner = "nvim-treesitter";
                 repo = "nvim-treesitter";
                 rev = "093b29f2b409278e2ed69a90462fee54714b5a84";
                 sha256 = "sha256-ZC3ks3TWO0UrAvDgzlIOb6IZe2xVt+BJnEPdd9oZAmg=";
-	      };
-	    });
-	  });
+              };
+            });
+          });
         })
       ];
 
@@ -165,6 +165,23 @@
                 pkgs = armPkgs;
               };
               home-manager.users.lobster = import ./home/users/lobster/home.nix;
+            }
+          ];
+        };
+
+        pachinko = nixos.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            agenix.nixosModules.default
+            disko.nixosModules.disko
+            ./nixos/pachinko.nix
+            secrets.nixosModules.pachinko or { }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = {
+                pkgs = x86Pkgs;
+              };
+              home-manager.users.kidsan = import ./home/users/pachinko.nix;
             }
           ];
         };
