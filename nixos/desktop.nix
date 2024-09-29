@@ -38,6 +38,7 @@
   # Wayland stuff
   security.pam.services.swaylock = { }; # allows swaylock check if password is correct
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
   security.pam.services.gpu-screen-recorder = { }; # allows swaylock check if password is correct
 
   boot = {
