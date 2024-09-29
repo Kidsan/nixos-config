@@ -4,11 +4,14 @@
   home.stateVersion = "23.05";
   home.packages = with pkgs; [
     discordo
+    vim
+    curl
+    git
   ];
 
   imports = [
     ../programs/git.nix
-  
+    ../programs/tmux.nix
   ];
 
   # Let Home Manager install and manage itself.
