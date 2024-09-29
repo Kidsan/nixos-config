@@ -146,18 +146,6 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [ ];
 
-  virtualisation.oci-containers = {
-    backend = "docker";
-    containers.isponsorblock = {
-      volumes = [ "/etc/sponsorblocktv:/app/data" ];
-      image = "ghcr.io/dmunozv04/isponsorblocktv:latest";
-      ports = [ ];
-      autoStart = true;
-      extraOptions = [
-        "--net=host"
-      ];
-    };
-  };
 }
 
 
