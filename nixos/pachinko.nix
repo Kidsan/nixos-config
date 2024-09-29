@@ -12,6 +12,7 @@
       ./modules/upgrades.nix
       ./modules/ssh.nix
       ./modules/user.nix
+./modules/home-assistant.nix
     ];
 
   boot.loader.efi.canTouchEfiVariables = true;
