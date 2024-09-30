@@ -7,6 +7,7 @@
     vim
     curl
     git
+    btop
   ];
 
   imports = [
