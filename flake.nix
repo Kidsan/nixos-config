@@ -44,6 +44,9 @@
             nativeBuildInputs = old.nativeBuildInputs ++ [ super.cmake ];
             buildInputs = old.buildInputs ++ [ super.wayland-scanner ];
           });
+          waybar = super.waybar.overrideAttrs (old: {
+            buildInputs = old.buildInputs ++ [ super.upower ];
+          });
           # vimPlugins = super.vimPlugins // {
           #   nvim-treesitter = super.vimPlugins.nvim-treesitter.overrideAttrs (old: {
           #     version = "";
