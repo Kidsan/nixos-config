@@ -12,9 +12,10 @@
       ./modules/upgrades.nix
       ./modules/ssh.nix
       ./modules/user.nix
-      ./modules/home-assistant.nix
+      ./modules/homelab.nix
     ];
 
+  networking.firewall.allowedTCPPorts = [22];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
@@ -23,7 +24,7 @@
 
   networking.hostName = "pachinko"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  networking.networkmanager.insertNameservers = [ "0.0.0.0:5335" ];
+
   users.users.kidsan = {
     shell = pkgs.nushell;
     packages = with pkgs; [
@@ -39,19 +40,8 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
   virtualisation.docker.enable = true;
-
   virtualisation.oci-containers = {
     backend = "docker";
-    containers.isponsorblock = {
-      volumes = [ "/etc/sponsorblocktv:/app/data" ];
-      image = "ghcr.io/dmunozv04/isponsorblocktv:latest";
-      ports = [ ];
-      autoStart = true;
-      extraOptions = [
-        "--net=host"
-      ];
-    };
   };
-
 }
 
