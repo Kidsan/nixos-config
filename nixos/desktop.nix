@@ -153,7 +153,10 @@
         enable = true;
         token = "KBxpGnOLRY9uH0yFRKLgEl5wnJIKg6aYCLzUtonV";
         url = "https://git.home";
-        name = "local";
+        name = "desktop";
+        settings = {
+          runner.insecure = true;
+        };
         labels = [
           # provide a debian base with nodejs for actions
           "debian-latest:docker://node:18-bullseye"
