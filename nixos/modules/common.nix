@@ -15,6 +15,14 @@
     extraBackends = [ pkgs.hplipWithPlugin ];
   };
 
+  programs.git = {
+    enable = true;
+    config = {
+      http = { sslCAInfo = "/home/kidsan/.config/git/cert.pem"; };
+    };
+
+  };
+
 
   security.polkit.enable = true;
 
