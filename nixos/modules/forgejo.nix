@@ -19,6 +19,17 @@
         token = "KBxpGnOLRY9uH0yFRKLgEl5wnJIKg6aYCLzUtonV";
         url = "http://192.168.2.175:3333";
         name = "local";
+        hostPackages = [
+          pkgs.bash
+          pkgs.coreutils
+          pkgs.curl
+          pkgs.gawk
+          pkgs.gitMinimal
+          pkgs.gnused
+          pkgs.nodejs
+          pkgs.wget
+          pkgs.nix
+        ];
         labels = [
           # provide a debian base with nodejs for actions
           "debian-latest:docker://node:18-bullseye"
