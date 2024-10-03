@@ -157,13 +157,25 @@
         settings = {
           runner.insecure = true;
         };
+        hostPackages = [
+          pkgs.bash
+          pkgs.coreutils
+          pkgs.curl
+          pkgs.gawk
+          pkgs.gitMinimal
+          pkgs.gnused
+          pkgs.nodejs
+          pkgs.wget
+          pkgs.nix
+        ];
         labels = [
           # provide a debian base with nodejs for actions
           "debian-latest:docker://node:18-bullseye"
           # fake the ubuntu name, because node provides no ubuntu builds
           "ubuntu-latest:docker://node:18-bullseye"
           # provide native execution on the host
-          #"native:host"
+          "native:host"
+          "nix:docker://nixos/nix"
         ];
       };
     };
