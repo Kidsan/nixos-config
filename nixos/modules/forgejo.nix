@@ -1,7 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
 
   services.forgejo = {
     enable = true;
+    package = inputs.nixpkgs.legacyPackages.${pkgs.system}.forgejo;
     settings = {
       server.ROOT_URL = "https://git.home";
       server.DOMAIN = "git.home";

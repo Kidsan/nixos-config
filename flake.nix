@@ -174,6 +174,9 @@
 
         pachinko = nixos.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
             agenix.nixosModules.default
             disko.nixosModules.disko
