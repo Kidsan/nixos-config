@@ -50,6 +50,7 @@
   services.unbound = {
     enable = true;
     checkconf = true;
+    resolveLocalQueries = false;
 
     settings = {
       server = {
@@ -151,6 +152,22 @@
         '';
       };
 
+      "znc.home" = {
+        serverAliases = [ "www.znc.home" ];
+        extraConfig = ''
+          reverse_proxy localhost:5000
+          tls internal
+        '';
+      };
+
+      "git.home" = {
+        serverAliases = [ "www.git.home" ];
+        extraConfig = ''
+          tls internal
+          reverse_proxy localhost:3333
+        '';
+      };
+
     };
 
   };
@@ -162,8 +179,9 @@
     port = 8080;
   };
 
-  networking.firewall.allowedTCPPorts = [ 67 68 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 67 68 80 443 2222 ];
   networking.firewall.allowedUDPPorts = [ 53 67 ];
+  networking.networkmanager.insertNameservers = [ "192.168.2.175" ];
   virtualisation.oci-containers = {
     backend = "docker";
 
@@ -187,9 +205,49 @@
       ports = [ "3003:3000" "8091:8091" ];
       autoStart = true;
       extraOptions = [
-        # "--device=/dev/ttyUSB0:/dev/zwave"
+        "--privileged"
+        "--device=/dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_c20e71c99174ec11b89da55019c2d21c-if00-port0:/dev/zwave"
       ];
     };
   };
+
+  services.znc = {
+    enable = true;
+    mutable = true;
+    useLegacyConfig = false;
+    openFirewall = true;
+    confOptions.useSSL = false;
+  };
+
+  services.forgejo = {
+    enable = true;
+    settings = {
+      server.ROOT_URL = "https://git.home";
+      server.DOMAIN = "git.home";
+      server.SSH_PORT = 22;
+      server.HTTP_PORT = 3333;
+    };
+  };
+
+  services.gitea-actions-runner = {
+    package = pkgs.forgejo-runner;
+    instances = {
+      test = {
+        enable = true;
+        token = "KBxpGnOLRY9uH0yFRKLgEl5wnJIKg6aYCLzUtonV";
+        url = "http://192.168.2.175:3333";
+        name = "local";
+        labels = [
+          # provide a debian base with nodejs for actions
+          "debian-latest:docker://node:18-bullseye"
+          # fake the ubuntu name, because node provides no ubuntu builds
+          "ubuntu-latest:docker://node:18-bullseye"
+          # provide native execution on the host
+          #"native:host"
+        ];
+      };
+    };
+  };
+
 }
 

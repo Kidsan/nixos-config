@@ -146,6 +146,26 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [ ];
 
+  services.gitea-actions-runner = {
+    package = pkgs.forgejo-runner;
+    instances = {
+      desktop = {
+        enable = true;
+        token = "KBxpGnOLRY9uH0yFRKLgEl5wnJIKg6aYCLzUtonV";
+        url = "https://git.home";
+        name = "local";
+        labels = [
+          # provide a debian base with nodejs for actions
+          "debian-latest:docker://node:18-bullseye"
+          # fake the ubuntu name, because node provides no ubuntu builds
+          "ubuntu-latest:docker://node:18-bullseye"
+          # provide native execution on the host
+          #"native:host"
+        ];
+      };
+    };
+  };
+
 }
 
 

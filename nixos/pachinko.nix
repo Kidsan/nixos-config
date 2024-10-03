@@ -23,12 +23,14 @@
 
   networking.hostName = "pachinko"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.insertNameservers = [ "0.0.0.0:5335" ];
   users.users.kidsan = {
     shell = pkgs.nushell;
     packages = with pkgs; [
       vim
       curl
       git
+      zip
     ];
   };
 

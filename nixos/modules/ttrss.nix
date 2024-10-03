@@ -3,7 +3,6 @@
   services.tt-rss = {
     enable = true;
     singleUserMode = true;
-    selfUrlPath = "http://192.168.2.156";
+    selfUrlPath = "https://rss.home";
   };
-  networking.firewall.allowedTCPPorts = [ 80 ];
 }
