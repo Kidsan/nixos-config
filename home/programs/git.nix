@@ -18,6 +18,7 @@
       pull = { rebase = true; };
       push = { autoSetupRemote = true; };
       merge = { conflictstyle = "diff3"; };
+      http = { sslCAInfo = "/home/kidsan/.config/git/cert.pem"; };
     };
   };
 }
