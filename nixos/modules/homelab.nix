@@ -8,5 +8,6 @@
     ./zwave_ui.nix
     ./znc.nix
     ./forgejo.nix
+    ./sponsorblock.nix
   ];
 }
