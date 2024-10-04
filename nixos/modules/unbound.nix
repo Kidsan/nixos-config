@@ -57,7 +57,7 @@
         prefetch = true;
 
         # One thread should be sufficient, can be increased on beefy machines. In reality for most users running on small networks or on a single machine, it should be unnecessary to seek performance enhancement by increasing num-threads above 1.
-        num-threads = 1;
+        num-threads = 2;
 
         # Ensure kernel buffer is large enough to not lose messages in traffic spikes
         so-rcvbuf = "1m";
