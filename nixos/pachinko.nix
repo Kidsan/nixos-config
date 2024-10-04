@@ -43,5 +43,10 @@
   virtualisation.oci-containers = {
     backend = "docker";
   };
+
+  services.davfs2 = {
+    enable = true;
+  };
+
 }
 
