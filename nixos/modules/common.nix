@@ -18,7 +18,11 @@
   programs.git = {
     enable = true;
     config = {
-      http = { sslCAInfo = "/home/kidsan/.config/git/cert.pem"; };
+      http = {
+        "https://git.home" = {
+          sslVerify = false;
+        };
+      };
     };
 
   };
