@@ -3,6 +3,12 @@
   services.forgejo = {
     enable = true;
     package = inputs.nixpkgs.legacyPackages.${pkgs.system}.forgejo;
+    dump = {
+      enable = true;
+      type = "tar.gz";
+      backupDir = "/mnt/forgejo_backups/";
+      interval = "hourly";
+    };
     settings = {
       server.ROOT_URL = "https://git.home";
       server.DOMAIN = "git.home";
