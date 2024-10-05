@@ -14,6 +14,7 @@
     ../programs/git.nix
     ../programs/tmux.nix
     ../programs/nushell.nix
+    ../programs/neovim
   ];
 
   # Let Home Manager install and manage itself.
