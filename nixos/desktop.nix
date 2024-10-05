@@ -26,6 +26,7 @@
       pkgs.jq
       pkgs.virt-manager
       pkgs.winetricks
+      pkgs.xfce.thunar
       (pkgs.lutris.override {
         extraPkgs = pkgs: [
           pkgs.wine-staging
