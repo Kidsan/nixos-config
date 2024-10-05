@@ -573,12 +573,12 @@
         "rev": "e09aac765d65b87d2986046b08032f029f135f4c",
         "revCount": 28,
         "type": "git",
-        "url": "ssh://git@github.com/kidsan/secrets.git"
+        "url": "ssh://forgejo@git.home/kidsan/secrets.git"
       },
       "original": {
         "ref": "main",
         "type": "git",
-        "url": "ssh://git@github.com/kidsan/secrets.git"
+        "url": "ssh://forgejo@git.home/kidsan/secrets.git"
       }
     },
     "systems": {

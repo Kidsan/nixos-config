@@ -22,7 +22,7 @@
     disko.url = "github:nix-community/disko/master";
 
     secrets.inputs.nixpkgs.follows = "nixpkgs";
-    secrets.url = "git+ssh://git@github.com/kidsan/secrets.git?ref=main";
+    secrets.url = "git+ssh://forgejo@git.home/kidsan/secrets.git?ref=main";
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
