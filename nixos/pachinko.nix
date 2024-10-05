@@ -25,6 +25,10 @@
   networking.hostName = "pachinko"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
+  environment.systemPackages = [
+    pkgs.vim
+  ];
+
   users.users.kidsan = {
     shell = pkgs.nushell;
     packages = with pkgs; [

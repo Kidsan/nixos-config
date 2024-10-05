@@ -6,7 +6,7 @@
     dump = {
       enable = true;
       type = "tar.gz";
-      backupDir = "/mnt/forgejo_backups/";
+      backupDir = "/auto/forgejo_backups/";
       interval = "hourly";
     };
     settings = {
@@ -16,6 +16,33 @@
       server.HTTP_PORT = 3333;
     };
   };
+
+
+  services.autofs = {
+    enable = true;
+    debug = false;
+    autoMaster = ''
+      /auto /etc/auto.Nextcloud.mount
+    '';
+  };
+
+  # find /auto/forgejo_backups/ -maxdepth 1 -mtime 1 -type f -delete
+
+  systemd.services.removeOldForgejoBackups = {
+    script = "find /auto/forgejo_backups/ -maxdepth 1 -mtime 14 -type f -delete"; # remove older than 14 days
+    serviceConfig = {
+      Type = "oneshot";
+    };
+  };
+
+  systemd.timers.removeOldForgejoBackups = {
+    timerConfig = {
+      OnCalendar = "Daily";
+      Persistent = "true";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
 
   services.gitea-actions-runner = {
     package = pkgs.forgejo-runner;
