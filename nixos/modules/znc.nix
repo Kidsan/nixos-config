@@ -1,4 +1,4 @@
-{...}: {
+{config,...}: {
 
   services.znc = {
     enable = true;
@@ -6,6 +6,7 @@
     useLegacyConfig = false;
     openFirewall = true;
     confOptions.useSSL = false;
+    configFile = config.age.secrets.znc.path;
   };
 }
 
