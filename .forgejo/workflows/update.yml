@@ -25,7 +25,7 @@ jobs:
       run: nix flake lock --update-input nixos
     - name: Update nixpkgs-wayland
       run: nix flake lock --update-input nixpkgs-wayland
-    - name: Create and merge PR
+    - name: Commit and push
       run: |
         if git diff --exit-code; then
           echo "Found no changes"
