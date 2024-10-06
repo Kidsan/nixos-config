@@ -23,6 +23,18 @@ in
     NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
   };
 
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = [ "firefox.desktop" "chromium-browser.desktop" ];
+      "x-scheme-handler/http " = [ " firefox.desktop" "chromium-browser.desktop" ];
+      "x-scheme-handler/https" = [ "firefox.desktop" "chromium-browser.desktop" ];
+      "x-scheme-handler/about" = [ "firefox.desktop" "chromium-browser.desktop" ];
+      "x-scheme-handler/unknown" = [ "firefox.desktop" "chromium-browser.desktop" ];
+    };
+  };
+
   home.packages = with pkgs; [
     unzip
     spotify
