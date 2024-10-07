@@ -23,6 +23,7 @@
         { directory = ".config/systemd"; user = "kidsan"; }
         { directory = ".config/kdeconnect"; user = "kidsan"; }
         { directory = ".config/kde.org"; user = "kidsan"; }
+        { directory = ".config/weechat"; user = "kidsan"; }
         { directory = ".config/spotify"; user = "kidsan"; }
         { directory = ".config/Signal"; user = "kidsan"; }
         { directory = ".config/dconf"; user = "kidsan"; }
