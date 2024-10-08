@@ -50,7 +50,7 @@
       test = {
         enable = true;
         token = "KBxpGnOLRY9uH0yFRKLgEl5wnJIKg6aYCLzUtonV";
-        url = "http://192.168.2.175:3333";
+        url = "http://192.168.2.133:3333";
         name = "local";
         hostPackages = [
           pkgs.bash

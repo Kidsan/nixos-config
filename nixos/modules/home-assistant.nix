@@ -49,7 +49,7 @@
 
   networking.firewall.allowedTCPPorts = [ 67 68 80 443 2222 ];
   networking.firewall.allowedUDPPorts = [ 53 67 ];
-  networking.networkmanager.insertNameservers = [ "192.168.2.175" ];
+  networking.networkmanager.insertNameservers = [ "192.168.2.133" ];
   virtualisation.oci-containers = {
     containers.home-assistant = {
       volumes = [ "/etc/home-assistant:/config" ];
