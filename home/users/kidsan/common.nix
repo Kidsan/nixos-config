@@ -39,7 +39,7 @@ in
     unzip
     spotify
     discord
-    # element-desktop
+    element-desktop
     nixpkgs-fmt
     jq
     weechat
