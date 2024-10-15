@@ -11,8 +11,8 @@ jobs:
     steps:
     - name: Set up git
       run: |
-        git config --global user.email bots@kidsan.dev
-        git config --global user.name "Git Bot"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
         git config --global http.sslVerify "false"
     - name: Clone repository
       uses: actions/checkout@v4
