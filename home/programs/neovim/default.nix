@@ -41,6 +41,7 @@ in
     lua-language-server
     rust-analyzer-unwrapped
     black
+    nodejs_22
   ];
 
   programs.neovim = {
