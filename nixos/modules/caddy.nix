@@ -36,6 +36,16 @@
         '';
       };
 
+      "rss.home" = {
+        serverAliases = [ "www.rss.home" ];
+        extraConfig = ''
+          root * /var/lib/tt-rss/www
+          file_server
+          php_fastcgi unix//run/phpfpm/tt-rss.sock
+          tls internal
+        '';
+      };
+
       "git.home" = {
         serverAliases = [ "www.git.home" ];
         extraConfig = ''

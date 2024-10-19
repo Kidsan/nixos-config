@@ -9,5 +9,6 @@
     ./znc.nix
     ./forgejo.nix
     ./sponsorblock.nix
+    ./ttrss.nix
   ];
 }
