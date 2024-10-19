@@ -8,7 +8,7 @@
   programs.git = {
     enable = true;
     userName = "kidsan";
-    userEmail = "8798449+Kidsan@users.noreply.github.com";
+    userEmail = "git@kidsan.dev";
     ignores = [
       ".direnv/"
       ".go/"
