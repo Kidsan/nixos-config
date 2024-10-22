@@ -39,6 +39,7 @@
         { directory = ".local/share/Steam"; user = "kidsan"; }
         { directory = ".local/state/nix"; mode = "0700"; user = "kidsan"; }
         { directory = ".mozilla"; mode = "0700"; user = "kidsan"; }
+        { directory = ".factorio"; user = "kidsan"; }
         { directory = ".ssh"; user = "kidsan"; }
         { directory = "nixos-config"; user = "kidsan"; }
         { directory = "workspace"; user = "kidsan"; }
