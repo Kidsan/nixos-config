@@ -26,6 +26,7 @@
         { directory = ".config/spotify"; user = "kidsan"; }
         { directory = ".config/Signal"; user = "kidsan"; }
         { directory = ".config/dconf"; user = "kidsan"; }
+        { directory = ".config/sunshine"; user = "kidsan"; }
         { directory = ".config/easyeffects"; user = "kidsan"; }
         { directory = ".config/github-copilot"; user = "kidsan"; }
         { directory = "Games"; user = "kidsan"; }
