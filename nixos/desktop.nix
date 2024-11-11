@@ -85,8 +85,13 @@
       };
     };
     supportedFilesystems = [ "zfs" ];
-    zfs.devNodes = "/dev/disk/by-partuuid"; # for vm usage
+    zfs = {
+      devNodes = "/dev/disk/by-partuuid"; # for vm usage
+      package = pkgs.zfs_unstable;
+    };
   };
+  boot.initrd.systemd.suppressedUnits = [ "systemd-machine-id-commit.service" ];
+  systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
 
   disko.devices = import ./modules/disko/desktop.nix {
     disks = [ "/dev/nvme0n1" "/dev/sda" "/dev/sdb" ];
