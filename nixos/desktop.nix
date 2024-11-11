@@ -9,6 +9,7 @@
       # ./modules/i3.nix
       ./modules/steam.nix
       ./modules/xdg.nix
+      ./modules/sunshine.nix
     ];
 
   environment = {
