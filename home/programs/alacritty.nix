@@ -4,9 +4,11 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [
-        "~/.config/alacritty/dracula.toml"
-      ];
+      general = {
+        import = [
+          "~/.config/alacritty/dracula.toml"
+        ];
+      };
       font = {
         size = 13;
         normal = {
