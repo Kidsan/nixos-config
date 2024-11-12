@@ -60,6 +60,7 @@
     loginFile = {
       text = /* nu */''
         $env.EDITOR = "nvim"
+        $env.XWAYLAND_NO_GLAMOR = "1"
         $env.NIX_PATH = "nixpkgs=flake:nixpkgs"
         if $env.XDG_VTNR? == "1" {
             if (which sway | length) > 0 {
