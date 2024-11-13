@@ -12,11 +12,11 @@
           tls internal
         '';
       };
-      "ha.home" = {
-        serverAliases = [ "www.ha.home" ];
+      "http://ha.home" = {
+        serverAliases = [ "http://www.ha.home" ];
         extraConfig = ''
           reverse_proxy localhost:8123
-          tls internal
+          # tls internal
         '';
       };
 

@@ -1,7 +1,7 @@
 { lib,... }:
 {
   services.tt-rss = {
-    enable = true;
+    enable = false;
     singleUserMode = true;
     selfUrlPath = "https://rss.home";
   };
