@@ -35,7 +35,7 @@
         inputs.neovim-nightly-overlay.overlays.default
         (import ./overlays/weechat.nix)
         (import ./overlays/transcribe.nix)
-        (import ./overlays/treesitter.nix)
+        (import ./overlays/nvim-treesitter.nix)
         inputs.nixpkgs-wayland.overlays.default
         (self: super: {
           vulkan-validation-layers = super.vulkan-validation-layers.overrideAttrs (old: {
