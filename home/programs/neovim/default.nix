@@ -42,6 +42,7 @@ in
     rust-analyzer-unwrapped
     black
     nodejs_22
+    gh
   ];
 
   programs.neovim = {
