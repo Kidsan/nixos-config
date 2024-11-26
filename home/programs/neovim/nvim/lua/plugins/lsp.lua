@@ -57,10 +57,12 @@ return {
                         ellipsis_char = '...',
                         symbol_map = {
                             Copilot = "",
+                            Supermaven = ""
                         },
                     })
                 },
                 sources = {
+                    { name = 'supermaven' },
                     { name = 'nvim_lsp' },
                     { name = 'buffer' },
                     { name = 'copilot' },
