@@ -99,6 +99,10 @@
         };
       };
 
+      output.DP-1 = {
+        allow_tearing = "yes";
+      };
+
       modes =
         let
           inherit (config.wayland.windowManager.sway.config) modifier;
