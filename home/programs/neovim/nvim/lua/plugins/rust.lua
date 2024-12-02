@@ -20,6 +20,9 @@ return {
                 server = {
                     settings = {
                         ["rust-analyzer"] = {
+                            files = {
+                                excludeDirs = { ".direnv" }
+                            },
                             checkOnSave = {
                                 enable = true,
                                 command = "clippy",
