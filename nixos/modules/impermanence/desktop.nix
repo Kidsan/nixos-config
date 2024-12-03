@@ -48,6 +48,7 @@
         { directory = ".ollama"; user = "kidsan"; }
         { directory = "Videos/replay"; user = "kidsan"; }
         { directory = "Zomboid"; user = "kidsan"; }
+        { directory = ".supermaven"; user = "kidsan"; }
       ];
       files = [
         { file = ".bash_history"; }
