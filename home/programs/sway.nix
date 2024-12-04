@@ -252,6 +252,7 @@
           "bluetooth"
           #"network"
           "cpu"
+          "custom/gpu"
           "temperature"
           "sway/language"
           "battery"
@@ -389,6 +390,14 @@
           "interval" = 3600;
           "exec" = "wttrbar --location Bonn";
           "return-type" = "json";
+        };
+
+        "custom/gpu" = {
+          "format" = "GPU {}°";
+          "tooltip" = true;
+          "interval" = 10;
+          "exec" = "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits";
+          "return-type" = "csv";
         };
 
         "bluetooth" = {

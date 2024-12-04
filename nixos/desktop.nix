@@ -25,6 +25,7 @@
       pkgs.openssl
       pkgs.vim
       pkgs.jq
+      pkgs.lm_sensors
       pkgs.virt-manager
       pkgs.winetricks
       pkgs.xfce.thunar
