@@ -52,6 +52,12 @@ return {
                 function() require("telescope").extensions.file_browser.file_browser() end,
                 desc = "telescope file browser"
             },
+            {
+                "<leader>pr",
+                mode = "n",
+                function() require("telescope.builtin").resume() end,
+                desc = "telescope resume",
+            }
         },
         config = function()
             local opts = {
