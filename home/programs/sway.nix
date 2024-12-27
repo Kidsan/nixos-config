@@ -74,6 +74,7 @@
       defaultWorkspace = "workspace number 1";
       startup = [
         { command = "sleep 5; systemctl --user restart kanshi.service"; always = true; }
+        { command = "swaymsg create_output HEADLESS-1"; }
         { command = "obsidian"; always = true; }
         { command = "alacritty -e ncspot"; }
         { command = "firefox"; }
@@ -101,6 +102,11 @@
 
       output.DP-1 = {
         allow_tearing = "yes";
+      };
+
+      output.HEADLESS-1 = {
+        allow_tearing = "yes";
+        mode = "1200x800@90Hz";
       };
 
       modes =
@@ -150,7 +156,12 @@
 
       assigns = {
         "1" = [{ app_id = "firefox-nightly"; }];
-        "2" = [{ app_id = "thunderbird"; } { app_id = "Slack"; } { class = "steam"; } { app_id = "discord"; }];
+        "2" = [
+          { app_id = "thunderbird"; }
+          { app_id = "Slack"; }
+          # { class = "steam"; }
+          { app_id = "discord"; }
+        ];
         # "5" = [{ app_id = "discord"; }];
       };
       workspaceOutputAssign =
