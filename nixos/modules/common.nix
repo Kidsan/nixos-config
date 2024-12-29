@@ -4,7 +4,6 @@
     pkgs.ffmpeg
   ];
 
-  services.printing.drivers = [ pkgs.hplipWithPlugin ];
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -12,7 +11,6 @@
   };
   hardware.sane = {
     enable = true;
-    extraBackends = [ pkgs.hplipWithPlugin ];
   };
 
   programs.git = {
