@@ -6,10 +6,10 @@
       ./hardware/desktop.nix
       ./modules/impermanence/desktop.nix
       ./modules/common.nix
-      # ./modules/i3.nix
       ./modules/steam.nix
       ./modules/xdg.nix
       ./modules/sunshine.nix
+      ./modules/alvr.nix
     ];
 
   environment = {
