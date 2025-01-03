@@ -74,7 +74,7 @@
       defaultWorkspace = "workspace number 1";
       startup = [
         { command = "sleep 5; systemctl --user restart kanshi.service"; always = true; }
-        { command = "swaymsg create_output HEADLESS-1"; }
+        # { command = "swaymsg create_output HEADLESS-1"; }
         { command = "obsidian"; always = true; }
         { command = "alacritty -e ncspot"; }
         { command = "firefox"; }
@@ -104,10 +104,10 @@
         allow_tearing = "yes";
       };
 
-      output.HEADLESS-1 = {
-        allow_tearing = "yes";
-        mode = "1200x800@90Hz";
-      };
+      # output.HEADLESS-1 = {
+      #   allow_tearing = "yes";
+      #   mode = "2560x1440@99.946Hz";
+      # };
 
       modes =
         let
