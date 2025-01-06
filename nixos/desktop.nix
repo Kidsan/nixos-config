@@ -35,6 +35,7 @@
         ];
       })
       pkgs.qpwgraph
+      pkgs.beatsabermodmanager
     ];
   };
 
@@ -113,6 +114,7 @@
       package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
   };
+  systemd.services.systemd-suspend.environment.SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false"; # fix suspend when nvidia hardware
 
   networking.hostId = "e39fd16b";
   networking.hostName = "desktop";

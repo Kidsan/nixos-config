@@ -25,6 +25,11 @@
         { directory = ".config/weechat"; user = "kidsan"; }
         { directory = ".config/spotify"; user = "kidsan"; }
         { directory = ".config/Signal"; user = "kidsan"; }
+        { directory = ".config/openxr"; user = "kidsan"; }
+        { directory = ".config/openvr"; user = "kidsan"; }
+        { directory = ".config/BeatSaberModManager"; user = "kidsan"; }
+        { directory = ".config/Valve"; user = "kidsan"; }
+        { directory = ".config/alvr"; user = "kidsan"; }
         { directory = ".config/dconf"; user = "kidsan"; }
         { directory = ".config/sunshine"; user = "kidsan"; }
         { directory = ".config/easyeffects"; user = "kidsan"; }

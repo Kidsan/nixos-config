@@ -37,6 +37,20 @@
         (import ./overlays/transcribe.nix)
         (import ./overlays/nvim-treesitter.nix)
         inputs.nixpkgs-wayland.overlays.default
+
+        (self: super: {
+          beatsabermodmanager = super.beatsabermodmanager.overrideAttrs {
+            version = "0.0.6";
+            src = super.fetchFromGitHub {
+              owner = "affederaffe";
+              repo = "BeatSaberModManager";
+              rev = "v0.0.6";
+              hash = "sha256-HHWC+MAwJ+AMCuBzSuR7FbW3k+wLri0B9J1DftyfNEU=";
+              fetchSubmodules = true; # It vendors BSIPA-Linux
+            };
+          };
+        })
+
         (self: super: {
           vulkan-validation-layers = super.vulkan-validation-layers.overrideAttrs (old: {
             buildInputs = old.buildInputs ++ [ super.spirv-tools ];
@@ -53,6 +67,11 @@
 
       config = {
         allowUnfree = true;
+        permittedInsecurePackages = [
+          "dotnet-sdk-7.0.410"
+          "dotnet-sdk-6.0.428"
+          "dotnet-runtime-7.0.20"
+        ];
       };
 
       nixosPackages = import nixos {
