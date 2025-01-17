@@ -11,9 +11,9 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.activation.report-changes = config.lib.dag.entryAnywhere ''
-    ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff $oldGenPath $newGenPath
-  '';
+  # home.activation.report-changes = config.lib.dag.entryAnywhere ''
+  #   ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff $oldGenPath $newGenPath
+  # '';
 
   home.username = "kidsan";
   home.homeDirectory = "/home/kidsan";
@@ -45,7 +45,6 @@ in
     weechat
     vlc
     signal-desktop
-    waypipe
     obsidian
     btop
   ];
