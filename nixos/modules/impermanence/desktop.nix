@@ -43,6 +43,7 @@
         { directory = ".local/share/lutris"; user = "kidsan"; }
         { directory = ".local/share/nvim"; user = "kidsan"; }
         { directory = ".local/share/Steam"; user = "kidsan"; }
+        { directory = ".local/share/ALVR-Launcher"; user = "kidsan"; }
         { directory = ".local/state/nix"; mode = "0700"; user = "kidsan"; }
         { directory = ".mozilla"; mode = "0700"; user = "kidsan"; }
         { directory = ".factorio"; user = "kidsan"; }
