@@ -35,7 +35,6 @@
         ];
       })
       pkgs.qpwgraph
-      pkgs.beatsabermodmanager
     ];
   };
 

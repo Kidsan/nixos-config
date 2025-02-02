@@ -5,7 +5,6 @@
   home.packages = with pkgs; [
     # audacity
     transcribe
-    gpu-screen-recorder
     xdotool
     chromium
     r2modman
