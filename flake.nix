@@ -54,11 +54,6 @@
 
       config = {
         allowUnfree = true;
-        permittedInsecurePackages = [
-          "dotnet-sdk-7.0.410"
-          "dotnet-sdk-6.0.428"
-          "dotnet-runtime-7.0.20"
-        ];
       };
 
       nixosPackages = import nixos {
