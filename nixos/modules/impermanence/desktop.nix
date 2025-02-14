@@ -38,6 +38,7 @@
         { directory = ".config/i3"; user = "kidsan"; }
         { directory = ".config/vlc"; user = "kidsan"; }
         { directory = ".config/xfce4"; user = "kidsan"; }
+        { directory = ".local/share/rippkgs-index.sqlite"; user = "kidsan"; }
         { directory = ".local/share/direnv"; user = "kidsan"; }
         { directory = ".local/share/keyrings"; user = "kidsan"; }
         { directory = ".local/share/lutris"; user = "kidsan"; }

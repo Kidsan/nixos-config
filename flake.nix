@@ -27,9 +27,11 @@
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
 
+    rippkgs.url = "github:replit/rippkgs";
+    rippkgs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-wayland, nixos, home-manager, secrets, agenix, darwin, impermanence, disko, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-wayland, nixos, home-manager, secrets, agenix, darwin, impermanence, disko, rippkgs, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlays.default
@@ -112,6 +114,12 @@
                 home-manager.users.kidsan = import ./home/users/kidsan/kidsan_desktop.nix;
                 home-manager.backupFileExtension = "backup";
               }
+              ({ pkgs, ... }: {
+                environment.systemPackages = [
+                  inputs.rippkgs.packages.${pkgs.system}.rippkgs
+                  inputs.rippkgs.packages.${pkgs.system}.rippkgs-index
+                ];
+              })
             ];
         };
 
