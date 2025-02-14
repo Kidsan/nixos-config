@@ -26,14 +26,7 @@
       pkgs.vim
       pkgs.jq
       pkgs.lm_sensors
-      pkgs.virt-manager
-      pkgs.winetricks
       pkgs.xfce.thunar
-      (pkgs.lutris.override {
-        extraPkgs = pkgs: [
-          pkgs.wine-staging
-        ];
-      })
       pkgs.qpwgraph
     ];
   };

@@ -3,7 +3,6 @@
 {
   home.stateVersion = "23.05";
   home.packages = with pkgs; [
-    # audacity
     transcribe
     xdotool
     chromium
@@ -15,7 +14,6 @@
   imports = [
     ./common.nix
     ../../programs/easyeffects.nix
-    # ../../programs/i3.nix
     ../../programs/sway.nix
   ];
 
@@ -25,16 +23,6 @@
       {
         name = "Desktop";
         image-path = "desktop.png";
-      }
-      {
-        name = "Low Res Desktop";
-        image-path = "desktop.png";
-        prep-cmd = [
-          {
-            do = "xrandr --output HDMI-1 --mode 1920x1080";
-            undo = "xrandr --output HDMI-1 --mode 1920x1080 --output DP-1 --mode 1920x1200";
-          }
-        ];
       }
       {
         name = "Steam Big Picture";

@@ -57,7 +57,6 @@ in
     ../../programs/fonts.nix
     ../../programs/git.nix
     ../../programs/neovim
-    ../../programs/nextcloud.nix
     ../../programs/tmux.nix
     ../../programs/nushell.nix
     ../../programs/nix-flake-templates
