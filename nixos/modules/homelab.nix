@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   imports = [
     ./home-assistant.nix
@@ -11,4 +11,8 @@
     ./sponsorblock.nix
     ./ttrss.nix
   ];
+ 
+  services.audiobookshelf.enable = true;
+  services.audiobookshelf.port = 8724;
+
 }

@@ -54,6 +54,21 @@
         '';
       };
 
+      "http://audiobookshelf.home" = {
+          serverAliases = [ "http://www.audiobookshelf.home" ];
+          extraConfig = ''
+            encode zstd gzip
+            reverse_proxy localhost:8724
+          '';
+      };
+
+      "pachinko.taila4d46.ts.net" = {
+          serverAliases = [ "https://pachinko.taila4d46.ts.net" ];
+          extraConfig = ''
+            encode zstd gzip
+            reverse_proxy localhost:8724
+          '';
+      };
     };
 
   };
