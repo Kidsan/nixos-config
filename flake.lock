@@ -590,11 +590,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728129107,
-        "narHash": "sha256-3YZ4e5dBe1C25PQv5edGx0KDxfjS8pxhT52llm0N+7M=",
+        "lastModified": 1739730136,
+        "narHash": "sha256-je29Z5Ddrzu2eVSS2L1EXR6oBDUB0tLhABY2000TV58=",
         "ref": "main",
-        "rev": "e09aac765d65b87d2986046b08032f029f135f4c",
-        "revCount": 28,
+        "rev": "f744a26d67a482eb915ed0b8a5a311026a44efc6",
+        "revCount": 30,
         "type": "git",
         "url": "ssh://forgejo@git.home/kidsan/secrets.git"
       },

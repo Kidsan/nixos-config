@@ -10,9 +10,12 @@
     ./forgejo.nix
     ./sponsorblock.nix
     ./ttrss.nix
+    ./grafana.nix
   ];
- 
-  services.audiobookshelf.enable = true;
-  services.audiobookshelf.port = 8724;
+
+  services.audiobookshelf = {
+      enable = true;
+      port = 8724;
+  };
 
 }

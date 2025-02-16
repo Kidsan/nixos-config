@@ -54,6 +54,14 @@
         '';
       };
 
+      "grafana.home" = {
+          serverAliases = [ "www.grafana.home" ];
+          extraConfig = ''
+            tls internal
+            reverse_proxy localhost:3000
+        '';
+      };
+
       "http://audiobookshelf.home" = {
           serverAliases = [ "http://www.audiobookshelf.home" ];
           extraConfig = ''
