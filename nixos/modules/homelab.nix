@@ -18,4 +18,9 @@
       port = 8724;
   };
 
+  services.calibre-server.enable = true;
+  services.calibre-server.port = 8725;
+  services.calibre-server.extraFlags = [
+  "--enable-local-write"
+  ];
 }

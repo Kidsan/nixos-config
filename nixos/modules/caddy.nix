@@ -77,6 +77,21 @@
             reverse_proxy localhost:8724
           '';
       };
+
+      "http://calibre.home" = {
+          serverAliases = [ "http://www.calibre.home" ];
+          extraConfig = ''
+            encode zstd gzip
+            reverse_proxy localhost:8725
+          '';
+      };
+      "http://calibreui.home" = {
+          serverAliases = [ "http://www.calibreui.home" ];
+          extraConfig = ''
+            encode zstd gzip
+            reverse_proxy localhost:8726
+          '';
+        };
     };
 
   };
