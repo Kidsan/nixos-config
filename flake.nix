@@ -161,6 +161,7 @@
 
         pachinko = nixos.lib.nixosSystem {
           system = "x86_64-linux";
+          pkgs = nixosPackages;
           specialArgs = {
             inherit inputs;
           };
