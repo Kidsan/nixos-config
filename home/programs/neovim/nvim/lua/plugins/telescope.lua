@@ -4,6 +4,7 @@ return {
         lazy = false,
         dependencies = {
             'nvim-lua/plenary.nvim',
+            'nvim-treesitter/nvim-treesitter',
             {
                 'nvim-telescope/telescope-file-browser.nvim',
                 event = "VeryLazy",
