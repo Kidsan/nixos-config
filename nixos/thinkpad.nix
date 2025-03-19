@@ -69,12 +69,11 @@
 
   virtualisation.docker.enable = true;
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   # gpu accelerated video playback
-  hardware.opengl.extraPackages = [
+  hardware.graphics.extraPackages = [
     pkgs.libvdpau-va-gl
     pkgs.vaapiVdpau
   ];
-  hardware.opengl.driSupport = true;
   services.tlp.enable = true;
 }

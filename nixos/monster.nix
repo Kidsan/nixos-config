@@ -13,7 +13,6 @@
     ./modules/ssh.nix
     ./modules/home-assistant.nix
     ./modules/ttrss.nix
-    ./modules/termin-monitor.nix
   ];
 
   boot = {
