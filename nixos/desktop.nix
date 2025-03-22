@@ -183,6 +183,9 @@
     };
   };
 
+  programs.obs-studio.enable = true;
+  programs.obs-studio.plugins = [ pkgs.obs-studio-plugins.wlrobs pkgs.obs-studio-plugins.obs-pipewire-audio-capture ];
+
 }
 
 

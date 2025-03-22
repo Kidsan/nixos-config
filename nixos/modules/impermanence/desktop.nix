@@ -32,6 +32,7 @@
         { directory = ".config/dconf"; user = "kidsan"; }
         { directory = ".config/sunshine"; user = "kidsan"; }
         { directory = ".config/easyeffects"; user = "kidsan"; }
+        { directory = ".config/obs-studio"; user = "kidsan"; }
         { directory = ".config/github-copilot"; user = "kidsan"; }
         { directory = "Games"; user = "kidsan"; }
         { directory = ".config/i3"; user = "kidsan"; }
