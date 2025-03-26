@@ -9,6 +9,7 @@
     r2modman
     remmina
     discordo
+    blender
   ];
 
   imports = [
