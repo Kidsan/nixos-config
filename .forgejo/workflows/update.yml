@@ -27,6 +27,8 @@ jobs:
       run: nix flake lock --update-input nixpkgs-wayland
     - name: Update neovim-nightly-overlay
       run: nix flake lock --update-input neovim-nightly-overlay
+    - name: Update waybar
+      run: nix flake lock --update-input waybar
     - name: Update home-manager
       run: nix flake lock --update-input home-manager
     - name: Update agenix

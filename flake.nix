@@ -13,9 +13,6 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix.url = "github:ryantm/agenix";
 
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
-    darwin.url = "github:lnl7/nix-darwin/master";
-
     impermanence.url = "github:nix-community/impermanence/63f4d0443e32b0dd7189001ee1894066765d18a5";
 
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -27,17 +24,20 @@
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
 
+    waybar.url = "github:Alexays/waybar";
+
     rippkgs.url = "github:replit/rippkgs";
     rippkgs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-wayland, nixos, home-manager, secrets, agenix, darwin, impermanence, disko, rippkgs, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-wayland, nixos, home-manager, secrets, agenix, impermanence, disko, waybar, rippkgs, ... } @ inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlays.default
         (import ./overlays/weechat.nix)
         (import ./overlays/transcribe.nix)
         inputs.nixpkgs-wayland.overlays.default
+        inputs.waybar.overlays.default
 
         (self: super: {
           vulkan-validation-layers = super.vulkan-validation-layers.overrideAttrs (old: {
@@ -46,9 +46,6 @@
           swayidle = super.swayidle.overrideAttrs (old: {
             nativeBuildInputs = old.nativeBuildInputs ++ [ super.cmake ];
             buildInputs = old.buildInputs ++ [ super.wayland-scanner ];
-          });
-          waybar = super.waybar.overrideAttrs (old: {
-            buildInputs = old.buildInputs ++ [ super.upower ];
           });
         })
       ];
@@ -73,23 +70,9 @@
         inherit overlays;
       };
 
-      darwinPkgs = import nixpkgs {
-        system = "aarch64-darwin";
-        config = { allowUnfree = true; };
-        inherit overlays;
-      };
-
     in
     {
-      homeConfigurations = {
-        "kieranosullivan@Kierans-Air" = home-manager.lib.homeManagerConfiguration {
-          pkgs = darwinPkgs;
-
-          modules = [
-            ./home/users/kieranosullivan/home.nix
-          ];
-        };
-      };
+      homeConfigurations = { };
 
       nixosConfigurations = {
         desktop = nixos.lib.nixosSystem {
@@ -176,20 +159,6 @@
               };
               home-manager.users.kidsan = import ./home/users/pachinko.nix;
             }
-          ];
-        };
-      };
-
-      darwinConfigurations = {
-        "Kierans-MacBook-Air" = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          inputs = { inherit darwin nixpkgs; };
-          pkgs = import nixpkgs {
-            inherit config;
-            system = "aarch64-darwin";
-          };
-          modules = [
-            ./darwin/macbook.nix
           ];
         };
       };
