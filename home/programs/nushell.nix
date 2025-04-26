@@ -59,11 +59,16 @@
     };
     loginFile = {
       text = /* nu */''
+        let hostname = (sys host | get hostname)
         $env.EDITOR = "nvim"
         $env.NIX_PATH = "nixpkgs=flake:nixpkgs"
         if $env.XDG_VTNR? == "1" {
             if (which sway | length) > 0 {
-                exec sway --unsupported-gpu
+                if hostname == "desktop" {
+                    exec sway --unsupported-gpu
+                } else if hostname == "framework" {
+                    exec sway
+                }
             } 
         }
       '';
